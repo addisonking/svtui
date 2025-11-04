@@ -19,7 +19,7 @@
 
 <div class="max-w-3xl space-y-8 p-4">
 	<div>
-		sv-tui <Badge>v{version}</Badge>
+		svtui <Badge>v{version}</Badge>
 		<p>
 			An open-source, minimal <Badge style="background-color: #ff3e00; color: white;">Svelte</Badge>
 			component repository for building web applications and static sites with terminal aesthetic. Inspired
