@@ -27,7 +27,7 @@
 	{#each docs.sort( (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name) ) as doc (doc.name)}
 		<div class="flex flex-col gap-2">
 			<div class="flex flex-col">
-				<span class="">{doc.name.toUpperCase()}</span>
+        <span class="uppercase">{doc.name}</span>
 				<span>{doc.description}</span>
 			</div>
 			<Card title="EXAMPLE">
