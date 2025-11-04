@@ -53,7 +53,7 @@
 .dark {
 	--surface-base: rgb(0, 0, 0);
 	--border-default: rgb(56, 56, 56);
-	--border-muted: rgb(82, 82, 82);
+	--border-muted: rgba(168, 168, 168, 0.2);
 	--text-primary: rgb(235, 235, 235);
 	--button-primary-bg: rgb(235, 235, 235);
 	--button-primary-fg: rgb(17, 24, 39);
