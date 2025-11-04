@@ -8,9 +8,15 @@
 	let version = $state(`69420-${'abcdef0'}`);
 </script>
 
-<ActionButton onclick={toggleMode} style="margin-left: 1rem;" hotkey={['control', 't']}
-	>TOGGLE THEME</ActionButton
->
+<div class="flex flex-row ml-4">
+	<ActionButton onclick={toggleMode} hotkey={['control', 't']}>TOGGLE THEME</ActionButton>
+	<ActionButton
+		href="https://github.com/addisonking/svtui"
+		hotkey={['control', 'g']}
+		target="_blank">VIEW SOURCE</ActionButton
+	>
+</div>
+
 <div class="max-w-3xl space-y-8 p-4">
 	<div>
 		sv-tui <Badge>v{version}</Badge>
@@ -27,13 +33,12 @@
 	{#each docs.sort( (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name) ) as doc (doc.name)}
 		<div class="flex flex-col gap-2">
 			<div class="flex flex-col">
-        <span class="uppercase">{doc.name}</span>
+				<span class="uppercase">{doc.name}</span>
 				<span>{doc.description}</span>
 			</div>
 			<Card title="EXAMPLE">
-					<svelte:component this={doc.componentExample} />
-</Card
-			>
+				<svelte:component this={doc.componentExample} />
+			</Card>
 		</div>
 	{/each}
 </div>
