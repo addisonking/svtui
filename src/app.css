@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@font-face {
+	font-family: 'GeistMono-Regular';
+	src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/996b00fb-4b7a-403d-8da2-ce2225450681.woff2')
+		format('woff2');
+}
+
+:root {
+	--font-family-mono: 'GeistMono-Regular', Consolas, monaco, monospace;
+	--font-size: 16px;
+	--base-line-height: 1.25;
+
+	--surface-base: rgba(255, 255, 255, 1);
+	--border-default: rgba(224, 224, 224, 1);
+	--border-muted: rgba(168, 168, 168, 0.2);
+	--text-primary: rgba(17, 24, 39, 1);
+	--button-primary-bg: rgba(17, 24, 39, 1);
+	--button-primary-fg: rgba(255, 255, 255, 1);
+	--button-secondary-bg: rgba(229, 231, 235, 1);
+	--button-secondary-fg: rgba(198, 198, 198, 1);
+	--focus-ring: rgba(59, 130, 246, 1);
+
+	background: var(--surface-base);
+	color: var(--text-primary);
+	font-family: var(--font-family-mono);
+	line-height: calc(var(--base-line-height) * 1rem);
+
+	font-size: var(--font-size);
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-variant-numeric: tabular-nums lining-nums;
+
+	&::-webkit-scrollbar {
+		background: transparent;
+		height: calc(var(--base-line-height) * 1rem);
+		width: 1ch;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--surface-base);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--border-default);
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: var(--border-muted);
+	}
+}
+
+.dark {
+	--surface-base: rgb(0, 0, 0);
+	--border-default: rgb(56, 56, 56);
+	--border-muted: rgb(82, 82, 82);
+	--text-primary: rgb(235, 235, 235);
+	--button-primary-bg: rgb(235, 235, 235);
+	--button-primary-fg: rgb(17, 24, 39);
+	--button-secondary-bg: rgb(56, 56, 56);
+	--button-secondary-fg: rgb(38, 38, 38);
+	--focus-ring: rgba(239, 99, 0, 1);
+}
