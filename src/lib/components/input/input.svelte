@@ -120,7 +120,7 @@
 	}
 
 	.placeholder {
-		color: var(--button-secondary-fg);
+    color: var(--button-muted);
 		font-style: italic;
 		pointer-events: none;
 		user-select: none;
