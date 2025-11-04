@@ -3,7 +3,7 @@ import {
 	ActionButtonExample,
 	LabelInputExample,
 	BadgeExample,
-	CodeBlockExample,
+	CodeBlockExample
 } from './(component-examples)';
 import { type Component } from 'svelte';
 
@@ -15,29 +15,29 @@ const docs: {
 	{
 		name: 'Button',
 		description: 'Buttons that should be used primarily for actions that require attention.',
-		componentExample: ButtonExample,
+		componentExample: ButtonExample
 	},
 	{
 		name: 'Action Button',
 		description:
 			'Buttons that represent actions, typically used for navigation or important tasks.',
-		componentExample: ActionButtonExample,
+		componentExample: ActionButtonExample
 	},
 	{
 		name: 'Input/Label',
 		description:
 			'Input fields for user text input, specifically. Labels are used to describe the input fields.',
-		componentExample: LabelInputExample,
+		componentExample: LabelInputExample
 	},
 	{
 		name: 'Badge',
 		description: 'Badges are small, inline elements used to display status, counts, or labels.',
-		componentExample: BadgeExample,
+		componentExample: BadgeExample
 	},
 	{
 		name: 'Code Block',
 		description: 'Code blocks are used to display code snippets in a formatted manner.',
-		componentExample: CodeBlockExample,
+		componentExample: CodeBlockExample
 	}
 ];
 
