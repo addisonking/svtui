@@ -5,8 +5,6 @@
 	import { docs } from '$lib/config/docs';
 	import { toggleMode } from 'mode-watcher';
 
-	console.log(docs[0].componentExampleRaw, typeof docs[0].componentExampleRaw);
-
 	let version = $state(`69420-${'abcdef0'}`);
 </script>
 
@@ -33,14 +31,8 @@
 				<span>{doc.description}</span>
 			</div>
 			<Card title="EXAMPLE">
-				<div class="space-y-4">
 					<svelte:component this={doc.componentExample} />
-					<div class="flex justify-end">
-						<ActionButton onclick={() => console.log(doc.componentExampleRaw)}
-							>PRINT USAGE</ActionButton
-						>
-					</div>
-				</div></Card
+</Card
 			>
 		</div>
 	{/each}
