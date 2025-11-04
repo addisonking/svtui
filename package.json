@@ -33,6 +33,7 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-cloudflare": "^7.2.4",
 		"@tailwindcss/vite": "^4.1.16",
 		"fmt": "^2.0.0",
 		"mode-watcher": "^1.1.0",
