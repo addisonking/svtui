@@ -15,8 +15,12 @@
 </label>
 
 <style>
-	.label {
-		display: block;
-		background-color: var(--border-default);
-	}
+.label {
+  display: block;
+  background-color: var(--border-default);
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+}
 </style>
