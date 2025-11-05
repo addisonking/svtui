@@ -3,7 +3,8 @@ import {
 	ActionButtonExample,
 	LabelInputExample,
 	BadgeExample,
-	CodeBlockExample
+	CodeBlockExample,
+  ActionListExample
 } from './(component-examples)';
 import { type Component } from 'svelte';
 
@@ -38,7 +39,12 @@ const docs: {
 		name: 'Code Block',
 		description: 'Code blocks are used to display code snippets in a formatted manner.',
 		componentExample: CodeBlockExample
-	}
+	},
+      {
+    name: 'Action List',
+    description: 'Action lists are used to present a list of actions or options to the user.',
+    componentExample: ActionListExample
+  }
 ];
 
 export { docs };

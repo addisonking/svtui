@@ -2,13 +2,6 @@
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 	import { PressedKeys } from 'runed';
 
-	// export type ButtonProps =
-	// 	HTMLButtonAttributes &
-	// 	HTMLAnchorAttributes & {
-	// 		ref?: HTMLElement | null;
-	// 		variant?: ButtonVariant;
-	// 	};
-
 	export type ActionButtonProps = HTMLButtonAttributes &
 		HTMLAnchorAttributes & {
 			ref?: HTMLElement | null;

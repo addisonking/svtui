@@ -3,3 +3,4 @@ export { default as ActionButtonExample } from './action-button.svelte';
 export { default as LabelInputExample } from './label-input.svelte';
 export { default as BadgeExample } from './badge.svelte';
 export { default as CodeBlockExample } from './code-block.svelte';
+export { default as ActionListExample } from './action-list.svelte';
