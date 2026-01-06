@@ -7,11 +7,7 @@
 </script>
 
 <script lang="ts">
-	let {
-		class: className = '',
-		ref = $bindable(null),
-		children
-	}: TableCaptionProps = $props();
+	let { class: className = '', ref = $bindable(null), children }: TableCaptionProps = $props();
 </script>
 
 <caption class="table-caption {className}" bind:this={ref}>

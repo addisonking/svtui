@@ -46,12 +46,7 @@
 	});
 </script>
 
-<td
-	class="table-cell {className}"
-	class:flash={isFlashing}
-	bind:this={ref}
-	{...restProps}
->
+<td class="table-cell {className}" class:flash={isFlashing} bind:this={ref} {...restProps}>
 	{@render children?.()}
 </td>
 

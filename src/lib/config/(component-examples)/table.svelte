@@ -25,7 +25,9 @@
 	</div>
 
 	<Table.Root>
-		<Table.Caption>Live stock prices — click "Update All Prices" to see the flash effect.</Table.Caption>
+		<Table.Caption
+			>Live stock prices — click "Update All Prices" to see the flash effect.</Table.Caption
+		>
 		<Table.Header>
 			<Table.Row>
 				<Table.Head>Symbol</Table.Head>
