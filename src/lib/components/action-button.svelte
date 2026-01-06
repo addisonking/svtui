@@ -29,7 +29,9 @@
 	if (hotkey.length) {
 		keys.onKeys(hotkey, () => {
 			if (restProps.onclick) {
-				restProps.onclick();
+				restProps.onclick(
+					new MouseEvent('click') as MouseEvent & { currentTarget: HTMLButtonElement }
+				);
 			} else if (restProps.href) {
 				if (restProps.target === '_blank') {
 					window.open(restProps.href, '_blank');

@@ -37,7 +37,8 @@
 				<span>{doc.description}</span>
 			</div>
 			<Card title="EXAMPLE">
-				<svelte:component this={doc.componentExample} />
+				{@const Example = doc.componentExample}
+				<Example />
 			</Card>
 		</div>
 	{/each}
