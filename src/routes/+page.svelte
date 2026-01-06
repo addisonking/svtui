@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ActionButton from '$lib/components/action-button/action-button.svelte';
-	import Card from '$lib/components/card/card.svelte';
-	import Badge from '$lib/components/badge/badge.svelte';
+	import ActionButton from '$lib/components/action-button.svelte';
+	import Card from '$lib/components/card.svelte';
+	import Badge from '$lib/components/badge.svelte';
 	import { docs } from '$lib/config/docs';
 	import { toggleMode } from 'mode-watcher';
 

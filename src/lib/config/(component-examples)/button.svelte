@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import Button from '$lib/components/button/button.svelte';
+	import Button from '$lib/components/button.svelte';
 </script>
 
 <div class="flex flex-col">

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Label from '$lib/components/label/label.svelte';
-	import Input from '$lib/components/input/input.svelte';
+	import Label from '$lib/components/label.svelte';
+	import Input from '$lib/components/input.svelte';
 </script>
 
 <div class="flex flex-col">

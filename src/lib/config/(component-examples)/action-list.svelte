@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ActionList from '$lib/components/action-list/action-list.svelte';
+	import ActionList from '$lib/components/action-list.svelte';
 </script>
 
 <div class="flex flex-col w-full">

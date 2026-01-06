@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CodeBlock from '$lib/components/code-block/code-block.svelte';
+	import CodeBlock from '$lib/components/code-block.svelte';
 
 	const code: string = `package main
 

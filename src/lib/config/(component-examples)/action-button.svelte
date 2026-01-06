@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ActionButton from '$lib/components/action-button/action-button.svelte';
+	import ActionButton from '$lib/components/action-button.svelte';
 </script>
 
 <div class="flex flex-col">
