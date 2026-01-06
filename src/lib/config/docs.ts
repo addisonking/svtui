@@ -5,7 +5,8 @@ import {
 	BadgeExample,
 	CodeBlockExample,
 	ActionListExample,
-	CardExample
+	CardExample,
+	TableExample
 } from './(component-examples)';
 import { type Component } from 'svelte';
 
@@ -51,6 +52,12 @@ const docs: {
 		description:
 			'Cards are container components used to group related content with optional titles.',
 		componentExample: CardExample
+	},
+	{
+		name: 'Table',
+		description:
+			'Tables display data in rows and columns with optional reactive cell highlighting on value changes.',
+		componentExample: TableExample
 	}
 ];
 
