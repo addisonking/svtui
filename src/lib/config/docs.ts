@@ -4,7 +4,8 @@ import {
 	LabelInputExample,
 	BadgeExample,
 	CodeBlockExample,
-	ActionListExample
+	ActionListExample,
+	CardExample
 } from './(component-examples)';
 import { type Component } from 'svelte';
 
@@ -44,6 +45,11 @@ const docs: {
 		name: 'Action List',
 		description: 'Action lists are used to present a list of actions or options to the user.',
 		componentExample: ActionListExample
+	},
+	{
+		name: 'Card',
+		description: 'Cards are container components used to group related content with optional titles.',
+		componentExample: CardExample
 	}
 ];
 
