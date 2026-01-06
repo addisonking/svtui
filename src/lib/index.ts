@@ -7,6 +7,7 @@ export { default as Card } from './components/card.svelte';
 export { default as CodeBlock } from './components/code-block.svelte';
 export { default as Input } from './components/input.svelte';
 export { default as Label } from './components/label.svelte';
+export { default as Checkbox } from './components/checkbox.svelte';
 export * as Table from './components/table/index.js';
 
 // Types
@@ -18,15 +19,16 @@ export type { CardProps } from './components/card.svelte';
 export type { CodeBlockProps } from './components/code-block.svelte';
 export type { InputProps } from './components/input.svelte';
 export type { LabelProps } from './components/label.svelte';
+export type { CheckboxProps } from './components/checkbox.svelte';
 export type {
-	TableProps,
-	TableHeaderProps,
-	TableBodyProps,
-	TableFooterProps,
-	TableRowProps,
-	TableHeadProps,
-	TableCellProps,
-	TableCaptionProps
+  TableProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableFooterProps,
+  TableRowProps,
+  TableHeadProps,
+  TableCellProps,
+  TableCaptionProps
 } from './components/table/index.js';
 
 // Utilities

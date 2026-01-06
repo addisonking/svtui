@@ -6,7 +6,8 @@ import {
 	CodeBlockExample,
 	ActionListExample,
 	CardExample,
-	TableExample
+	TableExample,
+	CheckboxExample
 } from './(component-examples)';
 import { type Component } from 'svelte';
 
@@ -15,50 +16,55 @@ const docs: {
 	description: string;
 	componentExample: Component;
 }[] = [
-	{
-		name: 'Button',
-		description: 'Buttons that should be used primarily for actions that require attention.',
-		componentExample: ButtonExample
+		{
+			name: 'Button',
+			description: 'Buttons that should be used primarily for actions that require attention.',
+			componentExample: ButtonExample
+		},
+		{
+			name: 'Action Button',
+			description:
+				'Buttons that represent actions, typically used for navigation or important tasks.',
+			componentExample: ActionButtonExample
+		},
+		{
+			name: 'Input/Label',
+			description:
+				'Input fields for user text input, specifically. Labels are used to describe the input fields.',
+			componentExample: LabelInputExample
+		},
+		{
+			name: 'Badge',
+			description: 'Badges are small, inline elements used to display status, counts, or labels.',
+			componentExample: BadgeExample
+		},
+		{
+			name: 'Code Block',
+			description: 'Code blocks are used to display code snippets in a formatted manner.',
+			componentExample: CodeBlockExample
+		},
+		{
+			name: 'Action List',
+			description: 'Action lists are used to present a list of actions or options to the user.',
+			componentExample: ActionListExample
+		},
+		{
+			name: 'Card',
+			description:
+				'Cards are container components used to group related content with optional titles.',
+			componentExample: CardExample
+		},
+		{
+			name: 'Table',
+			description:
+				'Tables display data in rows and columns with optional reactive cell highlighting on value changes.',
+			componentExample: TableExample
 	},
 	{
-		name: 'Action Button',
+		name: 'Checkbox',
 		description:
-			'Buttons that represent actions, typically used for navigation or important tasks.',
-		componentExample: ActionButtonExample
-	},
-	{
-		name: 'Input/Label',
-		description:
-			'Input fields for user text input, specifically. Labels are used to describe the input fields.',
-		componentExample: LabelInputExample
-	},
-	{
-		name: 'Badge',
-		description: 'Badges are small, inline elements used to display status, counts, or labels.',
-		componentExample: BadgeExample
-	},
-	{
-		name: 'Code Block',
-		description: 'Code blocks are used to display code snippets in a formatted manner.',
-		componentExample: CodeBlockExample
-	},
-	{
-		name: 'Action List',
-		description: 'Action lists are used to present a list of actions or options to the user.',
-		componentExample: ActionListExample
-	},
-	{
-		name: 'Card',
-		description:
-			'Cards are container components used to group related content with optional titles.',
-		componentExample: CardExample
-	},
-	{
-		name: 'Table',
-		description:
-			'Tables display data in rows and columns with optional reactive cell highlighting on value changes.',
-		componentExample: TableExample
-	}
+			'Checkboxes allow users to select one or more options from a set.',
+		componentExample: CheckboxExample	}
 ];
 
 export { docs };
