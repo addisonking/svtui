@@ -35,12 +35,7 @@
 	};
 </script>
 
-<div
-	class="checkbox-wrapper {className}"
-	class:checked
-	class:focused
-	class:disabled
->
+<div class="checkbox-wrapper {className}" class:checked class:focused class:disabled>
 	<div class="checkbox-control">
 		<input
 			bind:this={ref}

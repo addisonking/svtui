@@ -59,12 +59,13 @@ const docs: {
 			description:
 				'Tables display data in rows and columns with optional reactive cell highlighting on value changes.',
 			componentExample: TableExample
-	},
-	{
-		name: 'Checkbox',
-		description:
-			'Checkboxes allow users to select one or more options from a set.',
-		componentExample: CheckboxExample	}
-];
+		},
+		{
+			name: 'Checkbox',
+			description:
+				'Checkboxes allow users to select one or more options from a set.',
+			componentExample: CheckboxExample
+		}
+	];
 
 export { docs };
