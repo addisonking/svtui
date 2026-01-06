@@ -15,7 +15,7 @@
 		icon = '',
 		children,
 		...restProps
-	}: ActionButtonProps = $props();
+	}: ActionListProps = $props();
 </script>
 
 {#if restProps.href}
@@ -38,7 +38,7 @@
 	.item {
 		align-items: flex-start;
 		background: transparent;
-		color: var(--theme-text);
+		color: var(--text-primary);
 		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
@@ -48,12 +48,12 @@
 
 		&:visited {
 			background: transparent;
-			color: var(--theme-text);
+			color: var(--text-primary);
 		}
 
 		&:hover {
 			background: transparent;
-			color: var(--theme-text);
+			color: var(--text-primary);
 		}
 
 		&:hover .icon {
@@ -70,7 +70,7 @@
 		background: var(--border-muted);
 		display: inline-flex;
 		flex-shrink: 0;
-		height: calc(var(--font-size) * var(--theme-line-height-base));
+		height: calc(var(--font-size) * var(--base-line-height));
 		justify-content: center;
 		width: 3ch;
 		user-select: none;
