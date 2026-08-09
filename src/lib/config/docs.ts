@@ -63,7 +63,7 @@ export const docs: Doc[] = [
 	},
 	{
 		name: 'Input/Label',
-		slug: 'input-label',
+		slug: 'input',
 		description:
 			'Input fields for user text input, specifically. Labels describe the input fields.',
 		componentExample: LabelInputExample,
