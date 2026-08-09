@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Card from '$lib/components/card.svelte';
 	import CodeBlock from '$lib/components/code-block.svelte';
 	import Badge from '$lib/components/badge.svelte';
 
@@ -34,38 +33,73 @@
 		<p>{doc.description}</p>
 	</div>
 
-	<svelte:boundary>
-		<Card title="EXAMPLE">
-			<Example />
-		</Card>
-		{#snippet failed()}
-			<Card title="EXAMPLE">
-				<p class="text-red-500">This example failed to render.</p>
-			</Card>
-		{/snippet}
-	</svelte:boundary>
+	<!-- DEMO: the live, rendered example. This is NOT the component itself —
+	     it's a small wrapper showing the component in use. -->
+	<section class="demo">
+		<h2 class="section-title">Demo</h2>
+		<svelte:boundary>
+			<div class="demo-frame">
+				<Example />
+			</div>
+			{#snippet failed()}
+				<div class="demo-frame">
+					<p class="text-red-500">This example failed to render.</p>
+				</div>
+			{/snippet}
+		</svelte:boundary>
+	</section>
 
-	{#if doc.propsType}
-		<div class="flex flex-col gap-2">
-			<span class="uppercase">Props</span>
-			<Card title="PROPS">
+	<hr class="sep" />
+
+	<!-- COMPONENT: the raw, copy-pasteable source plus its props type. -->
+	<section class="component">
+		<h2 class="section-title">Component</h2>
+
+		{#if doc.propsType}
+			<div class="flex flex-col gap-2">
+				<span class="sub-label">Props</span>
 				<CodeBlock code={doc.propsType} />
-			</Card>
-		</div>
-	{/if}
+			</div>
+		{/if}
 
-	<div class="flex flex-col gap-2">
-		<div class="flex items-center justify-between">
-			<span class="uppercase">Source</span>
-			<button class="copy" onclick={copySource}>{copied ? 'COPIED' : 'COPY'}</button>
-		</div>
-		<Card title={doc.sourceName}>
+		<div class="flex flex-col gap-2">
+			<div class="flex items-center justify-between">
+				<span class="sub-label">{doc.sourceName}</span>
+				<button class="copy" onclick={copySource}>{copied ? 'COPIED' : 'COPY'}</button>
+			</div>
 			<CodeBlock code={doc.source} />
-		</Card>
-	</div>
+		</div>
+	</section>
 </div>
 
 <style>
+	.section-title {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.1em;
+		opacity: 0.7;
+		margin-bottom: 0.5rem;
+	}
+
+	.sub-label {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		opacity: 0.7;
+	}
+
+	.demo-frame {
+		border: 1px solid var(--border-default);
+		background: var(--surface-base);
+		padding: 1rem;
+		box-shadow: 0.5ch 0.5ch 0 0 var(--border-muted);
+	}
+
+	.sep {
+		border: 0;
+		border-top: 1px solid var(--border-default);
+		margin: 0;
+	}
+
 	.copy {
 		font-family: inherit;
 		font-size: inherit;

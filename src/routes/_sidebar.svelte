@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { docs } from '$lib/config/docs';
 	import ActionList from '$lib/components/action-list.svelte';
-	import ActionButton from '$lib/components/action-button.svelte';
-	import { toggleMode } from '$lib/settings';
 	import { page } from '$app/state';
 	import ThemePicker from './_theme-picker.svelte';
 
@@ -13,7 +11,6 @@
 	<div class="flex flex-col gap-2">
 		<ActionList icon="<" href="/" onclick={onNavigate}>HOME</ActionList>
 		<ActionList icon="#" href="/docs" onclick={onNavigate}>DOCS</ActionList>
-		<ActionButton onclick={toggleMode} hotkey={['control', 't']}>TOGGLE THEME</ActionButton>
 	</div>
 	<nav class="flex flex-col">
 		{#each docs as doc (doc.slug)}
