@@ -7,7 +7,6 @@
 		ref?: HTMLTextAreaElement | null;
 		autoPlay?: string;
 		autoPlaySpeedMS?: number;
-		isBlink?: boolean;
 	};
 </script>
 
@@ -17,7 +16,6 @@
 		ref = $bindable(null),
 		autoPlay,
 		autoPlaySpeedMS = 40,
-		isBlink,
 		value = $bindable(undefined),
 		defaultValue,
 		placeholder,
@@ -163,7 +161,7 @@
 		{#if isPlaceholderVisible}
 			{placeholder}<span class="block {isFocused ? 'blink' : ''}"></span>
 		{:else}
-			{beforeCaret}<span class="block {isFocused || isBlink ? 'blink' : ''}"></span>{afterCaret}
+			{beforeCaret}<span class="block {isFocused ? 'blink' : ''}"></span>{afterCaret}
 		{/if}
 	</div>
 	<div bind:this={measureEl} class="hidden"></div>
