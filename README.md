@@ -2,25 +2,27 @@
 
 ![hero image](./static/hero.png)
 
-Terminal-aesthetic Svelte 5 components. Self-contained source files you copy
-into your own project — minimal deps, monospace-first, inspired by
-[srcl](https://sacred.computer).
+Terminal-styled Svelte 5 components. Each one is a single self-contained
+`.svelte` file you copy into your own project. No runtime deps, monospace-first.
+The look borrows from [srcl](https://sacred.computer).
 
 ## Use it
 
-svtui ships as a CLI (shadcn/ui-style). Add components straight into your repo:
+svtui is a CLI in the shadcn/ui style. You add components straight into your
+own repo:
 
 ```sh
-npx svtui init            # write the token preset (src/app.css) + font
-npx svtui list            # list available components
-npx svtui add button      # copy a component into src/lib/components
-npx svtui add table       # multi-file components get their own subfolder
+npx svtui init            # writes the token preset (src/app.css) + a font
+npx svtui list            # lists available components
+npx svtui add button      # copies a component into src/lib/components
+npx svtui add table       # multi-file components land in their own subfolder
 ```
 
-Run `svtui init` first — components read the CSS variables it defines.
+Run `init` first. The components read the CSS variables it defines.
 
-When a component needs an npm dependency (e.g. `action-button`, `input` use
-`runed`), `add` prints the install command for your detected package manager.
+If a component ever needs an npm dependency, `add` prints the install command
+for whichever package manager it finds in your project. None of the current
+components do.
 
 ### Flags
 
@@ -32,22 +34,29 @@ When a component needs an npm dependency (e.g. `action-button`, `input` use
 
 ## Components
 
-Button, Action Button, Action List, Badge, Card, Code Block, Input, Label,
-Checkbox, Table.
+Button, ActionButton, ActionList, Badge, Card, CodeBlock, Input, Label,
+Checkbox, Divider, Row, RowSpaceBetween, Indent, Block, Text, Table, Avatar,
+Tooltip, AlertBanner, Breadcrumbs, BarLoader, BarProgress, BlockLoader,
+MatrixLoader, Accordion, Navigation, RadioButton, RadioButtonGroup, TextArea,
+AsciiCanvas.
+
+Thirty components today. `svtui list` shows the current set.
 
 ## Theming
 
-All components read CSS variables from `src/app.css` (written by `svtui init`).
-Override them to theme. Light/dark is toggled with `mode-watcher` on the docs
-site; the variables are the same shape either way.
+Components read CSS custom properties from `src/app.css`, which `svtui init`
+writes. Override the variables to retheme. The preset holds a light ramp and a
+dark ramp, plus optional OKLCH color tints. The docs site toggles light and
+dark client-side; the variables are the same shape either way, so copy
+whichever you need.
 
 ## This repo
 
-- `src/lib/components` — canonical component source (also the docs site's source of truth).
-- `src/routes` — the docs site (SvelteKit, prerendered to static HTML).
-- `registry.json` — component manifest (name → files, npm deps).
-- `scripts/flatten.ts` — builds the registry into `cli/registry/` for the CLI to ship.
-- `cli/` — the `svtui` npm package (the CLI).
+- `src/lib/components`: canonical component source, and the docs site's source of truth.
+- `src/routes`: the docs site (SvelteKit, prerendered to static HTML).
+- `registry.json`: component manifest, names to files and npm deps.
+- `scripts/flatten.ts`: builds `cli/registry/` from `src/lib/components` for the CLI to ship.
+- `cli/`: the `svtui` npm package, which is the CLI itself.
 
 ## License
 
