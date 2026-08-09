@@ -128,8 +128,8 @@
 
 	.caret {
 		display: inline-block;
-		background: black;
-		color: white;
+		background: var(--text-primary);
+		color: var(--surface-base);
 		min-width: 1ch;
 		margin-left: -1ch;
 		margin-right: -1ch;

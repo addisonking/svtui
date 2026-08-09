@@ -13,12 +13,14 @@
 
 <div class={`code-block ${className ?? ''}`} bind:this={ref} {...restProps}>
 	{#if code}
-		{#each code.split('\n') as line, index (index)}
-			<div class="code-line">
-				<span class="line-number">{String(index + 1).padStart(3, '0')}</span>
-				<span class="line-content">{line}</span>
-			</div>
-		{/each}
+		<div class="lines">
+			{#each code.split('\n') as line, index (index)}
+				<div class="code-line">
+					<span class="line-number">{String(index + 1).padStart(3, '0')}</span>
+					<span class="line-content">{line}</span>
+				</div>
+			{/each}
+		</div>
 	{/if}
 </div>
 
@@ -26,9 +28,20 @@
 	.code-block {
 		font-family: inherit;
 		display: block;
-		overflow: auto;
+		overflow-x: auto;
 		background-color: var(--border-muted);
 		font-weight: 400;
+	}
+
+	/*
+		Wrap every row in one inline-block so all rows stretch to the width of
+		the longest line — their block-width fills the inner's content box, which
+		is max-content (the widest row). Without this, scrollable blocks show the
+		per-line background ending early on lines shorter than the widest one.
+	*/
+	.lines {
+		display: inline-block;
+		min-width: 100%;
 	}
 
 	.code-line {
@@ -40,6 +53,7 @@
 	.line-number {
 		display: inline-flex;
 		width: 3ch;
+		flex-shrink: 0;
 		background-color: var(--surface-base);
 		padding-right: 1ch;
 		text-align: right;
@@ -48,8 +62,8 @@
 	}
 
 	.line-content {
-		width: 100%;
-		min-width: 10%;
+		flex: 1;
+		min-width: 0;
 		background-color: var(--border-muted);
 		padding-left: 2ch;
 		white-space: pre;
