@@ -142,7 +142,7 @@
 	.hotkey {
 		padding: 0 0.5ch;
 		text-transform: uppercase;
-		font-family: monospace;
+		font-family: var(--font-family-mono);
 	}
 
 	.button-content {

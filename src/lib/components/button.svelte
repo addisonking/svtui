@@ -55,14 +55,13 @@
 		margin: 0;
 		padding: 10px 20px;
 		text-align: center;
-		font-size: 16px;
 		text-transform: uppercase;
 		text-decoration: none;
 		background-clip: padding-box;
 		display: inline-block;
 		width: 100%;
 		text-align: center;
-		font-family: monospace;
+		font-family: var(--font-family-mono);
 		font-weight: 400;
 		letter-spacing: 0.05em;
 		transition: all 0.2s ease-in-out;
