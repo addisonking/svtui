@@ -92,10 +92,13 @@
 		box-shadow: none;
 	}
 
-	.button:focus {
+	.button:focus-visible {
 		outline: none;
 		color: var(--button-primary-fg);
 		background-color: var(--focus-ring);
 		box-shadow: none;
 	}
+
+	/* :focus-visible keeps the highlight only for keyboard focus — a mouse click
+	   doesn't leave the ring painted, so the hover color doesn't linger. */
 </style>

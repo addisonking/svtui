@@ -22,7 +22,7 @@
 		transition: 200ms ease background;
 	}
 
-	.row:focus {
+	.row:focus-visible {
 		background: var(--focus-ring);
 	}
 </style>

@@ -69,7 +69,7 @@
 			background: var(--focus-ring);
 		}
 
-		&:focus .icon {
+		&:focus-visible .icon {
 			background: var(--focus-ring);
 		}
 	}

@@ -128,7 +128,7 @@
 		background-color: var(--focus-ring);
 	}
 
-	.action-button:focus {
+	.action-button:focus-visible {
 		outline: none;
 		background-color: var(--focus-ring);
 	}
