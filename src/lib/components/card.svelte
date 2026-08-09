@@ -46,7 +46,7 @@
 		position: relative;
 		display: block;
 		padding: 0;
-		white-space: prewrap;
+		white-space: pre-wrap;
 	}
 
 	.children {
