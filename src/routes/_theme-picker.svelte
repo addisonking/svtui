@@ -1,98 +1,108 @@
 <script lang="ts">
-	import { settings, setTint, setFont, tints, fonts } from '$lib/settings';
+	import ActionList from '$lib/components/action-list.svelte';
+	import { settings, setTint, setFont, setTheme, tints, fonts } from '$lib/settings';
 
-	let { onNavigate }: { onNavigate?: () => void } = $props();
+	let themeOpen = $state(false);
+	let fontOpen = $state(false);
 
-	// Treat the ActionList rows as radio-like toggles: clicking a tint sets it.
-	// active highlight reuses the sidebar's `.active .text` rule via class.
+	const tintLabels: Record<string, string> = {
+		none: 'NONE',
+		green: 'GREEN',
+		blue: 'BLUE',
+		red: 'RED',
+		yellow: 'YELLOW',
+		purple: 'PURPLE',
+		orange: 'ORANGE',
+		pink: 'PINK'
+	};
+
+	const fontLabels: Record<string, string> = {
+		geist: 'GEIST MONO',
+		fixedsys: 'FIXEDSYS EXCELSIOR',
+		vt220: 'GLASSTTY VT220',
+		phoenix: 'PHOENIX EGA 8X8',
+		jetbrains: 'JETBRAINS MONO'
+	};
 </script>
 
-<div class="flex flex-col gap-4">
-	<section class="flex flex-col gap-2">
-		<span class="label">THEME</span>
-		<div class="grid grid-cols-4 gap-2">
-			{#each tints as tint (tint)}
-				<button
-					class="swatch tint-{tint}"
-					class:active={$settings.tint === tint}
-					onclick={() => setTint(tint)}
-					aria-label="tint {tint}"
-					title={tint}
-				></button>
-			{/each}
-		</div>
-	</section>
+<div class="flex flex-col gap-2">
+	<!-- THEME: light/dark toggle + tint submenu -->
+	<button
+		class="trigger"
+		class:open={themeOpen}
+		onclick={() => (themeOpen = !themeOpen)}
+		aria-expanded={themeOpen}
+	>
+		<span class="caret">{themeOpen ? 'v' : '>'}</span>
+		THEME: {$settings.theme === 'light' ? 'LIGHT' : 'DARK'}
+	</button>
 
-	<section class="flex flex-col gap-2">
-		<span class="label">FONT</span>
+	{#if themeOpen}
 		<div class="flex flex-col">
-			{#each fonts as font (font)}
-				<button
-					class="font-row"
-					class:active={$settings.font === font}
-					onclick={() => {
-						setFont(font);
-						onNavigate?.();
-					}}>{font}</button
+			<ActionList icon={$settings.theme === 'light' ? '*' : ' '} onclick={() => setTheme('light')}
+				>LIGHT</ActionList
+			>
+			<ActionList icon={$settings.theme === 'dark' ? '*' : ' '} onclick={() => setTheme('dark')}
+				>DARK</ActionList
+			>
+
+			<div class="sublabel">TINT</div>
+			{#each tints as tint (tint)}
+				<ActionList icon={$settings.tint === tint ? '*' : ' '} onclick={() => setTint(tint)}
+					>{tintLabels[tint]}</ActionList
 				>
 			{/each}
 		</div>
-	</section>
+	{/if}
+
+	<!-- FONT: dropdown of available fonts -->
+	<button
+		class="trigger"
+		class:open={fontOpen}
+		onclick={() => (fontOpen = !fontOpen)}
+		aria-expanded={fontOpen}
+	>
+		<span class="caret">{fontOpen ? 'v' : '>'}</span>
+		FONT: {fontLabels[$settings.font] ?? $settings.font.toUpperCase()}
+	</button>
+
+	{#if fontOpen}
+		<div class="flex flex-col">
+			{#each fonts as font (font)}
+				<ActionList icon={$settings.font === font ? '*' : ' '} onclick={() => setFont(font)}
+					>{fontLabels[font]}</ActionList
+				>
+			{/each}
+		</div>
+	{/if}
 </div>
 
 <style>
-	.label {
-		text-transform: uppercase;
-		opacity: 0.6;
-	}
-	.swatch {
-		height: 1.5rem;
-		border: 0;
-		cursor: pointer;
-		background: var(--surface-base);
-		box-shadow: inset 0 0 0 2px var(--border-default);
-	}
-	.swatch.active {
-		box-shadow: inset 0 0 0 2px var(--text-primary);
-	}
-	.tint-none {
-		background: var(--surface-base);
-	}
-	.tint-green {
-		background: #39ff44;
-	}
-	.tint-blue {
-		background: #0047ff;
-	}
-	.tint-red {
-		background: #ff0000;
-	}
-	.tint-yellow {
-		background: #e4f221;
-	}
-	.tint-purple {
-		background: #8000ff;
-	}
-	.tint-orange {
-		background: #ffac1c;
-	}
-	.tint-pink {
-		background: #ff00ff;
-	}
-	.font-row {
+	.trigger {
 		font-family: inherit;
 		font-size: inherit;
 		text-align: left;
 		border: 0;
 		background: var(--surface-base);
-		color: inherit;
+		color: var(--text-primary);
 		padding: 0 1ch;
 		cursor: pointer;
+		text-transform: uppercase;
 	}
-	.font-row:hover {
+	.trigger:hover {
 		background: var(--focus-ring);
 	}
-	.font-row.active {
-		box-shadow: inset 2px 0 0 0 var(--text-primary);
+	.caret {
+		display: inline-block;
+		width: 3ch;
+		text-align: center;
+		color: var(--border-muted);
+		user-select: none;
+	}
+	.sublabel {
+		padding: 0.5rem 1ch 0 4ch;
+		text-transform: uppercase;
+		opacity: 0.5;
+		font-size: 0.75rem;
 	}
 </style>
