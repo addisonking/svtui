@@ -2,7 +2,6 @@
 	import RowSpaceBetween from '$lib/components/row-space-between.svelte';
 	import Text from '$lib/components/text.svelte';
 	import Badge from '$lib/components/badge.svelte';
-	import ActionList from '$lib/components/action-list.svelte';
 	import BlockLoader from '$lib/components/block-loader.svelte';
 	import TextArea from '$lib/components/text-area.svelte';
 
@@ -36,7 +35,7 @@
 		{
 			match: /svelte|svtui/i,
 			reply:
-				'svtui is a set of Svelte 5 components with a terminal look, shipped as copy-paste files. This whole chat is assembled from RowSpaceBetween, Text, BlockLoader, ActionList, and TextArea.'
+				'svtui is a set of Svelte 5 components with a terminal look, shipped as copy-paste files. This whole chat is assembled from RowSpaceBetween, Text, BlockLoader, and TextArea.'
 		},
 		{
 			match: /weather/i,
@@ -108,47 +107,44 @@
 	<div bind:this={scrollEl} class="messages">
 		{#each messages as m, i (i)}
 			{#if m.role === 'user'}
-				<RowSpaceBetween class="msg user">
-					<div class="tail tail-right" aria-hidden="true"></div>
+				<div class="msg user">
 					<div class="bubble bubble-user">
 						<Text
 							>{m.content}{#if m.typing}<span class="cursor"></span>{/if}</Text
 						>
 					</div>
-				</RowSpaceBetween>
+					<div class="tail tail-right" aria-hidden="true"></div>
+				</div>
 			{:else}
-				<RowSpaceBetween class="msg assistant">
+				<div class="msg assistant">
+					<div class="tail tail-left" aria-hidden="true"></div>
 					<div class="bubble bubble-assistant">
 						<Text
 							>{m.content}{#if m.typing}<span class="cursor"></span>{/if}</Text
 						>
 					</div>
-					<div class="tail tail-left" aria-hidden="true"></div>
-				</RowSpaceBetween>
+				</div>
 			{/if}
 		{/each}
 		{#if thinking}
-			<RowSpaceBetween class="msg assistant">
+			<div class="msg assistant">
+				<div class="tail tail-left" aria-hidden="true"></div>
 				<div class="bubble bubble-thinking">
 					<span class="thinking-line">
 						<BlockLoader mode={1} />
 						<span class="thinking-label">thinking</span>
 					</span>
 				</div>
-				<div class="tail tail-left" aria-hidden="true"></div>
-			</RowSpaceBetween>
+			</div>
 		{/if}
 	</div>
 
 	<footer class="composer">
-		<div class="composer-input">
-			<TextArea
-				bind:value={draft}
-				placeholder="Type a message…  (Enter to send, Shift+Enter for newline)"
-				onkeydown={onComposerKeydown}
-			/>
-		</div>
-		<ActionList icon=">" onclick={send} disabled={!draft.trim() || thinking}>SEND</ActionList>
+		<TextArea
+			bind:value={draft}
+			placeholder="Type a message…  (Enter to send, Shift+Enter for newline)"
+			onkeydown={onComposerKeydown}
+		/>
 	</footer>
 </div>
 
@@ -176,9 +172,21 @@
 		padding: calc(var(--font-size) * var(--base-line-height)) 1ch;
 	}
 
-	/* Message bubbles: 1ch hard drop-shadow, no rounded corners — the SRCL look.
-	   Flat class names (not `.msg .bubble`) because these divs are rendered as
-	   snippet children of RowSpaceBetween, which puts them in the child's scope. */
+	/* Each message row is a flex pair: bubble + tail adjacent (not space-between),
+	   the whole row pushed to the sender's side. The tail is a 1ch border-triangle
+	   pointing outward — the SRCL message shape. */
+	.msg {
+		display: flex;
+		align-items: flex-end;
+		gap: 0;
+	}
+	.msg.user {
+		justify-content: flex-end;
+	}
+	.msg.assistant {
+		justify-content: flex-start;
+	}
+
 	.bubble {
 		display: inline-block;
 		padding: calc(var(--base-line-height) * 8px) 1ch;
@@ -206,15 +214,12 @@
 		opacity: 0.7;
 	}
 
-	/* 1ch solid border-triangles, the SRCL message tail. */
 	.tail {
 		flex-shrink: 0;
-		align-self: flex-end;
 		width: 0;
 		height: 0;
 		border-top: calc((var(--font-size) * var(--base-line-height)) / 2) solid transparent;
 		border-bottom: calc((var(--font-size) * var(--base-line-height)) / 2) solid transparent;
-		margin-bottom: calc((var(--font-size) * var(--base-line-height)) / 2);
 	}
 	.tail-left {
 		border-right: 1ch solid var(--focus-ring);
@@ -241,15 +246,5 @@
 		flex-shrink: 0;
 		border-top: 1px solid var(--border-default);
 		padding: calc(var(--base-line-height) * 0.5rem) 1ch;
-		display: flex;
-		flex-direction: column;
-		gap: calc(var(--base-line-height) * 0.25rem);
-	}
-	.composer-input {
-		width: 100%;
-	}
-	.composer :global([disabled]) {
-		opacity: 0.5;
-		pointer-events: none;
 	}
 </style>

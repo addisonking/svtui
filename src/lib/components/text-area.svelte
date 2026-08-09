@@ -161,9 +161,9 @@
 <div class={`root ${className ?? ''}`} class:focused={isFocused}>
 	<div class="displayed {isPlaceholderVisible ? 'placeholder' : ''}">
 		{#if isPlaceholderVisible}
-			{placeholder}
+			{placeholder}<span class="block {isFocused ? 'blink' : ''}"></span>
 		{:else}
-			{beforeCaret}<span class="block {isBlink ? 'blink' : ''}"></span>{afterCaret}
+			{beforeCaret}<span class="block {isFocused || isBlink ? 'blink' : ''}"></span>{afterCaret}
 		{/if}
 	</div>
 	<div bind:this={measureEl} class="hidden"></div>
