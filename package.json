@@ -1,6 +1,7 @@
 {
-	"name": "svtui",
-	"version": "0.1.0",
+	"name": "svtui-docs",
+	"version": "0.1.1",
+	"private": true,
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
 		"@eslint/js": "^9.38.0",

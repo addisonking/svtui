@@ -1,6 +1,6 @@
 {
 	"name": "svtui",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Terminal-aesthetic Svelte components. CLI for adding self-contained components to your project (shadcn-style). WIP.",
 	"type": "module",
 	"scripts": {
