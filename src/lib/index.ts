@@ -21,14 +21,14 @@ export type { InputProps } from './components/input.svelte';
 export type { LabelProps } from './components/label.svelte';
 export type { CheckboxProps } from './components/checkbox.svelte';
 export type {
-  TableProps,
-  TableHeaderProps,
-  TableBodyProps,
-  TableFooterProps,
-  TableRowProps,
-  TableHeadProps,
-  TableCellProps,
-  TableCaptionProps
+	TableProps,
+	TableHeaderProps,
+	TableBodyProps,
+	TableFooterProps,
+	TableRowProps,
+	TableHeadProps,
+	TableCellProps,
+	TableCaptionProps
 } from './components/table/index.js';
 
 // Utilities
