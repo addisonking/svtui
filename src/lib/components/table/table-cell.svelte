@@ -23,7 +23,6 @@
 		...restProps
 	}: TableCellProps = $props();
 
-	let cellRef: HTMLTableCellElement | null = $state(null);
 	let prevValue: unknown = $state(value);
 	let isFlashing = $state(false);
 

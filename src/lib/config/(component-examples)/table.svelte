@@ -36,7 +36,7 @@
 			</Table.Row>
 		</Table.Header>
 		<Table.Body>
-			{#each stocks as stock, i (stock.symbol)}
+			{#each stocks as stock (stock.symbol)}
 				<Table.Row>
 					<Table.Cell class="font-medium">{stock.symbol}</Table.Cell>
 					<Table.Cell>{stock.name}</Table.Cell>
