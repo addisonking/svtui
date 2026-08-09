@@ -85,7 +85,6 @@ All generated from `docs.ts` / `registry.json` — never hand-maintain a second 
 - `/llms.txt` — short markdown index (what exists + where to read it).
 - `/llms-full.txt` — all component sources concatenated into one fetchable file.
 - `/registry.json` — the manifest as JSON (same shape the CLI ships).
-- `/cheatsheet` — every component's live example + props + source on one page (kitchen sink, good for one-shot ingest).
 - Each `/components/<slug>` page shows the live example, the extracted `*Props` type block (regex-pulled from raw source in `docs.ts` `extractPropsType`), and the full source with a copy button.
 - `AGENTS.md` (this file) — the working manual for any agent dropped into the repo.
 

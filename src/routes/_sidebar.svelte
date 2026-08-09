@@ -12,7 +12,6 @@
 <div class="flex flex-col gap-4">
 	<div class="flex flex-col gap-2">
 		<ActionList icon="<" href="/" onclick={onNavigate}>HOME</ActionList>
-		<ActionList icon="=" href="/cheatsheet" onclick={onNavigate}>CHEATSHEET</ActionList>
 		<ActionButton onclick={toggleMode} hotkey={['control', 't']}>TOGGLE THEME</ActionButton>
 	</div>
 	<nav class="flex flex-col">
