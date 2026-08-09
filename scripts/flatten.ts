@@ -88,14 +88,18 @@ function main() {
 				errors.push(`${item.name}: missing source file ${file}`);
 				continue;
 			}
-			// land files flat under the item's folder: strip src/lib/components/<name>/ for
-			// multi-file components, else just the basename-equivalent under src/lib/components.
+			// init items preserve their project-relative path so the CLI can write them
+			// to the right place (e.g. src/app.css, static/fonts/…). component items
+			// land flat under cli/registry/<name>/.
 			const compsRoot = `src/lib/components/${item.name}/`;
-			const rel = file.startsWith(compsRoot)
-				? file.slice(compsRoot.length)
-				: file.startsWith('src/lib/components/')
-					? file.slice('src/lib/components/'.length)
-					: file.replace(/^src\//, './');
+			const rel =
+				item.type === 'init'
+					? file
+					: file.startsWith(compsRoot)
+						? file.slice(compsRoot.length)
+						: file.startsWith('src/lib/components/')
+							? file.slice('src/lib/components/'.length)
+							: file.replace(/^src\//, './');
 			const dest = join(itemOut, rel);
 			mkdirSync(dirname(dest), { recursive: true });
 			copyFileSync(srcPath, dest);

@@ -85,7 +85,7 @@
 		{
 			"name": "tokens",
 			"type": "init",
-			"files": ["src/app.css"],
+			"files": ["src/app.css", "static/fonts/GeistMono-Regular.woff2"],
 			"npmDependencies": [],
 			"registryDependencies": []
 		}
