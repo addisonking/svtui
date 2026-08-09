@@ -1,0 +1,32 @@
+{
+	"name": "svtui",
+	"version": "0.0.1",
+	"description": "Terminal-aesthetic Svelte components. CLI for adding self-contained components to your project (shadcn-style). WIP.",
+	"type": "module",
+	"bin": {
+		"svtui": "index.js"
+	},
+	"files": [
+		"index.js",
+		"README.md",
+		"LICENSE"
+	],
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"components",
+		"cli",
+		"terminal",
+		"monospace"
+	],
+	"license": "Unlicense",
+	"author": "Addison King",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/addisonking/svtui.git"
+	},
+	"homepage": "https://github.com/addisonking/svtui",
+	"engines": {
+		"node": ">=18"
+	}
+}
