@@ -10,6 +10,7 @@
 <div class="flex flex-col gap-4">
 	<div class="flex flex-col gap-2">
 		<ActionList icon="<" href="/" onclick={onNavigate}>HOME</ActionList>
+		<ActionList icon="#" href="/demos" onclick={onNavigate}>DEMOS</ActionList>
 	</div>
 	<nav class="flex flex-col">
 		{#each docs as doc (doc.slug)}
