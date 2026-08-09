@@ -3,7 +3,7 @@
 	import ActionButton from '$lib/components/action-button.svelte';
 	import ActionList from '$lib/components/action-list.svelte';
 	import Badge from '$lib/components/badge.svelte';
-	import { toggleMode } from 'mode-watcher';
+	import { toggleMode } from '$lib/settings';
 
 	let version = $state(__SVTUI_VERSION__);
 </script>

@@ -2,8 +2,9 @@
 	import { docs } from '$lib/config/docs';
 	import ActionList from '$lib/components/action-list.svelte';
 	import ActionButton from '$lib/components/action-button.svelte';
-	import { toggleMode } from 'mode-watcher';
+	import { toggleMode } from '$lib/settings';
 	import { page } from '$app/state';
+	import ThemePicker from './_theme-picker.svelte';
 
 	let { onNavigate }: { onNavigate?: () => void } = $props();
 </script>
@@ -24,6 +25,8 @@
 			>
 		{/each}
 	</nav>
+
+	<ThemePicker />
 </div>
 
 <style>

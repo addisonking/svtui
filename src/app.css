@@ -1,27 +1,174 @@
 @import 'tailwindcss';
 
+/*
+svtui token system — docs-site side, the only place theming lives.
+
+The story: every visual token is derived from a single `--tint` color via
+OKLCH (`oklch(from var(--tint) L C H)`). Set a tint on <body> and the whole
+palette shifts hue while staying within its perceptual lightness band —
+the same trick SRCL uses, web-only OKLCH math with no terminal equivalent.
+
+Three orthogonal axes compose on <body>:
+  - theme: `theme-light` | `theme-dark`   (sets the base lightness ramp)
+  - tint:  `tint-{none|green|blue|red|yellow|purple|orange|pink}`  (sets --tint)
+  - font:  `font-{geist|fixedsys|vt220|phoenix|plex|berkeley}`      (sets --font-family-mono)
+
+When no tint class is present (or `tint-none`), tokens fall back to the
+neutral palette defined in :root / .theme-dark. This preserves the original
+svtui look as the default — tints are opt-in.
+*/
+
 @font-face {
 	font-family: 'GeistMono-Regular';
 	src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
 	font-display: swap;
 }
+@font-face {
+	font-family: 'Fixedsys-Excelsior';
+	src: url('/fonts/Fixedsys-Excelsior.woff') format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'GlassTTY-TrueType-VT220';
+	src: url('/fonts/GlassTTY-VT220.woff') format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Web437-Phoenix-EGA-8X8-2Y';
+	src: url('/fonts/Phoenix-EGA-8X8.woff') format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+	font-display: swap;
+}
 
-:root {
+/* Font switching — each font-<name> body class swaps the mono stack. */
+body.font-geist {
 	--font-family-mono: 'GeistMono-Regular', Consolas, monaco, monospace;
+}
+body.font-fixedsys {
+	--font-family-mono: 'Fixedsys-Excelsior', Consolas, monaco, monospace;
+}
+body.font-vt220 {
+	--font-family-mono: 'GlassTTY-TrueType-VT220', Consolas, monaco, monospace;
+}
+body.font-phoenix {
+	--font-family-mono: 'Web437-Phoenix-EGA-8X8-2Y', Consolas, monaco, monospace;
+}
+body.font-jetbrains {
+	--font-family-mono: 'JetBrainsMono', Consolas, monaco, monospace;
+}
+
+/* Tint source colors. Each tint-<name> sets only --tint; the theme+tint
+   blocks below derive every token from it. tint-none clears --tint so the
+   neutral fall-backs in :root/.theme-dark win. */
+body.tint-none {
+	--tint: initial;
+}
+body.tint-green {
+	--tint: #39ff44;
+}
+body.tint-blue {
+	--tint: #0047ff;
+}
+body.tint-red {
+	--tint: #ff0000;
+}
+body.tint-yellow {
+	--tint: #e4f221;
+}
+body.tint-purple {
+	--tint: #8000ff;
+}
+body.tint-orange {
+	--tint: #ffac1c;
+}
+body.tint-pink {
+	--tint: #ff00ff;
+}
+
+:root,
+body.theme-light {
 	--font-size: 16px;
 	--base-line-height: 1.25;
 
-	--surface-base: rgba(255, 255, 255, 1);
-	--border-default: rgba(224, 224, 224, 1);
-	--border-muted: rgba(168, 168, 168, 0.2);
-	--text-primary: rgba(17, 24, 39, 1);
-	--button-primary-bg: rgba(17, 24, 39, 1);
-	--button-primary-fg: rgba(255, 255, 255, 1);
-	--button-secondary-bg: rgba(229, 231, 235, 1);
-	--button-secondary-fg: rgba(198, 198, 198, 1);
-	--focus-ring: rgba(59, 130, 246, 1);
-	--button-muted: rgba(168, 168, 168, 1);
+	/* Neutral palette (no tint) — the original svtui light look. */
+	--surface-base: rgb(255, 255, 255);
+	--border-default: rgb(224, 224, 224);
+	--border-muted: rgb(168, 168, 168);
+	--text-primary: rgb(17, 24, 39);
+	--button-primary-bg: rgb(17, 24, 39);
+	--button-primary-fg: rgb(255, 255, 255);
+	--button-secondary-bg: rgb(229, 231, 235);
+	--button-secondary-fg: rgb(198, 198, 198);
+	--focus-ring: rgb(59, 130, 246);
+	--button-muted: rgb(168, 168, 168);
+}
 
+body.theme-dark {
+	/* Neutral palette (no tint) — the original svtui dark look. */
+	--surface-base: rgb(0, 0, 0);
+	--border-default: rgb(56, 56, 56);
+	--border-muted: rgb(56, 56, 56);
+	--text-primary: rgb(235, 235, 235);
+	--button-primary-bg: rgb(235, 235, 235);
+	--button-primary-fg: rgb(17, 24, 39);
+	--button-secondary-bg: rgb(56, 56, 56);
+	--button-secondary-fg: rgb(38, 38, 38);
+	--focus-ring: rgb(239, 99, 0);
+	--button-muted: rgb(168, 168, 168);
+}
+
+/*
+Tint derivation — overrides the neutral tokens when a tint is set.
+
+The approach mirrors SRCL's web-only tint ramp: every token is expressed as
+oklch(from var(--tint) L C H) so a single --tint drives the full palette while
+each token stays within its perceptual lightness band. Light ramp is anchored
+to near-white surfaces + near-black text; dark ramp inverts. --border-muted
+and --button-muted sit one step off their siblings for the muted/secondary gap.
+*/
+body.theme-light.tint-green,
+body.theme-light.tint-blue,
+body.theme-light.tint-red,
+body.theme-light.tint-yellow,
+body.theme-light.tint-purple,
+body.theme-light.tint-orange,
+body.theme-light.tint-pink {
+	--surface-base: oklch(from var(--tint) 0.97 calc(c * 0.1) h);
+	--border-default: oklch(from var(--tint) 0.84 calc(c * 0.28) h);
+	--border-muted: oklch(from var(--tint) 0.84 calc(c * 0.28) h / 0.4);
+	--text-primary: oklch(from var(--tint) 0.18 calc(c * 0.4) h);
+	--button-primary-bg: oklch(from var(--tint) 0.18 calc(c * 0.4) h);
+	--button-primary-fg: oklch(from var(--tint) 0.97 calc(c * 0.1) h);
+	--button-secondary-bg: oklch(from var(--tint) 0.92 calc(c * 0.18) h);
+	--button-secondary-fg: oklch(from var(--tint) 0.86 calc(c * 0.22) h);
+	--focus-ring: oklch(from var(--tint) 0.62 c h);
+	--button-muted: oklch(from var(--tint) 0.62 c h / 0.6);
+}
+
+body.theme-dark.tint-green,
+body.theme-dark.tint-blue,
+body.theme-dark.tint-red,
+body.theme-dark.tint-yellow,
+body.theme-dark.tint-purple,
+body.theme-dark.tint-orange,
+body.theme-dark.tint-pink {
+	--surface-base: oklch(from var(--tint) 0.14 calc(c * 0.18) h);
+	--border-default: oklch(from var(--tint) 0.4 calc(c * 0.28) h);
+	--border-muted: oklch(from var(--tint) 0.4 calc(c * 0.28) h / 0.4);
+	--text-primary: oklch(from var(--tint) 0.92 calc(c * 0.18) h);
+	--button-primary-bg: oklch(from var(--tint) 0.92 calc(c * 0.18) h);
+	--button-primary-fg: oklch(from var(--tint) 0.14 calc(c * 0.18) h);
+	--button-secondary-bg: oklch(from var(--tint) 0.24 calc(c * 0.22) h);
+	--button-secondary-fg: oklch(from var(--tint) 0.3 calc(c * 0.22) h);
+	--focus-ring: oklch(from var(--tint) 0.72 c h);
+	--button-muted: oklch(from var(--tint) 0.72 c h / 0.6);
+}
+
+body {
 	background: var(--surface-base);
 	color: var(--text-primary);
 	font-family: var(--font-family-mono);
@@ -49,17 +196,4 @@
 	&::-webkit-scrollbar-thumb:hover {
 		background: var(--border-muted);
 	}
-}
-
-.dark {
-	--surface-base: rgb(0, 0, 0);
-	--border-default: rgb(56, 56, 56);
-	--border-muted: rgba(168, 168, 168, 0.2);
-	--text-primary: rgb(235, 235, 235);
-	--button-primary-bg: rgb(235, 235, 235);
-	--button-primary-fg: rgb(17, 24, 39);
-	--button-secondary-bg: rgb(56, 56, 56);
-	--button-secondary-fg: rgb(38, 38, 38);
-	--focus-ring: rgba(239, 99, 0, 1);
-	--button-muted: rgba(168, 168, 168, 0.5);
 }
