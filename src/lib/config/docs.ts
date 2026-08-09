@@ -15,7 +15,20 @@ import {
 	RowSpaceBetweenExample,
 	IndentExample,
 	BlockExample,
-	TextExample
+	TextExample,
+	AvatarExample,
+	TooltipExample,
+	AlertBannerExample,
+	BreadCrumbsExample,
+	BarLoaderExample,
+	BarProgressExample,
+	BlockLoaderExample,
+	MatrixLoaderExample,
+	AccordionExample,
+	NavigationExample,
+	RadioButtonExample,
+	RadioButtonGroupExample,
+	TextAreaExample
 } from './(component-examples)';
 
 import buttonSource from '$lib/components/button.svelte?raw';
@@ -33,6 +46,19 @@ import rowSpaceBetweenSource from '$lib/components/row-space-between.svelte?raw'
 import indentSource from '$lib/components/indent.svelte?raw';
 import blockSource from '$lib/components/block.svelte?raw';
 import textSource from '$lib/components/text.svelte?raw';
+import avatarSource from '$lib/components/avatar.svelte?raw';
+import tooltipSource from '$lib/components/tooltip.svelte?raw';
+import alertBannerSource from '$lib/components/alert-banner.svelte?raw';
+import breadcrumbsSource from '$lib/components/breadcrumbs.svelte?raw';
+import barLoaderSource from '$lib/components/bar-loader.svelte?raw';
+import barProgressSource from '$lib/components/bar-progress.svelte?raw';
+import blockLoaderSource from '$lib/components/block-loader.svelte?raw';
+import matrixLoaderSource from '$lib/components/matrix-loader.svelte?raw';
+import accordionSource from '$lib/components/accordion.svelte?raw';
+import navigationSource from '$lib/components/navigation.svelte?raw';
+import radioButtonSource from '$lib/components/radio-button.svelte?raw';
+import radioButtonGroupSource from '$lib/components/radio-button-group.svelte?raw';
+import textAreaSource from '$lib/components/text-area.svelte?raw';
 
 export type Doc = {
 	name: string;
@@ -167,6 +193,110 @@ export const docs: Doc[] = [
 		componentExample: TextExample,
 		source: textSource,
 		sourceName: 'text.svelte'
+	},
+	{
+		name: 'Avatar',
+		slug: 'avatar',
+		description: 'A square avatar tile with an image or placeholder, optionally a link.',
+		componentExample: AvatarExample,
+		source: avatarSource,
+		sourceName: 'avatar.svelte'
+	},
+	{
+		name: 'Tooltip',
+		slug: 'tooltip',
+		description: 'A small styled callout block, sized for short notes.',
+		componentExample: TooltipExample,
+		source: tooltipSource,
+		sourceName: 'tooltip.svelte'
+	},
+	{
+		name: 'Alert Banner',
+		slug: 'alert-banner',
+		description: 'A flat banner with a drop-shadow corner for inline notices.',
+		componentExample: AlertBannerExample,
+		source: alertBannerSource,
+		sourceName: 'alert-banner.svelte'
+	},
+	{
+		name: 'Breadcrumbs',
+		slug: 'breadcrumbs',
+		description: 'A breadcrumb trail of named links separated by a chevron.',
+		componentExample: BreadCrumbsExample,
+		source: breadcrumbsSource,
+		sourceName: 'breadcrumbs.svelte'
+	},
+	{
+		name: 'Bar Loader',
+		slug: 'bar-loader',
+		description: 'A gradient bar that fills, determinate or auto-advancing.',
+		componentExample: BarLoaderExample,
+		source: barLoaderSource,
+		sourceName: 'bar-loader.svelte'
+	},
+	{
+		name: 'Bar Progress',
+		slug: 'bar-progress',
+		description: 'A character-based progress bar that fills with a glyph.',
+		componentExample: BarProgressExample,
+		source: barProgressSource,
+		sourceName: 'bar-progress.svelte'
+	},
+	{
+		name: 'Block Loader',
+		slug: 'block-loader',
+		description: 'A spinning braille or block glyph loader.',
+		componentExample: BlockLoaderExample,
+		source: blockLoaderSource,
+		sourceName: 'block-loader.svelte'
+	},
+	{
+		name: 'Matrix Loader',
+		slug: 'matrix-loader',
+		description: 'A matrix-rain loader streaming fading random glyphs.',
+		componentExample: MatrixLoaderExample,
+		source: matrixLoaderSource,
+		sourceName: 'matrix-loader.svelte'
+	},
+	{
+		name: 'Accordion',
+		slug: 'accordion',
+		description: 'A collapsible row that toggles an indented content section.',
+		componentExample: AccordionExample,
+		source: accordionSource,
+		sourceName: 'accordion.svelte'
+	},
+	{
+		name: 'Navigation',
+		slug: 'navigation',
+		description: 'A top nav bar with logo and left, center, right slots.',
+		componentExample: NavigationExample,
+		source: navigationSource,
+		sourceName: 'navigation.svelte'
+	},
+	{
+		name: 'Radio Button',
+		slug: 'radio-button',
+		description: 'A single terminal-style radio option for use in a group.',
+		componentExample: RadioButtonExample,
+		source: radioButtonSource,
+		sourceName: 'radio-button.svelte'
+	},
+	{
+		name: 'Radio Button Group',
+		slug: 'radio-button-group',
+		description: 'A self-contained group of radio options with selection state.',
+		componentExample: RadioButtonGroupExample,
+		source: radioButtonGroupSource,
+		sourceName: 'radio-button-group.svelte'
+	},
+	{
+		name: 'Text Area',
+		slug: 'text-area',
+		description: 'A themed auto-growing textarea with a fake-caret display.',
+		componentExample: TextAreaExample,
+		source: textAreaSource,
+		sourceName: 'text-area.svelte'
 	}
 ];
 

@@ -14,6 +14,19 @@ export { default as RowSpaceBetween } from './components/row-space-between.svelt
 export { default as Indent } from './components/indent.svelte';
 export { default as Block } from './components/block.svelte';
 export { default as Text } from './components/text.svelte';
+export { default as Avatar } from './components/avatar.svelte';
+export { default as Tooltip } from './components/tooltip.svelte';
+export { default as AlertBanner } from './components/alert-banner.svelte';
+export { default as BreadCrumbs } from './components/breadcrumbs.svelte';
+export { default as BarLoader } from './components/bar-loader.svelte';
+export { default as BarProgress } from './components/bar-progress.svelte';
+export { default as BlockLoader } from './components/block-loader.svelte';
+export { default as MatrixLoader } from './components/matrix-loader.svelte';
+export { default as Accordion } from './components/accordion.svelte';
+export { default as Navigation } from './components/navigation.svelte';
+export { default as RadioButton } from './components/radio-button.svelte';
+export { default as RadioButtonGroup } from './components/radio-button-group.svelte';
+export { default as TextArea } from './components/text-area.svelte';
 export * as Table from './components/table/index.js';
 
 // Types
@@ -32,6 +45,19 @@ export type { RowSpaceBetweenProps } from './components/row-space-between.svelte
 export type { IndentProps } from './components/indent.svelte';
 export type { BlockProps } from './components/block.svelte';
 export type { TextProps } from './components/text.svelte';
+export type { AvatarProps } from './components/avatar.svelte';
+export type { TooltipProps } from './components/tooltip.svelte';
+export type { AlertBannerProps } from './components/alert-banner.svelte';
+export type { BreadCrumbsProps, BreadcrumbItem } from './components/breadcrumbs.svelte';
+export type { BarLoaderProps } from './components/bar-loader.svelte';
+export type { BarProgressProps } from './components/bar-progress.svelte';
+export type { BlockLoaderProps } from './components/block-loader.svelte';
+export type { MatrixLoaderProps } from './components/matrix-loader.svelte';
+export type { AccordionProps } from './components/accordion.svelte';
+export type { NavigationProps } from './components/navigation.svelte';
+export type { RadioButtonProps } from './components/radio-button.svelte';
+export type { RadioButtonGroupProps, RadioOption } from './components/radio-button-group.svelte';
+export type { TextAreaProps } from './components/text-area.svelte';
 export type {
 	TableProps,
 	TableHeaderProps,
