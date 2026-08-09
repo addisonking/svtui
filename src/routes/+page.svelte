@@ -4,8 +4,9 @@
 	import Badge from '$lib/components/badge.svelte';
 	import { docs } from '$lib/config/docs';
 	import { toggleMode } from 'mode-watcher';
+	import pkg from '../../package.json';
 
-	let version = $state(`69420-${'abcdef0'}`);
+	let version = $state(pkg.version);
 </script>
 
 <div class="flex flex-row ml-4">
