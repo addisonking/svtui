@@ -66,6 +66,48 @@
 			"registryDependencies": []
 		},
 		{
+			"name": "divider",
+			"type": "component",
+			"files": ["src/lib/components/divider.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "row",
+			"type": "component",
+			"files": ["src/lib/components/row.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "row-space-between",
+			"type": "component",
+			"files": ["src/lib/components/row-space-between.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "indent",
+			"type": "component",
+			"files": ["src/lib/components/indent.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "block",
+			"type": "component",
+			"files": ["src/lib/components/block.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "text",
+			"type": "component",
+			"files": ["src/lib/components/text.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
 			"name": "table",
 			"type": "component",
 			"files": [

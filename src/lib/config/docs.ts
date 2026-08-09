@@ -9,7 +9,13 @@ import {
 	ActionListExample,
 	CardExample,
 	TableExample,
-	CheckboxExample
+	CheckboxExample,
+	DividerExample,
+	RowExample,
+	RowSpaceBetweenExample,
+	IndentExample,
+	BlockExample,
+	TextExample
 } from './(component-examples)';
 
 import buttonSource from '$lib/components/button.svelte?raw';
@@ -21,6 +27,12 @@ import codeBlockSource from '$lib/components/code-block.svelte?raw';
 import inputSource from '$lib/components/input.svelte?raw';
 import checkboxSource from '$lib/components/checkbox.svelte?raw';
 import tableSource from '$lib/components/table/table.svelte?raw';
+import dividerSource from '$lib/components/divider.svelte?raw';
+import rowSource from '$lib/components/row.svelte?raw';
+import rowSpaceBetweenSource from '$lib/components/row-space-between.svelte?raw';
+import indentSource from '$lib/components/indent.svelte?raw';
+import blockSource from '$lib/components/block.svelte?raw';
+import textSource from '$lib/components/text.svelte?raw';
 
 export type Doc = {
 	name: string;
@@ -106,6 +118,54 @@ export const docs: Doc[] = [
 		componentExample: CheckboxExample,
 		source: checkboxSource,
 		sourceName: 'checkbox.svelte'
+	},
+	{
+		name: 'Divider',
+		slug: 'divider',
+		description: 'Horizontal rules in DEFAULT, DOUBLE, and GRADIENT variants.',
+		componentExample: DividerExample,
+		source: dividerSource,
+		sourceName: 'divider.svelte'
+	},
+	{
+		name: 'Row',
+		slug: 'row',
+		description: 'A block-level row that highlights on focus.',
+		componentExample: RowExample,
+		source: rowSource,
+		sourceName: 'row.svelte'
+	},
+	{
+		name: 'Row Space Between',
+		slug: 'row-space-between',
+		description: 'A flex row that pushes its children to opposite edges.',
+		componentExample: RowSpaceBetweenExample,
+		source: rowSpaceBetweenSource,
+		sourceName: 'row-space-between.svelte'
+	},
+	{
+		name: 'Indent',
+		slug: 'indent',
+		description: 'A left-padded block (1ch) for visually nesting content.',
+		componentExample: IndentExample,
+		source: indentSource,
+		sourceName: 'indent.svelte'
+	},
+	{
+		name: 'Block',
+		slug: 'block',
+		description: 'A 1ch inline block, used as a textual spacer or marker.',
+		componentExample: BlockExample,
+		source: blockSource,
+		sourceName: 'block.svelte'
+	},
+	{
+		name: 'Text',
+		slug: 'text',
+		description: 'A paragraph that wraps long lines and preserves whitespace.',
+		componentExample: TextExample,
+		source: textSource,
+		sourceName: 'text.svelte'
 	}
 ];
 
