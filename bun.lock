@@ -6,7 +6,6 @@
       "name": "svtui",
       "dependencies": {
         "mode-watcher": "^1.1.0",
-        "runed": "^0.35.1",
       },
       "devDependencies": {
         "@eslint/compat": "^1.4.0",
@@ -293,8 +292,6 @@
 
     "deepmerge": ["deepmerge@4.3.1", "", {}, ""],
 
-    "dequal": ["dequal@2.0.3", "", {}, ""],
-
     "detect-libc": ["detect-libc@2.1.2", "", {}, "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ=="],
 
     "devalue": ["devalue@5.4.2", "", {}, ""],
@@ -431,8 +428,6 @@
 
     "lodash.merge": ["lodash.merge@4.6.2", "", {}, ""],
 
-    "lz-string": ["lz-string@1.5.0", "", { "bin": "bin/bin.js" }, ""],
-
     "magic-string": ["magic-string@0.30.21", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.5" } }, ""],
 
     "merge2": ["merge2@1.4.1", "", {}, ""],
@@ -499,7 +494,7 @@
 
     "run-parallel": ["run-parallel@1.2.0", "", { "dependencies": { "queue-microtask": "^1.2.2" } }, ""],
 
-    "runed": ["runed@0.35.1", "", { "dependencies": { "dequal": "^2.0.3", "esm-env": "^1.0.0", "lz-string": "^1.5.0" }, "peerDependencies": { "@sveltejs/kit": "^2.21.0", "svelte": "^5.7.0" } }, ""],
+    "runed": ["runed@0.25.0", "", { "dependencies": { "esm-env": "^1.0.0" }, "peerDependencies": { "svelte": "^5.7.0" } }, ""],
 
     "sade": ["sade@1.8.1", "", { "dependencies": { "mri": "^1.1.0" } }, ""],
 
@@ -578,8 +573,6 @@
     "fast-glob/glob-parent": ["glob-parent@5.1.2", "", { "dependencies": { "is-glob": "^4.0.1" } }, ""],
 
     "micromatch/picomatch": ["picomatch@2.3.1", "", {}, ""],
-
-    "mode-watcher/runed": ["runed@0.25.0", "", { "dependencies": { "esm-env": "^1.0.0" }, "peerDependencies": { "svelte": "^5.7.0" } }, ""],
 
     "svelte-toolbelt/runed": ["runed@0.23.4", "", { "dependencies": { "esm-env": "^1.0.0" }, "peerDependencies": { "svelte": "^5.7.0" } }, ""],
 

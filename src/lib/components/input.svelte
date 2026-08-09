@@ -1,5 +1,4 @@
 <script lang="ts" module>
-	import { watch } from 'runed';
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
 	export type InputProps = HTMLInputAttributes & {
@@ -61,7 +60,8 @@
 		focused = false;
 	};
 
-	watch(() => [value, selectionStart], updateCaret);
+	// Repaint the caret overlay whenever the value or selection moves.
+	$effect(updateCaret);
 </script>
 
 <div

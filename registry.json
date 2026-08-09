@@ -13,7 +13,7 @@
 			"name": "action-button",
 			"type": "component",
 			"files": ["src/lib/components/action-button.svelte"],
-			"npmDependencies": ["runed"],
+			"npmDependencies": [],
 			"registryDependencies": []
 		},
 		{
@@ -48,7 +48,7 @@
 			"name": "input",
 			"type": "component",
 			"files": ["src/lib/components/input.svelte"],
-			"npmDependencies": ["runed"],
+			"npmDependencies": [],
 			"registryDependencies": []
 		},
 		{
