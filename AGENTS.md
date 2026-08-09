@@ -69,10 +69,15 @@ For a **multi-file** component (like `table/`), put the files in a subfolder, se
 - Don't use Tailwind classes inside component `<style>` or component markup in a way that leaks utility-class reliance into the shipped file — the docs site uses Tailwind, but a copied `button.svelte` into someone's plain project must stand alone. It's fine to use Tailwind in the docs `routes/` and in the example files.
 - Don't publish from `cli/` without first running `flatten.ts` (it's wired into `prepublishOnly`, but check).
 
-## LLM-ingestible outputs (in progress)
+## LLM-ingestible outputs
 
-- `src/routes/llms.txt/+server.ts` — short markdown index.
-- `src/routes/llms-full.txt/+server.ts` — all component sources concatenated.
-- `src/routes/registry.json/+server.ts` — the manifest as JSON.
+All generated from `docs.ts` / `registry.json` — never hand-maintain a second copy.
 
-When editing these, regenerate from `docs.ts` / `registry.json` so they stay in sync — never hand-maintain a second copy.
+- `/llms.txt` — short markdown index (what exists + where to read it).
+- `/llms-full.txt` — all component sources concatenated into one fetchable file.
+- `/registry.json` — the manifest as JSON (same shape the CLI ships).
+- `/cheatsheet` — every component's live example + props + source on one page (kitchen sink, good for one-shot ingest).
+- Each `/components/<slug>` page shows the live example, the extracted `*Props` type block (regex-pulled from raw source in `docs.ts` `extractPropsType`), and the full source with a copy button.
+- `AGENTS.md` (this file) — the working manual for any agent dropped into the repo.
+
+`extractPropsType` in `docs.ts` pulls `export type *Props = …};` from the raw source. If a future component uses a props shape the regex misses, tighten the regex — don't hand-add the props block.

@@ -34,8 +34,9 @@
 		</p>
 	</div>
 
-	<div class="flex flex-row gap-2">
+	<div class="flex flex-row flex-wrap gap-2">
 		<ActionButton onclick={toggleMode} hotkey={['control', 't']}>TOGGLE THEME</ActionButton>
+		<ActionButton href="/cheatsheet" hotkey={['control', 'c']}>CHEATSHEET</ActionButton>
 		<ActionButton
 			href="https://github.com/addisonking/svtui"
 			hotkey={['control', 'g']}

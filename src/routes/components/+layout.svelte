@@ -12,6 +12,7 @@
 	<aside class="w-64 shrink-0 p-4 space-y-4 border-r border-[var(--border-default)]">
 		<div class="flex flex-col gap-2">
 			<ActionList icon="<" href="/">HOME</ActionList>
+			<ActionList icon="=" href="/cheatsheet">CHEATSHEET</ActionList>
 			<ActionButton onclick={toggleMode} hotkey={['control', 't']}>TOGGLE THEME</ActionButton>
 		</div>
 		<nav class="flex flex-col">
