@@ -1,10 +1,11 @@
 <script lang="ts">
-	import pkg from '../../package.json';
 	import { docs } from '$lib/config/docs';
 	import ActionButton from '$lib/components/action-button.svelte';
 	import ActionList from '$lib/components/action-list.svelte';
 	import Badge from '$lib/components/badge.svelte';
 	import { toggleMode } from 'mode-watcher';
+
+	let version = $state(__SVTUI_VERSION__);
 </script>
 
 <svelte:head>
@@ -19,7 +20,7 @@
 	<div>
 		<div class="flex items-center gap-2">
 			<h1 class="text-lg">svtui</h1>
-			<Badge>v{pkg.version}</Badge>
+			<Badge>v{version}</Badge>
 		</div>
 		<p>
 			An open-source, minimal
