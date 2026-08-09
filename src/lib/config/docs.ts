@@ -28,7 +28,8 @@ import {
 	NavigationExample,
 	RadioButtonExample,
 	RadioButtonGroupExample,
-	TextAreaExample
+	TextAreaExample,
+	ASCIICanvasExample
 } from './(component-examples)';
 
 import buttonSource from '$lib/components/button.svelte?raw';
@@ -59,6 +60,7 @@ import navigationSource from '$lib/components/navigation.svelte?raw';
 import radioButtonSource from '$lib/components/radio-button.svelte?raw';
 import radioButtonGroupSource from '$lib/components/radio-button-group.svelte?raw';
 import textAreaSource from '$lib/components/text-area.svelte?raw';
+import asciiCanvasSource from '$lib/components/ascii-canvas.svelte?raw';
 
 export type Doc = {
 	name: string;
@@ -297,6 +299,14 @@ export const docs: Doc[] = [
 		componentExample: TextAreaExample,
 		source: textAreaSource,
 		sourceName: 'text-area.svelte'
+	},
+	{
+		name: 'ASCII Canvas',
+		slug: 'ascii-canvas',
+		description: 'A per-cell ASCII canvas that runs a rAF painter and diffs cells.',
+		componentExample: ASCIICanvasExample,
+		source: asciiCanvasSource,
+		sourceName: 'ascii-canvas.svelte'
 	}
 ];
 

@@ -27,6 +27,7 @@ export { default as Navigation } from './components/navigation.svelte';
 export { default as RadioButton } from './components/radio-button.svelte';
 export { default as RadioButtonGroup } from './components/radio-button-group.svelte';
 export { default as TextArea } from './components/text-area.svelte';
+export { default as ASCIICanvas } from './components/ascii-canvas.svelte';
 export * as Table from './components/table/index.js';
 
 // Types
@@ -58,6 +59,11 @@ export type { NavigationProps } from './components/navigation.svelte';
 export type { RadioButtonProps } from './components/radio-button.svelte';
 export type { RadioButtonGroupProps, RadioOption } from './components/radio-button-group.svelte';
 export type { TextAreaProps } from './components/text-area.svelte';
+export type {
+	ASCIICanvasProps,
+	ASCIICanvasRender,
+	ASCIICanvasCell
+} from './components/ascii-canvas.svelte';
 export type {
 	TableProps,
 	TableHeaderProps,

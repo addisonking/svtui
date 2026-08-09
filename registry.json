@@ -216,6 +216,13 @@
 			"registryDependencies": []
 		},
 		{
+			"name": "ascii-canvas",
+			"type": "component",
+			"files": ["src/lib/components/ascii-canvas.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
 			"name": "tokens",
 			"type": "init",
 			"files": ["src/app.css", "static/fonts/GeistMono-Regular.woff2"],

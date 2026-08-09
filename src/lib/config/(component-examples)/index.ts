@@ -26,3 +26,4 @@ export { default as NavigationExample } from './navigation.svelte';
 export { default as RadioButtonExample } from './radio-button.svelte';
 export { default as RadioButtonGroupExample } from './radio-button-group.svelte';
 export { default as TextAreaExample } from './text-area.svelte';
+export { default as ASCIICanvasExample } from './ascii-canvas.svelte';

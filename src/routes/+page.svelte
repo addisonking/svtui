@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Badge from '$lib/components/badge.svelte';
 	import Card from '$lib/components/card.svelte';
-	import Text from '$lib/components/text.svelte';
 	import CodeBlock from '$lib/components/code-block.svelte';
 
 	let version = $state(__SVTUI_VERSION__);
@@ -39,11 +38,11 @@
 		<Card title="init">
 			<CodeBlock code="npx svtui init" />
 		</Card>
-		<Text>
+		<p>
 			That drops <code>src/app.css</code> and a woff2 font file under <code>static/fonts/</code>.
 			Import the css in your layout so the tokens load. The css file is the only shared bit; no
 			runtime package to add to your dependencies.
-		</Text>
+		</p>
 	</section>
 
 	<section class="flex flex-col gap-2">
@@ -51,15 +50,15 @@
 		<Card title="add">
 			<CodeBlock code="npx svtui add button" />
 		</Card>
-		<Text>
+		<p>
 			A <code>button.svelte</code> file lands in <code>src/lib/components/</code>. Import it like
 			any other Svelte file. Multi-file components (the table, for instance) go into their own
 			folder.
-		</Text>
-		<Text>
+		</p>
+		<p>
 			Each file stands alone. It reads the tokens from app.css and imports nothing from outside
 			svelte. You can read one and understand the whole thing. Edit it however you like.
-		</Text>
+		</p>
 	</section>
 
 	<section class="flex flex-col gap-2">
@@ -77,11 +76,10 @@
 }`}
 			/>
 		</Card>
-		<Text>
+		<p>
 			Put a <code>.dark</code> block next to <code>:root</code> for a dark variant, then toggle the
-			class on
-			<code>&lt;html&gt;</code> or <code>&lt;body&gt;</code>. That is the whole theme system. There
-			is no javascript in it.
-		</Text>
+			class on <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code>. That is the whole theme
+			system. There is no javascript in it.
+		</p>
 	</section>
 </div>

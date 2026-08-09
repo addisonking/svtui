@@ -191,7 +191,6 @@
 		display: inline-block;
 		padding: calc(var(--base-line-height) * 8px) 1ch;
 		max-width: 80%;
-		box-shadow: 1ch 1ch 0 0 var(--border-muted);
 	}
 	.bubble-user {
 		background: var(--border-default);

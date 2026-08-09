@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import type { HTMLAttributes } from 'svelte/elements';
 
-	/** A solid flat banner for inline notices/alerts. */
+	/** A flat banner with a drop-shadow corner, for inline notices/alerts. */
 	export type AlertBannerProps = HTMLAttributes<HTMLDivElement> & {
 		ref?: HTMLDivElement | null;
 	};
@@ -25,6 +25,7 @@
 	.alert-banner {
 		display: block;
 		background: var(--border-default);
+		box-shadow: 1ch 1ch 0 0 var(--border-muted);
 		padding: calc(var(--font-size) * var(--base-line-height)) 2ch;
 		font-weight: 400;
 	}
