@@ -2,8 +2,8 @@
 
 @font-face {
 	font-family: 'GeistMono-Regular';
-	src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/996b00fb-4b7a-403d-8da2-ce2225450681.woff2')
-		format('woff2');
+	src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
+	font-display: swap;
 }
 
 :root {
@@ -20,6 +20,7 @@
 	--button-secondary-bg: rgba(229, 231, 235, 1);
 	--button-secondary-fg: rgba(198, 198, 198, 1);
 	--focus-ring: rgba(59, 130, 246, 1);
+	--button-muted: rgba(168, 168, 168, 1);
 
 	background: var(--surface-base);
 	color: var(--text-primary);
@@ -60,4 +61,5 @@
 	--button-secondary-bg: rgb(56, 56, 56);
 	--button-secondary-fg: rgb(38, 38, 38);
 	--focus-ring: rgba(239, 99, 0, 1);
+	--button-muted: rgba(168, 168, 168, 0.5);
 }
