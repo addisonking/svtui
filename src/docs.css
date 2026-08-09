@@ -1,0 +1,7 @@
+/*
+Docs-site-only stylesheet: Tailwind (for the docs routes/examples) layered
+on top of the standalone token preset in app.css. This file is NOT shipped —
+svtui init ships app.css alone, which has no @import 'tailwindcss'.
+*/
+@import 'tailwindcss';
+@import './app.css';

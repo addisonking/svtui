@@ -1,7 +1,8 @@
-@import 'tailwindcss';
-
 /*
-svtui token system — docs-site side, the only place theming lives.
+svtui token preset — the standalone CSS svtui init writes into a user's
+src/app.css. No Tailwind, no framework imports: it must build in any plain
+project. The docs site pulls this in via src/docs.css (which also adds
+@import 'tailwindcss' for the docs pages only).
 
 The story: every visual token is derived from a single `--tint` color via
 OKLCH (`oklch(from var(--tint) L C H)`). Set a tint on <body> and the whole
