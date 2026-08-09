@@ -18,7 +18,7 @@
 		autoPlay,
 		autoPlaySpeedMS = 40,
 		isBlink,
-		value,
+		value = $bindable(undefined),
 		defaultValue,
 		placeholder,
 		onchange,
@@ -126,6 +126,7 @@
 	const onInput = (e: Event) => {
 		const ta = e.currentTarget as HTMLTextAreaElement;
 		text = ta.value;
+		value = ta.value;
 		selectionStart = ta.selectionStart ?? 0;
 	};
 

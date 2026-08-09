@@ -1,49 +1,50 @@
 <script lang="ts">
+	import RowSpaceBetween from '$lib/components/row-space-between.svelte';
+	import Text from '$lib/components/text.svelte';
+	import Badge from '$lib/components/badge.svelte';
+	import ActionList from '$lib/components/action-list.svelte';
 	import BlockLoader from '$lib/components/block-loader.svelte';
-	import Button from '$lib/components/button.svelte';
+	import TextArea from '$lib/components/text-area.svelte';
 
-	type Message = {
+	type ChatMessage = {
 		role: 'user' | 'assistant';
 		content: string;
-		/** still being typed out by the typewriter */
 		typing?: boolean;
 	};
 
-	let messages = $state<Message[]>([
+	let messages = $state<ChatMessage[]>([
 		{
 			role: 'assistant',
 			content:
-				"Hi. I'm not really an AI — this is a svtui demo. Type something and I'll pretend to think."
+				'Hi. I am not really an AI — this is a svtui demo. Type something and I will pretend to think.'
 		}
 	]);
-	let input = $state('');
+	let draft = $state('');
 	let thinking = $state(false);
-
 	let scrollEl = $state<HTMLDivElement>(null!);
 
-	// A small bank of canned replies. Picked by naive keyword match, else random.
 	const REPLIES: { match: RegExp; reply: string }[] = [
-		{ match: /hello|hi|hey/i, reply: "Hey. I'm a canned response in a demo. But hi to you too." },
+		{ match: /hello|hi|hey/i, reply: 'Hey. I am a canned response in a demo. But hi to you too.' },
 		{
 			match: /who are you|what are you/i,
-			reply: "I'm a fake assistant built from svtui components. No model, no API key, no opinion."
+			reply: 'I am a fake assistant built from svtui components. No model, no API key, no opinion.'
 		},
 		{
 			match: /how are you/i,
-			reply: "I'm a static string, so — unchangingly fine. Thanks for asking."
+			reply: 'I am a static string, so — unchangingly fine. Thanks for asking.'
 		},
 		{
 			match: /svelte|svtui/i,
 			reply:
-				'svtui is a set of Svelte 5 components with a terminal look, shipped as copy-paste files. This whole chat is built from BlockLoader, Button, and a couple of divs.'
+				'svtui is a set of Svelte 5 components with a terminal look, shipped as copy-paste files. This whole chat is assembled from RowSpaceBetween, Text, BlockLoader, ActionList, and TextArea.'
 		},
 		{
 			match: /weather/i,
-			reply: "I can't check the weather. I'm a local typewriter. Look out a window."
+			reply: 'I cannot check the weather. I am a local typewriter. Look out a window.'
 		},
 		{
 			match: /code|function|example/i,
-			reply: '```svelte\n<Button>Run</Button>\n```\nThere. A button. The fanciest thing I can do.'
+			reply: 'Row, Block, ActionList. Those are the fanciest things I can point at.'
 		}
 	];
 	const FALLBACK =
@@ -51,21 +52,17 @@
 
 	const pickReply = (q: string) => REPLIES.find((r) => r.match.test(q))?.reply ?? FALLBACK;
 
-	// Scroll to the bottom whenever the message list grows.
 	$effect(() => {
-		// track message count + the last message's typing state
 		void messages.length;
 		scrollEl?.scrollTo({ top: scrollEl.scrollHeight, behavior: 'smooth' });
 	});
 
 	const send = () => {
-		const text = input.trim();
+		const text = draft.trim();
 		if (!text || thinking) return;
-		input = '';
+		draft = '';
 		messages = [...messages, { role: 'user', content: text }];
 		thinking = true;
-
-		// Fake a "thinking" pause, then type the prefab reply out char by char.
 		const delay = 700 + Math.random() * 900;
 		setTimeout(() => {
 			thinking = false;
@@ -92,7 +89,7 @@
 		}, 18);
 	};
 
-	const onKeydown = (e: KeyboardEvent) => {
+	const onComposerKeydown = (e: KeyboardEvent) => {
 		if (e.key === 'Enter' && !e.shiftKey) {
 			e.preventDefault();
 			send();
@@ -102,42 +99,57 @@
 
 <div class="chat">
 	<header class="chat-header">
-		<span class="dot" aria-hidden="true"></span>
-		<span class="label">svtui-mini</span>
-		<span class="sub">demo model</span>
+		<RowSpaceBetween>
+			<Badge>svtui-mini</Badge>
+			<Badge>demo model</Badge>
+		</RowSpaceBetween>
 	</header>
 
 	<div bind:this={scrollEl} class="messages">
 		{#each messages as m, i (i)}
-			<div class="msg {m.role}">
-				<div class="role">{m.role === 'user' ? 'YOU' : 'ASSISTANT'}</div>
-				<div class="body" class:typing={m.typing}>
-					{m.content}
-					{#if m.typing}
-						<span class="cursor" aria-hidden="true"></span>
-					{/if}
-				</div>
-			</div>
+			{#if m.role === 'user'}
+				<RowSpaceBetween class="msg user">
+					<div class="tail tail-right" aria-hidden="true"></div>
+					<div class="bubble bubble-user">
+						<Text
+							>{m.content}{#if m.typing}<span class="cursor"></span>{/if}</Text
+						>
+					</div>
+				</RowSpaceBetween>
+			{:else}
+				<RowSpaceBetween class="msg assistant">
+					<div class="bubble bubble-assistant">
+						<Text
+							>{m.content}{#if m.typing}<span class="cursor"></span>{/if}</Text
+						>
+					</div>
+					<div class="tail tail-left" aria-hidden="true"></div>
+				</RowSpaceBetween>
+			{/if}
 		{/each}
 		{#if thinking}
-			<div class="msg assistant thinking-msg">
-				<div class="role">ASSISTANT</div>
-				<div class="body thinking">
-					<BlockLoader mode={1} /> thinking…
+			<RowSpaceBetween class="msg assistant">
+				<div class="bubble bubble-thinking">
+					<span class="thinking-line">
+						<BlockLoader mode={1} />
+						<span class="thinking-label">thinking</span>
+					</span>
 				</div>
-			</div>
+				<div class="tail tail-left" aria-hidden="true"></div>
+			</RowSpaceBetween>
 		{/if}
 	</div>
 
-	<div class="composer">
-		<textarea
-			bind:value={input}
-			onkeydown={onKeydown}
-			placeholder="Type a message…  (Enter to send, Shift+Enter for newline)"
-			rows="2"
-		></textarea>
-		<Button onclick={send} disabled={!input.trim() || thinking}>Send</Button>
-	</div>
+	<footer class="composer">
+		<div class="composer-input">
+			<TextArea
+				bind:value={draft}
+				placeholder="Type a message…  (Enter to send, Shift+Enter for newline)"
+				onkeydown={onComposerKeydown}
+			/>
+		</div>
+		<ActionList icon=">" onclick={send} disabled={!draft.trim() || thinking}>SEND</ActionList>
+	</footer>
 </div>
 
 <style>
@@ -149,73 +161,66 @@
 	}
 
 	.chat-header {
-		display: flex;
-		align-items: center;
-		gap: 0.5ch;
-		padding: 0.5rem 1ch;
-		border-bottom: 1px solid var(--border-default);
 		flex-shrink: 0;
-		font-size: 0.875rem;
-	}
-	.chat-header .dot {
-		width: 0.5ch;
-		height: 0.5ch;
-		background: var(--focus-ring);
-		display: inline-block;
-	}
-	.chat-header .label {
-		font-weight: 700;
-		letter-spacing: 0.05em;
-	}
-	.chat-header .sub {
-		color: var(--button-muted);
-		font-size: 0.75rem;
+		border-bottom: 1px solid var(--border-default);
+		padding: 0.5rem 1ch;
 	}
 
 	.messages {
 		flex: 1;
 		min-height: 0;
 		overflow-y: auto;
-		padding: 1rem 1ch;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: calc(var(--font-size) * var(--base-line-height));
+		padding: calc(var(--font-size) * var(--base-line-height)) 1ch;
 	}
 
-	.msg {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
+	/* Message bubbles: 1ch hard drop-shadow, no rounded corners — the SRCL look.
+	   Flat class names (not `.msg .bubble`) because these divs are rendered as
+	   snippet children of RowSpaceBetween, which puts them in the child's scope. */
+	.bubble {
+		display: inline-block;
+		padding: calc(var(--base-line-height) * 8px) 1ch;
 		max-width: 80%;
+		box-shadow: 1ch 1ch 0 0 var(--border-muted);
 	}
-	.msg.user {
-		align-self: flex-end;
-		align-items: flex-end;
+	.bubble-user {
+		background: var(--border-default);
 	}
-	.msg .role {
-		font-size: 0.7rem;
-		letter-spacing: 0.1em;
-		color: var(--button-muted);
-		text-transform: uppercase;
+	.bubble-assistant {
+		background: var(--focus-ring);
+		color: var(--surface-base);
 	}
-	.msg .body {
+	.bubble-thinking {
 		background: var(--border-muted);
-		padding: 0.5rem 1ch;
-		white-space: pre-wrap;
-		word-break: break-word;
-		line-height: var(--base-line-height);
-		box-shadow: inset 0 0 0 1px var(--border-default);
 	}
-	.msg.user .body {
-		background: var(--button-primary-bg);
-		color: var(--button-primary-fg);
-		box-shadow: none;
-	}
-	.msg .body.thinking {
-		display: flex;
+
+	.thinking-line {
+		display: inline-flex;
 		align-items: center;
 		gap: 1ch;
-		opacity: 0.8;
+	}
+	.thinking-label {
+		font-size: 0.75rem;
+		opacity: 0.7;
+	}
+
+	/* 1ch solid border-triangles, the SRCL message tail. */
+	.tail {
+		flex-shrink: 0;
+		align-self: flex-end;
+		width: 0;
+		height: 0;
+		border-top: calc((var(--font-size) * var(--base-line-height)) / 2) solid transparent;
+		border-bottom: calc((var(--font-size) * var(--base-line-height)) / 2) solid transparent;
+		margin-bottom: calc((var(--font-size) * var(--base-line-height)) / 2);
+	}
+	.tail-left {
+		border-right: 1ch solid var(--focus-ring);
+	}
+	.tail-right {
+		border-left: 1ch solid var(--border-default);
 	}
 
 	.cursor {
@@ -223,41 +228,28 @@
 		width: 1ch;
 		height: 1em;
 		vertical-align: text-bottom;
-		background: var(--text-primary);
-		animation: blink 1s step-start infinite;
+		background: currentColor;
+		animation: svtui-chat-blink 1s step-start infinite;
 	}
-	@keyframes blink {
+	@keyframes svtui-chat-blink {
 		50% {
 			opacity: 0;
 		}
 	}
 
 	.composer {
-		display: flex;
-		gap: 0.5rem;
-		padding: 0.75rem 1ch;
-		border-top: 1px solid var(--border-default);
 		flex-shrink: 0;
-		align-items: stretch;
+		border-top: 1px solid var(--border-default);
+		padding: calc(var(--base-line-height) * 0.5rem) 1ch;
+		display: flex;
+		flex-direction: column;
+		gap: calc(var(--base-line-height) * 0.25rem);
 	}
-	.composer textarea {
-		flex: 1;
-		resize: none;
-		font-family: inherit;
-		font-size: inherit;
-		line-height: var(--base-line-height);
-		background: var(--surface-base);
-		color: var(--text-primary);
-		border: 0;
-		box-shadow: inset 0 0 0 2px var(--border-default);
-		padding: 0.5rem 1ch;
-		outline: 0;
+	.composer-input {
+		width: 100%;
 	}
-	.composer textarea:focus {
-		box-shadow: inset 0 0 0 2px var(--focus-ring);
-	}
-	.composer :global(button) {
-		width: auto;
-		white-space: nowrap;
+	.composer :global([disabled]) {
+		opacity: 0.5;
+		pointer-events: none;
 	}
 </style>
