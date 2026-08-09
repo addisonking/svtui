@@ -41,6 +41,7 @@ export type Doc = {
 	componentExample: Component;
 	source: string;
 	sourceName: string;
+	propsType?: string;
 };
 
 export const docs: Doc[] = [
@@ -168,5 +169,14 @@ export const docs: Doc[] = [
 		sourceName: 'text.svelte'
 	}
 ];
+
+// Extract the `export type *Props = …};` block from a component's raw source.
+// Keeps the props spec in sync with the source — no second hand-maintained copy.
+function extractPropsType(source: string): string {
+	const m = source.match(/export type \w+Props\s*=\s*[\s\S]*?\};/);
+	return m ? m[0] : '';
+}
+
+for (const d of docs) d.propsType = extractPropsType(d.source);
 
 export const docsBySlug = Object.fromEntries(docs.map((d) => [d.slug, d]));

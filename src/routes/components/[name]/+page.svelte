@@ -45,6 +45,15 @@
 		{/snippet}
 	</svelte:boundary>
 
+	{#if doc.propsType}
+		<div class="flex flex-col gap-2">
+			<span class="uppercase">Props</span>
+			<Card title="PROPS">
+				<CodeBlock code={doc.propsType} />
+			</Card>
+		</div>
+	{/if}
+
 	<div class="flex flex-col gap-2">
 		<div class="flex items-center justify-between">
 			<span class="uppercase">Source</span>
