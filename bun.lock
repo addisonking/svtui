@@ -1,15 +1,13 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "svtui",
       "dependencies": {
         "@sveltejs/adapter-cloudflare": "^7.2.4",
-        "@tailwindcss/vite": "^4.1.16",
-        "fmt": "^2.0.0",
         "mode-watcher": "^1.1.0",
         "runed": "^0.35.1",
-        "tailwindcss": "^4.1.16",
       },
       "devDependencies": {
         "@eslint/compat": "^1.4.0",
@@ -17,6 +15,7 @@
         "@sveltejs/adapter-auto": "^7.0.0",
         "@sveltejs/kit": "^2.47.1",
         "@sveltejs/vite-plugin-svelte": "^6.2.1",
+        "@tailwindcss/vite": "^4.1.16",
         "@types/node": "^24",
         "eslint": "^9.38.0",
         "eslint-config-prettier": "^10.1.8",
@@ -26,6 +25,7 @@
         "prettier-plugin-svelte": "^3.4.0",
         "svelte": "^5.41.0",
         "svelte-check": "^4.3.3",
+        "tailwindcss": "^4.1.16",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.46.1",
         "vite": "^7.1.10",
@@ -323,8 +323,6 @@
 
     "ajv": ["ajv@6.12.6", "", { "dependencies": { "fast-deep-equal": "^3.1.1", "fast-json-stable-stringify": "^2.0.0", "json-schema-traverse": "^0.4.1", "uri-js": "^4.2.2" } }, ""],
 
-    "ansi-regex": ["ansi-regex@5.0.1", "", {}, ""],
-
     "ansi-styles": ["ansi-styles@4.3.0", "", { "dependencies": { "color-convert": "^2.0.1" } }, ""],
 
     "argparse": ["argparse@2.0.1", "", {}, ""],
@@ -432,8 +430,6 @@
     "flat-cache": ["flat-cache@4.0.1", "", { "dependencies": { "flatted": "^3.2.9", "keyv": "^4.5.4" } }, ""],
 
     "flatted": ["flatted@3.3.3", "", {}, ""],
-
-    "fmt": ["fmt@2.0.0", "", { "dependencies": { "strip-ansi": "^6.0.0" } }, ""],
 
     "fsevents": ["fsevents@2.3.3", "", { "os": "darwin" }, ""],
 
@@ -618,8 +614,6 @@
     "source-map-js": ["source-map-js@1.2.1", "", {}, ""],
 
     "stoppable": ["stoppable@1.1.0", "", {}, "sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw=="],
-
-    "strip-ansi": ["strip-ansi@6.0.1", "", { "dependencies": { "ansi-regex": "^5.0.1" } }, ""],
 
     "strip-json-comments": ["strip-json-comments@3.1.1", "", {}, ""],
 

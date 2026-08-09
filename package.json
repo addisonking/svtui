@@ -1,5 +1,6 @@
 {
 	"name": "svtui",
+	"version": "0.1.0",
 	"description": "An open-source, minimal Svelte component repository for building web applications and static sites with terminal aesthetic. Inspired by srcl.",
 	"type": "module",
 	"scripts": {
@@ -18,6 +19,7 @@
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/kit": "^2.47.1",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/vite": "^4.1.16",
 		"@types/node": "^24",
 		"eslint": "^9.38.0",
 		"eslint-config-prettier": "^10.1.8",
@@ -27,16 +29,14 @@
 		"prettier-plugin-svelte": "^3.4.0",
 		"svelte": "^5.41.0",
 		"svelte-check": "^4.3.3",
+		"tailwindcss": "^4.1.16",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.46.1",
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-cloudflare": "^7.2.4",
-		"@tailwindcss/vite": "^4.1.16",
-		"fmt": "^2.0.0",
 		"mode-watcher": "^1.1.0",
-		"runed": "^0.35.1",
-		"tailwindcss": "^4.1.16"
+		"runed": "^0.35.1"
 	}
 }
