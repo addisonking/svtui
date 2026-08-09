@@ -21,3 +21,6 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Generated registry (built by scripts/flatten.ts before publishing the CLI)
+cli/registry/

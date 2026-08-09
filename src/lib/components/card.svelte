@@ -2,7 +2,6 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	export type CardProps = HTMLAttributes<HTMLElement> & {
-		class?: string;
 		ref?: HTMLElement | null;
 		title?: string;
 		alignTitle?: 'left' | 'right';
@@ -46,12 +45,18 @@
 		position: relative;
 		display: block;
 		padding: 0;
-		white-space: prewrap;
 	}
 
+	/*
+		The header pieces and the body both paint their borders with inset
+		box-shadows (no CSS border). Same primitive on both sides of the seam
+		means the 2px lines land in the same place and stay continuous.
+	*/
 	.children {
-		border: 2px solid;
-		border-top: 0px;
+		box-shadow:
+			inset 2px 0 0 0 var(--text-primary),
+			inset -2px 0 0 0 var(--text-primary),
+			inset 0 -2px 0 0 var(--text-primary);
 		display: block;
 		padding-top: calc(var(--base-line-height) * 0.5rem);
 		padding-left: 2ch;
@@ -78,16 +83,16 @@
 		min-width: 10%;
 		width: 100%;
 		box-shadow:
-			inset 2px 0 0 0,
-			inset 0 2px 0 0;
+			inset 2px 0 0 0 var(--text-primary),
+			inset 0 2px 0 0 var(--text-primary);
 		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 2ch 0px 1ch;
 	}
 
 	.leftCorner {
 		flex-shrink: 0;
 		box-shadow:
-			inset 2px 0 0 0,
-			inset 0 2px 0 0;
+			inset 2px 0 0 0 var(--text-primary),
+			inset 0 2px 0 0 var(--text-primary);
 		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 1ch 0px 1ch;
 	}
 
@@ -95,16 +100,16 @@
 		min-width: 10%;
 		width: 100%;
 		box-shadow:
-			inset -2px 0 0 0,
-			inset 0 2px 0 0;
+			inset -2px 0 0 0 var(--text-primary),
+			inset 0 2px 0 0 var(--text-primary);
 		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 2ch 0px 1ch;
 	}
 
 	.rightCorner {
 		flex-shrink: 0;
 		box-shadow:
-			inset -2px 0 0 0,
-			inset 0 2px 0 0;
+			inset -2px 0 0 0 var(--text-primary),
+			inset 0 2px 0 0 var(--text-primary);
 		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 1ch 0px 1ch;
 	}
 

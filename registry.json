@@ -1,0 +1,233 @@
+{
+	"$schema": "./registry.schema.json",
+	"name": "svtui",
+	"items": [
+		{
+			"name": "button",
+			"type": "component",
+			"files": ["src/lib/components/button.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "action-button",
+			"type": "component",
+			"files": ["src/lib/components/action-button.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "action-list",
+			"type": "component",
+			"files": ["src/lib/components/action-list.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "badge",
+			"type": "component",
+			"files": ["src/lib/components/badge.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "card",
+			"type": "component",
+			"files": ["src/lib/components/card.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "code-block",
+			"type": "component",
+			"files": ["src/lib/components/code-block.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "input",
+			"type": "component",
+			"files": ["src/lib/components/input.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "label",
+			"type": "component",
+			"files": ["src/lib/components/label.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "checkbox",
+			"type": "component",
+			"files": ["src/lib/components/checkbox.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "divider",
+			"type": "component",
+			"files": ["src/lib/components/divider.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "row",
+			"type": "component",
+			"files": ["src/lib/components/row.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "row-space-between",
+			"type": "component",
+			"files": ["src/lib/components/row-space-between.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "indent",
+			"type": "component",
+			"files": ["src/lib/components/indent.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "block",
+			"type": "component",
+			"files": ["src/lib/components/block.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "text",
+			"type": "component",
+			"files": ["src/lib/components/text.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "table",
+			"type": "component",
+			"files": [
+				"src/lib/components/table/index.ts",
+				"src/lib/components/table/table.svelte",
+				"src/lib/components/table/table-header.svelte",
+				"src/lib/components/table/table-body.svelte",
+				"src/lib/components/table/table-footer.svelte",
+				"src/lib/components/table/table-row.svelte",
+				"src/lib/components/table/table-head.svelte",
+				"src/lib/components/table/table-cell.svelte",
+				"src/lib/components/table/table-caption.svelte"
+			],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "avatar",
+			"type": "component",
+			"files": ["src/lib/components/avatar.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "tooltip",
+			"type": "component",
+			"files": ["src/lib/components/tooltip.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "alert-banner",
+			"type": "component",
+			"files": ["src/lib/components/alert-banner.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "breadcrumbs",
+			"type": "component",
+			"files": ["src/lib/components/breadcrumbs.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "bar-loader",
+			"type": "component",
+			"files": ["src/lib/components/bar-loader.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "bar-progress",
+			"type": "component",
+			"files": ["src/lib/components/bar-progress.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "block-loader",
+			"type": "component",
+			"files": ["src/lib/components/block-loader.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "matrix-loader",
+			"type": "component",
+			"files": ["src/lib/components/matrix-loader.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "accordion",
+			"type": "component",
+			"files": ["src/lib/components/accordion.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "navigation",
+			"type": "component",
+			"files": ["src/lib/components/navigation.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "radio-button",
+			"type": "component",
+			"files": ["src/lib/components/radio-button.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "radio-button-group",
+			"type": "component",
+			"files": ["src/lib/components/radio-button-group.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "text-area",
+			"type": "component",
+			"files": ["src/lib/components/text-area.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "ascii-canvas",
+			"type": "component",
+			"files": ["src/lib/components/ascii-canvas.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "tokens",
+			"type": "init",
+			"files": ["src/app.css", "static/fonts/GeistMono-Regular.woff2"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		}
+	]
+}

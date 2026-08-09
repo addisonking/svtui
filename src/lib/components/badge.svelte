@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	export type BadgeProps = HTMLAttributes<HTMLElement> & {
-		ref?: HTMLElement | null;
+		ref?: HTMLSpanElement | null;
 	};
 </script>
 

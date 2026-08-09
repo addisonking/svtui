@@ -1,11 +1,14 @@
 <script lang="ts" module>
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
-	export type ActionListProps = HTMLButtonAttributes &
-		HTMLAnchorAttributes & {
-			ref?: HTMLElement | null;
-			icon?: string;
-		};
+	/**
+	 * Polymorphic: renders `<a>` when `href` is set, `<button>` otherwise. `href`
+	 * discriminates the allowed attributes. `icon` is a short string (often one
+	 * character like `>` or `=`) shown in the leading gutter.
+	 */
+	export type ActionListProps =
+		| (HTMLButtonAttributes & { ref?: HTMLElement | null; icon?: string; href?: undefined })
+		| (HTMLAnchorAttributes & { ref?: HTMLElement | null; icon?: string; href: string });
 </script>
 
 <script lang="ts">
@@ -13,20 +16,26 @@
 		class: className,
 		ref = $bindable(null),
 		icon = '',
+		href,
 		children,
 		...restProps
 	}: ActionListProps = $props();
 </script>
 
-{#if restProps.href}
-	<a bind:this={ref} class={`item ${className ?? ''}`} {...restProps}>
+{#if href}
+	<a
+		bind:this={ref}
+		class={`item ${className ?? ''}`}
+		{href}
+		{...restProps as HTMLAnchorAttributes}
+	>
 		<span class="icon">{icon}</span>
 		<span class="text">
 			{@render children?.()}
 		</span>
 	</a>
 {:else}
-	<button bind:this={ref} class={`item ${className ?? ''}`} {...restProps}>
+	<button bind:this={ref} class={`item ${className ?? ''}`} {...restProps as HTMLButtonAttributes}>
 		<span class="icon">{icon}</span>
 		<span class="text">
 			{@render children?.()}
@@ -60,7 +69,7 @@
 			background: var(--focus-ring);
 		}
 
-		&:focus .icon {
+		&:focus-visible .icon {
 			background: var(--focus-ring);
 		}
 	}

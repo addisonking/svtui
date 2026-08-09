@@ -1,11 +1,10 @@
 <script lang="ts" module>
-	import { watch } from 'runed';
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
-	export type InputProps = HTMLInputAttributes & {
+	// `type` is narrowed: the caret overlay only renders sensibly for text-like input.
+	export type InputProps = Omit<HTMLInputAttributes, 'type'> & {
 		ref?: HTMLInputElement | null;
 		caret?: string;
-		placeholder?: string;
 		type?: 'text' | 'password';
 	};
 </script>
@@ -61,7 +60,8 @@
 		focused = false;
 	};
 
-	watch(() => [value, selectionStart], updateCaret);
+	// Repaint the caret overlay whenever the value or selection moves.
+	$effect(updateCaret);
 </script>
 
 <div
@@ -128,8 +128,8 @@
 
 	.caret {
 		display: inline-block;
-		background: black;
-		color: white;
+		background: var(--text-primary);
+		color: var(--surface-base);
 		min-width: 1ch;
 		margin-left: -1ch;
 		margin-right: -1ch;

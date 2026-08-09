@@ -1,0 +1,115 @@
+<script lang="ts">
+	import CodeBlock from '$lib/components/code-block.svelte';
+	import Badge from '$lib/components/badge.svelte';
+
+	let { data } = $props();
+	const doc = $derived(data.doc);
+	const Example = $derived(doc.componentExample);
+
+	let copied = $state(false);
+
+	async function copySource() {
+		try {
+			await navigator.clipboard.writeText(doc.source);
+			copied = true;
+			setTimeout(() => (copied = false), 1500);
+		} catch {
+			copied = false;
+		}
+	}
+</script>
+
+<svelte:head>
+	<title>{doc.name} — svtui</title>
+	<meta name="description" content={doc.description} />
+</svelte:head>
+
+<div class="max-w-3xl space-y-8 p-4">
+	<div>
+		<div class="flex items-baseline gap-2">
+			<h1 class="text-lg uppercase">{doc.name}</h1>
+			<Badge>{doc.sourceName}</Badge>
+		</div>
+		<p>{doc.description}</p>
+	</div>
+
+	<!-- DEMO: the live, rendered example. This is NOT the component itself —
+	     it's a small wrapper showing the component in use. -->
+	<section class="demo">
+		<h2 class="section-title">Demo</h2>
+		<svelte:boundary>
+			<div class="demo-frame">
+				<Example />
+			</div>
+			{#snippet failed()}
+				<div class="demo-frame">
+					<p class="text-red-500">This example failed to render.</p>
+				</div>
+			{/snippet}
+		</svelte:boundary>
+	</section>
+
+	<hr class="sep" />
+
+	<!-- COMPONENT: the raw, copy-pasteable source plus its props type. -->
+	<section class="component">
+		<h2 class="section-title">Component</h2>
+
+		{#if doc.propsType}
+			<div class="flex flex-col gap-2">
+				<span class="sub-label">Props</span>
+				<CodeBlock code={doc.propsType} />
+			</div>
+		{/if}
+
+		<div class="flex flex-col gap-2">
+			<div class="flex items-center justify-between">
+				<span class="sub-label">{doc.sourceName}</span>
+				<button class="copy" onclick={copySource}>{copied ? 'COPIED' : 'COPY'}</button>
+			</div>
+			<CodeBlock code={doc.source} />
+		</div>
+	</section>
+</div>
+
+<style>
+	.section-title {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.1em;
+		opacity: 0.7;
+		margin-bottom: 0.5rem;
+	}
+
+	.sub-label {
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		opacity: 0.7;
+	}
+
+	.demo-frame {
+		border: 1px solid var(--border-default);
+		background: var(--surface-base);
+		padding: 1rem;
+		box-shadow: 0.5ch 0.5ch 0 0 var(--border-muted);
+	}
+
+	.sep {
+		border: 0;
+		border-top: 1px solid var(--border-default);
+		margin: 0;
+	}
+
+	.copy {
+		font-family: inherit;
+		font-size: inherit;
+		background: var(--button-secondary-fg);
+		border: 0;
+		padding: 0 0.5ch;
+		cursor: pointer;
+		color: inherit;
+	}
+	.copy:hover {
+		background: var(--focus-ring);
+	}
+</style>

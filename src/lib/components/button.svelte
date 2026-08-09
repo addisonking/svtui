@@ -2,11 +2,19 @@
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
 	export type ButtonVariant = 'primary' | 'secondary';
-	export type ButtonProps = HTMLButtonAttributes &
-		HTMLAnchorAttributes & {
-			ref?: HTMLElement | null;
-			variant?: ButtonVariant;
-		};
+
+	/**
+	 * Polymorphic: renders `<a>` when `href` is set, `<button>` otherwise. The
+	 * `href` discriminator narrows the allowed attributes — anchor-only props
+	 * (target, rel, …) are only accepted on the anchor variant.
+	 */
+	export type ButtonProps =
+		| (HTMLButtonAttributes & {
+				ref?: HTMLElement | null;
+				variant?: ButtonVariant;
+				href?: undefined;
+		  })
+		| (HTMLAnchorAttributes & { ref?: HTMLElement | null; variant?: ButtonVariant; href: string });
 </script>
 
 <script lang="ts">
@@ -14,17 +22,27 @@
 		class: className,
 		variant = 'primary',
 		ref = $bindable(null),
+		href,
 		children,
 		...restProps
 	}: ButtonProps = $props();
 </script>
 
-{#if restProps.href}
-	<a class={`button ${variant} ${className ?? ''}`} bind:this={ref} {...restProps}>
+{#if href}
+	<a
+		class={`button ${variant} ${className ?? ''}`}
+		bind:this={ref}
+		{href}
+		{...restProps as HTMLAnchorAttributes}
+	>
 		{@render children?.()}
 	</a>
 {:else}
-	<button class={`button ${variant} ${className ?? ''}`} bind:this={ref} {...restProps}>
+	<button
+		class={`button ${variant} ${className ?? ''}`}
+		bind:this={ref}
+		{...restProps as HTMLButtonAttributes}
+	>
 		{@render children?.()}
 	</button>
 {/if}
@@ -37,14 +55,13 @@
 		margin: 0;
 		padding: 10px 20px;
 		text-align: center;
-		font-size: 16px;
 		text-transform: uppercase;
 		text-decoration: none;
 		background-clip: padding-box;
 		display: inline-block;
 		width: 100%;
 		text-align: center;
-		font-family: monospace;
+		font-family: var(--font-family-mono);
 		font-weight: 400;
 		letter-spacing: 0.05em;
 		transition: all 0.2s ease-in-out;
@@ -75,10 +92,13 @@
 		box-shadow: none;
 	}
 
-	.button:focus {
+	.button:focus-visible {
 		outline: none;
 		color: var(--button-primary-fg);
 		background-color: var(--focus-ring);
 		box-shadow: none;
 	}
+
+	/* :focus-visible keeps the highlight only for keyboard focus — a mouse click
+	   doesn't leave the ring painted, so the hover color doesn't linger. */
 </style>
