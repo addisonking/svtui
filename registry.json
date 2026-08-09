@@ -1,0 +1,93 @@
+{
+	"$schema": "./registry.schema.json",
+	"name": "svtui",
+	"items": [
+		{
+			"name": "button",
+			"type": "component",
+			"files": ["src/lib/components/button.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "action-button",
+			"type": "component",
+			"files": ["src/lib/components/action-button.svelte"],
+			"npmDependencies": ["runed"],
+			"registryDependencies": []
+		},
+		{
+			"name": "action-list",
+			"type": "component",
+			"files": ["src/lib/components/action-list.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "badge",
+			"type": "component",
+			"files": ["src/lib/components/badge.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "card",
+			"type": "component",
+			"files": ["src/lib/components/card.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "code-block",
+			"type": "component",
+			"files": ["src/lib/components/code-block.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "input",
+			"type": "component",
+			"files": ["src/lib/components/input.svelte"],
+			"npmDependencies": ["runed"],
+			"registryDependencies": []
+		},
+		{
+			"name": "label",
+			"type": "component",
+			"files": ["src/lib/components/label.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "checkbox",
+			"type": "component",
+			"files": ["src/lib/components/checkbox.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "table",
+			"type": "component",
+			"files": [
+				"src/lib/components/table/index.ts",
+				"src/lib/components/table/table.svelte",
+				"src/lib/components/table/table-header.svelte",
+				"src/lib/components/table/table-body.svelte",
+				"src/lib/components/table/table-footer.svelte",
+				"src/lib/components/table/table-row.svelte",
+				"src/lib/components/table/table-head.svelte",
+				"src/lib/components/table/table-cell.svelte",
+				"src/lib/components/table/table-caption.svelte"
+			],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "tokens",
+			"type": "init",
+			"files": ["src/app.css"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		}
+	]
+}

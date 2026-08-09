@@ -7,3 +7,6 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Generated registry (built by scripts/flatten.ts)
+cli/registry/

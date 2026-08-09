@@ -3,11 +3,15 @@
 	"version": "0.0.1",
 	"description": "Terminal-aesthetic Svelte components. CLI for adding self-contained components to your project (shadcn-style). WIP.",
 	"type": "module",
+	"scripts": {
+		"prepublishOnly": "bun run ../scripts/flatten.ts"
+	},
 	"bin": {
 		"svtui": "index.js"
 	},
 	"files": [
 		"index.js",
+		"registry",
 		"README.md",
 		"LICENSE"
 	],
