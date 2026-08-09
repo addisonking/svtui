@@ -46,7 +46,6 @@
 		position: relative;
 		display: block;
 		padding: 0;
-		white-space: pre-wrap;
 	}
 
 	/*
