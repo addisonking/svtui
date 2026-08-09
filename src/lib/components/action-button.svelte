@@ -1,11 +1,16 @@
 <script lang="ts" module>
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
-	export type ActionButtonProps = HTMLButtonAttributes &
-		HTMLAnchorAttributes & {
-			ref?: HTMLElement | null;
-			hotkey?: string[];
-		};
+	/** A keyboard combo: modifier names plus a key, e.g. `['control', 't']`. */
+	export type Hotkey = ('control' | 'alt' | 'shift' | 'meta' | string)[];
+
+	/**
+	 * Polymorphic: renders `<a>` when `href` is set, `<button>` otherwise. `href`
+	 * discriminates the allowed attributes.
+	 */
+	export type ActionButtonProps =
+		| (HTMLButtonAttributes & { ref?: HTMLElement | null; hotkey?: Hotkey; href?: undefined })
+		| (HTMLAnchorAttributes & { ref?: HTMLElement | null; hotkey?: Hotkey; href: string });
 </script>
 
 <script lang="ts">
@@ -15,6 +20,7 @@
 		class: className,
 		ref = $bindable(null),
 		hotkey = [],
+		href,
 		children,
 		...restProps
 	}: ActionButtonProps = $props();
@@ -49,16 +55,7 @@
 		};
 		const match = (e: KeyboardEvent) => [...target].every((k) => held(e).has(k));
 
-		const fire = () => {
-			if (restProps.onclick) {
-				restProps.onclick(
-					new MouseEvent('click') as MouseEvent & { currentTarget: HTMLButtonElement }
-				);
-			} else if (restProps.href) {
-				if (restProps.target === '_blank') window.open(restProps.href, '_blank');
-				else window.location.href = restProps.href;
-			}
-		};
+		const fire = () => ref?.click();
 
 		const onKeydown = (e: KeyboardEvent) => {
 			if (!fired && match(e)) {
@@ -75,8 +72,13 @@
 	});
 </script>
 
-{#if restProps.href}
-	<a bind:this={ref} class={`action-button ${className ?? ''}`} {...restProps}>
+{#if href}
+	<a
+		bind:this={ref}
+		class={`action-button ${className ?? ''}`}
+		{href}
+		{...restProps as HTMLAnchorAttributes}
+	>
 		{#if hotkey.length}
 			<kbd class="hotkey">
 				{hotkey.map((key) => modifiers[key] || key).join('+')}
@@ -87,7 +89,11 @@
 		</span>
 	</a>
 {:else}
-	<button bind:this={ref} class={`action-button ${className ?? ''}`} {...restProps}>
+	<button
+		bind:this={ref}
+		class={`action-button ${className ?? ''}`}
+		{...restProps as HTMLButtonAttributes}
+	>
 		{#if hotkey.length}
 			<kbd class="hotkey">
 				{hotkey.map((key) => modifiers[key] || key).join('+')}

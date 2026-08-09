@@ -170,11 +170,13 @@ export const docs: Doc[] = [
 	}
 ];
 
-// Extract the `export type *Props = …};` block from a component's raw source.
+// Extract the `export type *Props = …` block from a component's raw source.
 // Keeps the props spec in sync with the source — no second hand-maintained copy.
+// Terminates at the closing `</script>` so it handles both object-shape props
+// (ending `};`) and discriminated-union props (ending `});`).
 function extractPropsType(source: string): string {
-	const m = source.match(/export type \w+Props\s*=\s*[\s\S]*?\};/);
-	return m ? m[0] : '';
+	const m = source.match(/export type \w+Props\s*=\s*[\s\S]*?\n<\/script>/);
+	return m ? m[0].replace(/\n<\/script>$/, '') : '';
 }
 
 for (const d of docs) d.propsType = extractPropsType(d.source);

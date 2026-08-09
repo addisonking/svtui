@@ -37,5 +37,13 @@ export default defineConfig(
 				svelteConfig
 			}
 		}
+	},
+	{
+		// Library components ship raw `href` — they must not depend on SvelteKit's
+		// `resolve()` since a copied component may land in a non-SvelteKit app.
+		files: ['src/lib/components/**/*.svelte'],
+		rules: {
+			'svelte/no-navigation-without-resolve': 'off'
+		}
 	}
 );

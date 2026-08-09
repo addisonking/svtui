@@ -2,11 +2,19 @@
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
 	export type ButtonVariant = 'primary' | 'secondary';
-	export type ButtonProps = HTMLButtonAttributes &
-		HTMLAnchorAttributes & {
-			ref?: HTMLElement | null;
-			variant?: ButtonVariant;
-		};
+
+	/**
+	 * Polymorphic: renders `<a>` when `href` is set, `<button>` otherwise. The
+	 * `href` discriminator narrows the allowed attributes — anchor-only props
+	 * (target, rel, …) are only accepted on the anchor variant.
+	 */
+	export type ButtonProps =
+		| (HTMLButtonAttributes & {
+				ref?: HTMLElement | null;
+				variant?: ButtonVariant;
+				href?: undefined;
+		  })
+		| (HTMLAnchorAttributes & { ref?: HTMLElement | null; variant?: ButtonVariant; href: string });
 </script>
 
 <script lang="ts">
@@ -14,17 +22,27 @@
 		class: className,
 		variant = 'primary',
 		ref = $bindable(null),
+		href,
 		children,
 		...restProps
 	}: ButtonProps = $props();
 </script>
 
-{#if restProps.href}
-	<a class={`button ${variant} ${className ?? ''}`} bind:this={ref} {...restProps}>
+{#if href}
+	<a
+		class={`button ${variant} ${className ?? ''}`}
+		bind:this={ref}
+		{href}
+		{...restProps as HTMLAnchorAttributes}
+	>
 		{@render children?.()}
 	</a>
 {:else}
-	<button class={`button ${variant} ${className ?? ''}`} bind:this={ref} {...restProps}>
+	<button
+		class={`button ${variant} ${className ?? ''}`}
+		bind:this={ref}
+		{...restProps as HTMLButtonAttributes}
+	>
 		{@render children?.()}
 	</button>
 {/if}

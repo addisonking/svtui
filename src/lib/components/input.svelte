@@ -1,10 +1,10 @@
 <script lang="ts" module>
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
-	export type InputProps = HTMLInputAttributes & {
+	// `type` is narrowed: the caret overlay only renders sensibly for text-like input.
+	export type InputProps = Omit<HTMLInputAttributes, 'type'> & {
 		ref?: HTMLInputElement | null;
 		caret?: string;
-		placeholder?: string;
 		type?: 'text' | 'password';
 	};
 </script>

@@ -48,8 +48,12 @@ const SVELLE_BUILTINS = new Set([
 	'svelte/store',
 	'svelte/transition',
 	'svelte/animate',
-	'svelte/easing'
+	'svelte/easing',
+	'svelte/events',
+	'svelte/reactivity'
 ]);
+// SvelteKit path aliases — not npm packages.
+const KIT_ALIASES = new Set(['$lib', '$app']);
 
 function scanImportsForNpm(src: string): string[] {
 	const found = new Set<string>();
@@ -60,6 +64,7 @@ function scanImportsForNpm(src: string): string[] {
 		const mod = m[1];
 		if (mod.startsWith('.')) continue; // relative
 		const top = mod.split('/')[0];
+		if (KIT_ALIASES.has(top)) continue; // SvelteKit alias, not npm
 		if (!SVELLE_BUILTINS.has(top) && top !== 'svelte') {
 			if (!mod.startsWith('svelte/')) found.add(top);
 			else found.add(mod);

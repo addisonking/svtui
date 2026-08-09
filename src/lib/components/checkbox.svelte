@@ -2,11 +2,8 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
 	export type CheckboxProps = Omit<HTMLInputAttributes, 'type'> & {
-		class?: string;
 		ref?: HTMLInputElement | null;
 		checked?: boolean;
-		name?: string;
-		children?: import('svelte').Snippet;
 	};
 </script>
 

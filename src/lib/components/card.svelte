@@ -2,7 +2,6 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	export type CardProps = HTMLAttributes<HTMLElement> & {
-		class?: string;
 		ref?: HTMLElement | null;
 		title?: string;
 		alignTitle?: 'left' | 'right';

@@ -13,7 +13,7 @@ This repo is the **canonical source** for both — `src/lib/components` is the s
 
 ## Hard rules
 
-- **Components are single, self-contained `.svelte` files.** No runtime npm dependencies. The only exception is `bits-ui` as an **optional peer dep** for interactive components (Dialog/Popover/Select/etc.). Plain primitives (Button, Card, Row, …) must not import any package other than `svelte`/`svelte/elements`.
+- **Components are single, self-contained `.svelte` files.** No runtime npm dependencies, and **no imports outside `svelte/*`** — not even `$lib/...` or relative imports across components. A copied file (the thing `svtui add` writes, and the thing `llms-full.txt` documents) must stand alone in any project. The only exception is `bits-ui` as an **optional peer dep** for interactive components (Dialog/Popover/Select/etc.). Plain primitives (Button, Card, Row, …) import only `svelte`/`svelte/elements`/`svelte/events`.
 - **Styling uses the CSS custom properties defined in `src/app.css`.** Don't hardcode colors in components. The token set lives below under _Token system_. Add a token to `src/app.css` (both light and `.dark`) if you genuinely need one not already there.
 - **Svelte 5 runes only.** `$props`, `$bindable`, `$state`, `$derived`, `$effect`, `{@render}`, snippets. No Svelte 4 `export let` / `createEventDispatcher` / `<svelte:component>` / slots.
 - **One `<style>` block per component, scoped.** Do not reach for global styles. Use the tokens.
@@ -62,6 +62,15 @@ Then:
 8. `bun run format && bun run lint && bun run check && bun run build` — all green.
 
 For a **multi-file** component (like `table/`), put the files in a subfolder, set `files` to the list, and the CLI/cli-registry lay them out flat under `components/<name>/`.
+
+## Props conventions
+
+Every component's props follow the same shape so any single file is readable in isolation:
+
+- **Extend the relevant HTML attributes type** — `HTMLButtonAttributes`, `HTMLInputAttributes`, `HTMLAttributes<HTMLDivElement>`, etc. Only declare props that aren't already on that base type.
+- **`ref` is declared inline** as `ref?: HTMLXElement | null` (tightened to the actual rendered element — `HTMLSpanElement` for `<span>`, `HTMLDivElement` for `<div>`, …). Do **not** import it from a shared helper: a shared `WithRef` type would couple every shipped component to an extra file and break self-containment.
+- **Polymorphic button/anchor components** (`Button`, `ActionButton`, `ActionList`) use a **discriminated union on `href`** — one member for `<button>` (`href?: undefined`), one for `<a>` (`href: string`). TS narrows the allowed attributes per variant, so `target`/`rel` are only accepted on the anchor form. Internally, branch on the destructured `href` and cast the rest-spread per branch (`{...(restProps as HTMLAnchorAttributes)}`) since Svelte's spread doesn't narrow a union from `{#if}`.
+- **Only genuinely custom props are declared** beyond the base: `variant` (Button), `hotkey` (ActionButton), `icon` (ActionList, a short string like `>` or `=`), `code` (CodeBlock), `type` (Divider/Checkbox/Input, narrowed), `title`+`alignTitle` (Card), `caret` (Input). Do not re-declare `class`, `name`, `children`, `placeholder`, `type` (the broad one) — they're already on the HTML type.
 
 ## Don't
 

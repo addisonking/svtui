@@ -42,6 +42,3 @@ export type {
 	TableCellProps,
 	TableCaptionProps
 } from './components/table/index.js';
-
-// Utilities
-export type { WithRef, PolymorphicButtonProps } from './types';
