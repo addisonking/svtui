@@ -23,7 +23,7 @@
 		...restProps
 	}: TableCellProps = $props();
 
-	let prevValue: unknown = $state(value);
+	let prevValue = $state<unknown>(undefined);
 	let isFlashing = $state(false);
 
 	$effect(() => {

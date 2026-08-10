@@ -20,7 +20,8 @@
 
 	let focused = $state(false);
 
-	const checkboxId = restProps.id ?? `checkbox-${Math.random().toString(36).substring(2, 11)}`;
+	const fallbackId = `checkbox-${Math.random().toString(36).substring(2, 11)}`;
+	const checkboxId = $derived(restProps.id ?? fallbackId);
 
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.key === 'Enter' || event.key === ' ') {

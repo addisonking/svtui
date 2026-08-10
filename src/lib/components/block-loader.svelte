@@ -30,7 +30,7 @@
 		...restProps
 	}: BlockLoaderProps = $props();
 
-	const sequence = SEQUENCES[mode] ?? null;
+	const sequence = $derived(SEQUENCES[mode] ?? null);
 	let index = $state(0);
 
 	$effect(() => {

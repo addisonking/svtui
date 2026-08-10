@@ -13,6 +13,7 @@
 <script lang="ts">
 	let { intervalRate, progress, fillChar = '░' }: BarProgressProps = $props();
 
+	// svelte-ignore state_referenced_locally
 	let current = $state(progress ?? 0);
 	let containerWidth = $state(0);
 	let charWidth = $state(0);
