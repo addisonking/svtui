@@ -24,26 +24,14 @@ svtui look as the default — tints are opt-in.
 	src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
 	font-display: swap;
 }
-@font-face {
-	font-family: 'Fixedsys-Excelsior';
-	src: url('/fonts/Fixedsys-Excelsior.woff') format('woff');
-	font-display: swap;
-}
-@font-face {
-	font-family: 'GlassTTY-TrueType-VT220';
-	src: url('/fonts/GlassTTY-VT220.woff') format('woff');
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Web437-Phoenix-EGA-8X8-2Y';
-	src: url('/fonts/Phoenix-EGA-8X8.woff') format('woff');
-	font-display: swap;
-}
-@font-face {
-	font-family: 'JetBrainsMono';
-	src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-	font-display: swap;
-}
+
+/*
+The body.font-* classes below set --font-family-mono to other terminal fonts
+(Fixedsys, VT220, Phoenix, JetBrains). Their @font-face blocks and font files
+ship only with the docs site (src/docs.css + static/fonts/), not via svtui init
+— a consumer who wants one of those fonts adds the file and the @font-face
+themselves. Without the file, the class falls back to the monospace stack.
+*/
 
 /* Font switching — each font-<name> body class swaps the mono stack. */
 body.font-geist {

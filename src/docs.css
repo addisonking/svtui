@@ -5,3 +5,29 @@ svtui init ships app.css alone, which has no @import 'tailwindcss'.
 */
 @import 'tailwindcss';
 @import './app.css';
+
+/*
+Extra terminal fonts the docs site ships in static/fonts/ but svtui init does
+not. The body.font-* classes in app.css reference these family names; these
+@font-face blocks make them resolve on the docs site only.
+*/
+@font-face {
+	font-family: 'Fixedsys-Excelsior';
+	src: url('/fonts/Fixedsys-Excelsior.woff') format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'GlassTTY-TrueType-VT220';
+	src: url('/fonts/GlassTTY-VT220.woff') format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Web437-Phoenix-EGA-8X8-2Y';
+	src: url('/fonts/Phoenix-EGA-8X8.woff') format('woff');
+	font-display: swap;
+}
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+	font-display: swap;
+}
