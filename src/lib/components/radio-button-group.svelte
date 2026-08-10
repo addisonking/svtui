@@ -29,6 +29,7 @@
 		...restProps
 	}: RadioButtonGroupProps = $props();
 
+	// svelte-ignore state_referenced_locally
 	let internal = $state(defaultValue);
 	let focusedValue = $state<string | null>(null);
 

@@ -26,6 +26,7 @@
 	let textAreaEl = $state<HTMLTextAreaElement>(null!);
 	let measureEl = $state<HTMLDivElement>(null!);
 
+	// svelte-ignore state_referenced_locally
 	let text = $state(String(defaultValue ?? value ?? ''));
 	let isFocused = $state(false);
 	let selectionStart = $state(0);

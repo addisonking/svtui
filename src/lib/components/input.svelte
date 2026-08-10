@@ -24,7 +24,8 @@
 	let selectionStart = $state(0);
 	let focused = $state(false);
 
-	const inputId = restProps.id ?? `input-${Math.random().toString(36).substring(2, 15)}`;
+	const fallbackId = `input-${Math.random().toString(36).substring(2, 15)}`;
+	const inputId = $derived(restProps.id ?? fallbackId);
 
 	let beforeCaret = $state('');
 	let afterCaret = $state('');

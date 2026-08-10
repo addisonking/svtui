@@ -10,6 +10,7 @@
 <script lang="ts">
 	let { ref = $bindable(null), defaultOpen = false, title, children }: AccordionProps = $props();
 
+	// svelte-ignore state_referenced_locally
 	let open = $state(defaultOpen);
 
 	const toggle = () => (open = !open);

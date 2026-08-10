@@ -26,7 +26,7 @@
 	}: RadioButtonProps = $props();
 
 	let focused = $state(false);
-	const radioId = `${name}-${value}-radio`;
+	const radioId = $derived(`${name}-${value}-radio`);
 
 	const isFocusable = (el: Element): el is HTMLElement =>
 		el.matches(

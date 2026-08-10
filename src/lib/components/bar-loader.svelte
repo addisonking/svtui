@@ -11,6 +11,7 @@
 <script lang="ts">
 	let { intervalRate, progress }: BarLoaderProps = $props();
 
+	// svelte-ignore state_referenced_locally
 	let current = $state(progress ?? 0);
 
 	$effect(() => {
