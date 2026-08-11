@@ -34,18 +34,47 @@ not. The body.font-* classes in app.css reference these family names; these
 
 /*
 Grid overlay — debug toggle (sidebar: GRID). Paints the character grid the
-claims to live on: vertical stripes every 1ch (--cell), horizontal stripes
-every --line. The horizontal lines are the real proof — they show every
-component height/padding snapping to a line boundary after the token sweep.
-Vertical ch-alignment is layout-dependent (only holds where an element's
-left edge lands on a ch boundary), so read the lines, not the columns.
-Docs-only; never shipped by svtui init.
+components claim to live on: vertical stripes every 1ch (--cell), horizontal
+stripes every --line. The horizontal lines are the real proof — they show
+every component height/padding snapping to a line boundary after the token
+sweep. Vertical ch-alignment is layout-dependent (only holds where an
+element's left edge lands on a ch boundary), so read the lines, not the
+columns. Docs-only; never shipped by svtui init.
+
+A ::before layer positioned on body, not body's own background: body's
+background-image propagates to the canvas when <html> has no background, where
+it's painted **viewport-anchored** — scrolling then drifts the lines relative
+to (on-grid) content by (scrollY mod --line), reading as the page 'getting
+off the grid' toward the bottom. A ::before is a normal child of body:
+content-anchored, scrolls with the page, no propagation, no <html> background.
 */
-body.show-grid {
+body {
+	position: relative;
+}
+
+body.show-grid::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 9999;
 	--grid-line: color-mix(in srgb, var(--focus-ring) 35%, transparent);
 	background-image:
 		repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px 1ch),
 		repeating-linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px var(--line));
+}
+
+/*
+Tailwind's preflight pins `code`/`pre` to a ui-monospace fallback stack that
+isn't --font-family-mono, so inline code renders in a different font whose
+metrics don't share the terminal cell — it reads as vertically off the grid
+and (via rising inline-code density) looks like the page drifts as you scroll
+down. Force the svtui mono token so inline code shares the body's grid.
+Docs-only; svtui init ships app.css, which doesn't touch element defaults.
+*/
+code,
+pre {
+	font-family: var(--font-family-mono);
 }
 
 /*
