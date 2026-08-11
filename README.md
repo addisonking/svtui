@@ -32,32 +32,6 @@ components do.
 --force       overwrite existing files
 ```
 
-## Components
-
-Button, ActionButton, ActionList, Badge, Card, CodeBlock, Input, Label,
-Checkbox, Divider, Row, RowSpaceBetween, Indent, Block, Text, Table, Avatar,
-Tooltip, AlertBanner, Breadcrumbs, BarLoader, BarProgress, BlockLoader,
-MatrixLoader, Accordion, Navigation, RadioButton, RadioButtonGroup, TextArea,
-AsciiCanvas.
-
-Thirty components today. `svtui list` shows the current set.
-
-## Theming
-
-Components read CSS custom properties from `src/app.css`, which `svtui init`
-writes. Override the variables to retheme. The preset holds a light ramp and a
-dark ramp, plus optional OKLCH color tints. The docs site toggles light and
-dark client-side; the variables are the same shape either way, so copy
-whichever you need.
-
-## This repo
-
-- `src/lib/components`: canonical component source, and the docs site's source of truth.
-- `src/routes`: the docs site (SvelteKit, prerendered to static HTML).
-- `registry.json`: component manifest, names to files and npm deps.
-- `scripts/flatten.ts`: builds `cli/registry/` from `src/lib/components` for the CLI to ship.
-- `cli/`: the `svtui` npm package, which is the CLI itself.
-
 ## License
 
 Unlicense (public domain). See [LICENSE](./LICENSE).
