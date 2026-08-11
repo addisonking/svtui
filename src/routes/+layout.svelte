@@ -4,6 +4,7 @@
 	// Initializing the settings store (side-effects apply theme/tint/font classes
 	// to <body> on first client render) is enough — no component to mount.
 	import '$lib/settings';
+	import '$lib/terminal-scroll';
 	import Shell from './_shell.svelte';
 
 	let { children } = $props();
