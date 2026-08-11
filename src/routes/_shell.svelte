@@ -31,10 +31,10 @@
 	}
 
 	.sidebar {
-		width: 16rem;
+		width: 28ch;
 		flex-shrink: 0;
-		padding: 1rem;
-		border-right: 1px solid var(--border-default);
+		padding: var(--line) 2ch;
+		box-shadow: inset -1px 0 0 0 var(--border-default);
 	}
 
 	.content {
@@ -55,7 +55,7 @@
 			border-bottom: 2px solid var(--border-default);
 			background: var(--surface-base);
 			color: inherit;
-			padding: 0.5rem 1ch;
+			padding: var(--line) 1ch;
 			cursor: pointer;
 			width: 100%;
 			text-align: left;

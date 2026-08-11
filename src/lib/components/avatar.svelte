@@ -87,7 +87,7 @@
 	a.tile {
 		display: inline-block;
 		width: 4ch;
-		height: calc(var(--font-size) * var(--base-line-height) * 2);
+		height: calc(var(--line) * 2);
 		vertical-align: bottom;
 		flex-shrink: 0;
 		position: relative;

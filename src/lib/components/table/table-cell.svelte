@@ -52,6 +52,7 @@
 <style lang="postcss">
 	.table-cell {
 		padding: 0 1ch;
+		line-height: var(--line);
 	}
 
 	.table-cell.flash {

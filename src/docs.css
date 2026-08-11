@@ -31,3 +31,73 @@ not. The body.font-* classes in app.css reference these family names; these
 	src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
 	font-display: swap;
 }
+
+/*
+Grid overlay — debug toggle (sidebar: GRID). Paints the character grid the
+claims to live on: vertical stripes every 1ch (--cell), horizontal stripes
+every --line. The horizontal lines are the real proof — they show every
+component height/padding snapping to a line boundary after the token sweep.
+Vertical ch-alignment is layout-dependent (only holds where an element's
+left edge lands on a ch boundary), so read the lines, not the columns.
+Docs-only; never shipped by svtui init.
+*/
+body.show-grid {
+	--grid-line: color-mix(in srgb, var(--focus-ring) 35%, transparent);
+	background-image:
+		repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px 1ch),
+		repeating-linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px var(--line));
+}
+
+/*
+Line-rhythm layer — collapses Tailwind's rem-based spacing/Typography utilities
+to the character grid so the docs page chrome sits on the same cell/line units
+the components do. Docs-only; svtui init ships app.css alone, never this.
+
+Why blanket overrides instead of per-file rewrites: the routes use Tailwind
+utilities (gap-2, text-lg, space-y-8…) pervasively, and those resolve to rem
+values that aren't multiples of --line. Forcing them to --line/-cell here
+fixes the whole site at once. Horizontal row gaps (flex-row) get coerced too,
+which only makes gutters slightly wider — still on-grid.
+*/
+:where(body) {
+	line-height: var(--line);
+}
+h1,
+h2,
+h3,
+h4,
+p,
+pre,
+button,
+input,
+textarea {
+	line-height: var(--line);
+}
+/* Tailwind text-size utilities ship rem line-heights AND rem font-sizes (text-lg=18px,
+   text-sm=14px) that fall off the cell. Pin them to one cell: font-size --font-size,
+   line-height --line — the terminal-single-size aesthetic, hierarchy via uppercase/
+   spacing, not size. */
+:where(.text-xs, .text-sm, .text-base, .text-lg, .text-xl, .text-2xl) {
+	font-size: var(--font-size);
+	line-height: var(--line);
+}
+/* Gap utilities: row-gap (vertical spacing) must be whole lines, column-gap
+   (horizontal spacing) whole cells — a single `gap: var(--line)` is 16px,
+   which is 1 line but only 1.67ch, so it left row-content 0.33ch off-column.
+   Split the axes so both directions stay on-grid. */
+:where(.gap-0\.5, .gap-1, .gap-1\.5, .gap-2, .gap-3, .gap-4) {
+	row-gap: var(--line);
+	column-gap: 2ch;
+}
+:where(.space-y-1, .space-y-1\.5, .space-y-2) > :not([hidden]) ~ :not([hidden]) {
+	margin-top: var(--line);
+}
+:where(.space-y-6) > :not([hidden]) ~ :not([hidden]) {
+	margin-top: calc(var(--line) * 2);
+}
+/* Stage padding: 1rem (16px) is not a whole number of cells, so content sat
+   0.33ch off the grid columns. Pad in --line (vertical) and 2ch (horizontal)
+   so the first glyph lands on a grid column. */
+:where(.p-4) {
+	padding: var(--line) 2ch;
+}

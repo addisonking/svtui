@@ -58,10 +58,10 @@
 			inset -2px 0 0 0 var(--text-primary),
 			inset 0 -2px 0 0 var(--text-primary);
 		display: block;
-		padding-top: calc(var(--base-line-height) * 0.5rem);
+		padding-top: var(--line);
 		padding-left: 2ch;
 		padding-right: 2ch;
-		padding-bottom: calc(var(--base-line-height) * 1rem);
+		padding-bottom: var(--line);
 		overflow-x: auto;
 		overflow-y: hidden;
 		margin: 0 !important;
@@ -85,7 +85,7 @@
 		box-shadow:
 			inset 2px 0 0 0 var(--text-primary),
 			inset 0 2px 0 0 var(--text-primary);
-		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 2ch 0px 1ch;
+		padding: var(--line) 2ch 0px 1ch;
 	}
 
 	.leftCorner {
@@ -93,7 +93,7 @@
 		box-shadow:
 			inset 2px 0 0 0 var(--text-primary),
 			inset 0 2px 0 0 var(--text-primary);
-		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 1ch 0px 1ch;
+		padding: var(--line) 1ch 0px 1ch;
 	}
 
 	.right {
@@ -102,7 +102,7 @@
 		box-shadow:
 			inset -2px 0 0 0 var(--text-primary),
 			inset 0 2px 0 0 var(--text-primary);
-		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 2ch 0px 1ch;
+		padding: var(--line) 2ch 0px 1ch;
 	}
 
 	.rightCorner {
@@ -110,7 +110,7 @@
 		box-shadow:
 			inset -2px 0 0 0 var(--text-primary),
 			inset 0 2px 0 0 var(--text-primary);
-		padding: calc((var(--font-size) * 0.5) * var(--base-line-height)) 1ch 0px 1ch;
+		padding: var(--line) 1ch 0px 1ch;
 	}
 
 	.title {

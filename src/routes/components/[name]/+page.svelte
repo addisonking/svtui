@@ -49,8 +49,6 @@
 		</svelte:boundary>
 	</section>
 
-	<hr class="sep" />
-
 	<!-- COMPONENT: the raw, copy-pasteable source plus its props type. -->
 	<section class="component">
 		<h2 class="section-title">Component</h2>
@@ -78,7 +76,7 @@
 		font-size: 0.75rem;
 		letter-spacing: 0.1em;
 		opacity: 0.7;
-		margin-bottom: 0.5rem;
+		margin-bottom: var(--line);
 	}
 
 	.sub-label {
@@ -88,16 +86,15 @@
 	}
 
 	.demo-frame {
-		border: 1px solid var(--border-default);
 		background: var(--surface-base);
-		padding: 1rem;
-		box-shadow: 0.5ch 0.5ch 0 0 var(--border-muted);
+		padding: var(--line) 2ch;
+		box-shadow:
+			inset 0 0 0 1px var(--border-default),
+			0.5ch 0.5ch 0 0 var(--border-muted);
 	}
 
-	.sep {
-		border: 0;
-		border-top: 1px solid var(--border-default);
-		margin: 0;
+	.component {
+		box-shadow: inset 0 1px 0 0 var(--border-default);
 	}
 
 	.copy {

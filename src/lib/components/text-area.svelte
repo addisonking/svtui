@@ -193,7 +193,7 @@
 		word-wrap: break-word;
 		overflow-wrap: anywhere;
 		pointer-events: none;
-		min-height: calc(var(--font-size) * var(--base-line-height));
+		min-height: var(--line);
 	}
 
 	.displayed.placeholder {
@@ -204,7 +204,7 @@
 	.block {
 		display: inline-block;
 		min-width: 1ch;
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		vertical-align: bottom;
 		background: var(--text-primary);
 	}
@@ -243,7 +243,7 @@
 		padding: 0;
 		resize: none;
 		overflow: hidden;
-		line-height: var(--base-line-height);
+		line-height: var(--line);
 		font-size: var(--font-size);
 		font-family: inherit;
 	}

@@ -98,13 +98,12 @@
 
 	.relative {
 		flex-shrink: 0;
-		display: inline-block;
-		vertical-align: baseline;
+		display: flex;
 	}
 
 	.figure {
 		display: inline-flex;
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		cursor: pointer;
 		color: var(--text-primary);
 		background: var(--border-muted);
@@ -134,9 +133,9 @@
 		background: var(--surface-base);
 		min-width: 10%;
 		width: 100%;
-		align-self: stretch;
+		align-self: flex-start;
 		box-shadow: inset 0 1px 0 0 var(--border-muted);
-		padding-bottom: calc(var(--base-line-height) * 8px);
+		padding-bottom: var(--line);
 	}
 
 	.radio:last-child .right {

@@ -118,7 +118,7 @@
 		max-width: fit-content;
 		border: 0;
 		background-color: var(--button-secondary-fg);
-		padding: 0 0.125rem; /* px-0.5 */
+		padding: 0 0.25ch; /* px-0.5 */
 		user-select: none;
 		cursor: pointer;
 		transition: background-color 0.2s ease-in-out;
@@ -146,9 +146,9 @@
 	}
 
 	.button-content {
-		margin: 0.125rem 0;
+		margin: 0;
 		background-color: var(--button-secondary-bg);
 		padding: 0 1ch;
-		line-height: 1;
+		line-height: var(--line);
 	}
 </style>

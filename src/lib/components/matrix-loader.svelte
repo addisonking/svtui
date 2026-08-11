@@ -158,10 +158,7 @@
 </script>
 
 <div class="container">
-	<pre
-		bind:this={preEl}
-		class="root"
-		style={`height: calc(var(--font-size) * var(--base-line-height) * ${rows})`}></pre>
+	<pre bind:this={preEl} class="root" style={`height: calc(var(--line) * ${rows})`}></pre>
 </div>
 
 <style>
@@ -174,7 +171,7 @@
 	.root {
 		display: block;
 		width: 100%;
-		line-height: calc(var(--font-size) * var(--base-line-height) * 1);
+		line-height: var(--line);
 		overflow: hidden;
 		margin: 0;
 		padding: 0;

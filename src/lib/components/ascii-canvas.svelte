@@ -167,7 +167,7 @@
 <pre
 	bind:this={preEl}
 	class={`ascii-canvas ${className ?? ''}`}
-	style={`height: calc(var(--font-size) * var(--base-line-height) * ${rows})`}
+	style={`height: calc(var(--line) * ${rows})`}
 	{...restProps}></pre>
 
 <style>
@@ -176,7 +176,7 @@
 		width: 100%;
 		font-family: var(--font-family-mono);
 		font-size: var(--font-size);
-		line-height: calc(var(--font-size) * var(--base-line-height) * 1);
+		line-height: var(--line);
 		overflow: hidden;
 		margin: 0;
 		padding: 0;

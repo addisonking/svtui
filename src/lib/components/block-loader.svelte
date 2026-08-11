@@ -51,7 +51,7 @@
 		display: inline-block;
 		width: 1ch;
 		color: inherit;
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		vertical-align: bottom;
 	}
 </style>

@@ -81,7 +81,18 @@ body.tint-pink {
 :root,
 body.theme-light {
 	--font-size: 16px;
-	--base-line-height: 1.25;
+	--base-line-height: 1;
+
+	/*
+		Character grid — the cell is the atomic unit. --cell is 1ch wide and
+		--line is one line tall (font-size × line-height), i.e. taller-than-
+		wide like a real terminal cell. Horizontal spacing is expressed in
+		ch (multiples of --cell); vertical spacing and element heights in
+		multiples of --line. Components read these instead of re-deriving
+		one-line-height in every <style> block, so heights stay aligned.
+	*/
+	--cell: 1ch;
+	--line: calc(var(--font-size) * var(--base-line-height));
 
 	/* Neutral palette (no tint) — the original svtui light look. */
 	--surface-base: rgb(255, 255, 255);

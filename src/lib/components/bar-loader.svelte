@@ -34,7 +34,7 @@
 <style>
 	.root {
 		background: var(--border-default);
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		white-space: nowrap;
 		text-align: left;
 		display: block;

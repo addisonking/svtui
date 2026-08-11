@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ActionList from '$lib/components/action-list.svelte';
-	import { settings, setTint, setFont, setTheme, tints, fonts } from '$lib/settings';
+	import { settings, setTint, setFont, setTheme, toggleGrid, tints, fonts } from '$lib/settings';
 
 	let themeOpen = $state(false);
 	let fontOpen = $state(false);
@@ -25,7 +25,7 @@
 	};
 </script>
 
-<div class="flex flex-col gap-2">
+<div class="flex flex-col picker">
 	<!-- THEME: light/dark toggle + tint submenu -->
 	<button
 		class="trigger"
@@ -75,9 +75,21 @@
 			{/each}
 		</div>
 	{/if}
+
+	<!-- GRID: debug overlay proving components snap to the character grid -->
+	<button class="trigger" onclick={toggleGrid} aria-pressed={$settings.grid}>
+		<span class="caret">{$settings.grid ? '*' : ' '}</span>
+		GRID: {$settings.grid ? 'ON' : 'OFF'}
+	</button>
 </div>
 
 <style>
+	.picker {
+		/* Tighter than the docs' default one-line gap: the THEME/FONT/GRID
+		   controls read as one contiguous menu. 0 stays on the grid. */
+		row-gap: 0;
+	}
+
 	.trigger {
 		font-family: inherit;
 		font-size: inherit;
@@ -100,7 +112,7 @@
 		user-select: none;
 	}
 	.sublabel {
-		padding: 0.5rem 1ch 0 4ch;
+		padding: 0 1ch 0 4ch;
 		text-transform: uppercase;
 		opacity: 0.5;
 		font-size: 0.75rem;

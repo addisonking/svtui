@@ -79,7 +79,7 @@
 		background: var(--border-muted);
 		display: inline-flex;
 		flex-shrink: 0;
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		justify-content: center;
 		width: 3ch;
 		user-select: none;

@@ -22,7 +22,7 @@
 
 <style lang="postcss">
 	.table-footer {
-		border-top: 2px solid var(--border-default);
+		box-shadow: 0 -2px 0 0 var(--border-default);
 		font-weight: 500;
 	}
 </style>

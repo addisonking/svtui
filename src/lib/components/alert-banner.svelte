@@ -26,7 +26,7 @@
 		display: block;
 		background: var(--border-default);
 		box-shadow: 1ch 1ch 0 0 var(--border-muted);
-		padding: calc(var(--font-size) * var(--base-line-height)) 2ch;
+		padding: var(--line) 2ch;
 		font-weight: 400;
 	}
 </style>

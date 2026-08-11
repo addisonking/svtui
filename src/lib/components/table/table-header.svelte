@@ -22,6 +22,6 @@
 
 <style lang="postcss">
 	.table-header {
-		border-bottom: 2px solid var(--border-default);
+		box-shadow: 0 2px 0 0 var(--border-default);
 	}
 </style>

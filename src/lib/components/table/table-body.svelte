@@ -22,6 +22,6 @@
 
 <style lang="postcss">
 	.table-body :global(.table-row:not(:last-child)) {
-		border-bottom: 1px solid var(--border-muted);
+		box-shadow: 0 1px 0 0 var(--border-muted);
 	}
 </style>

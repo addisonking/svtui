@@ -32,7 +32,7 @@
 <style>
 	.gradient {
 		background: linear-gradient(to right, transparent, var(--border-default), transparent);
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		width: 100%;
 	}
 
@@ -42,7 +42,7 @@
 		display: flex;
 		flex-direction: column;
 		flex-shrink: 0;
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		justify-content: center;
 		outline: 0;
 		width: 100%;

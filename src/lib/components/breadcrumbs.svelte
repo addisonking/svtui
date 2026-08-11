@@ -37,7 +37,7 @@
 
 	.line {
 		display: inline-block;
-		line-height: calc(var(--base-line-height) * 1rem);
+		line-height: var(--line);
 	}
 
 	.link {

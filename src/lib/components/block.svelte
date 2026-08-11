@@ -19,7 +19,7 @@
 		display: inline-block;
 		width: 1ch;
 		background: var(--text-primary);
-		height: calc(var(--font-size) * var(--base-line-height));
+		height: var(--line);
 		vertical-align: bottom;
 		flex-shrink: 0;
 	}

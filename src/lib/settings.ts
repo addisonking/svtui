@@ -12,6 +12,7 @@ export type Settings = {
 	theme: ThemeName;
 	tint: TintName;
 	font: FontName;
+	grid: boolean;
 };
 
 export const tints: TintName[] = [
@@ -27,7 +28,7 @@ export const tints: TintName[] = [
 export const fonts: FontName[] = ['geist', 'fixedsys', 'vt220', 'phoenix', 'jetbrains'];
 
 const STORAGE_KEY = 'svtui:settings';
-const DEFAULTS: Settings = { theme: 'dark', tint: 'none', font: 'geist' };
+const DEFAULTS: Settings = { theme: 'dark', tint: 'none', font: 'geist', grid: false };
 
 function readStorage(): Settings {
 	if (typeof localStorage === 'undefined') return { ...DEFAULTS };
@@ -50,6 +51,7 @@ function readUrl(): Partial<Settings> {
 	if (theme === 'light' || theme === 'dark') out.theme = theme;
 	if (tint && tints.includes(tint as TintName)) out.tint = tint as TintName;
 	if (font && fonts.includes(font as FontName)) out.font = font as FontName;
+	if (p.get('grid') === '1') out.grid = true;
 	return out;
 }
 
@@ -58,6 +60,7 @@ function applyToBody(s: Settings) {
 	const body = document.body;
 	body.classList.remove('theme-light', 'theme-dark');
 	body.classList.add(s.theme === 'light' ? 'theme-light' : 'theme-dark');
+	body.classList.toggle('show-grid', s.grid);
 	for (const t of tints) body.classList.remove(`tint-${t}`);
 	body.classList.add(`tint-${s.tint}`);
 	for (const f of fonts) body.classList.remove(`font-${f}`);
@@ -70,6 +73,7 @@ function writeUrl(s: Settings) {
 	if (s.theme !== DEFAULTS.theme) p.set('theme', s.theme);
 	if (s.tint !== DEFAULTS.tint) p.set('tint', s.tint);
 	if (s.font !== DEFAULTS.font) p.set('font', s.font);
+	if (s.grid) p.set('grid', '1');
 	const qs = p.toString();
 	const url = qs
 		? `${window.location.pathname}?${qs}${window.location.hash}`
@@ -105,6 +109,9 @@ export function setFont(font: FontName) {
 }
 export function toggleTheme() {
 	settings.update((s) => ({ ...s, theme: s.theme === 'light' ? 'dark' : 'light' }));
+}
+export function toggleGrid() {
+	settings.update((s) => ({ ...s, grid: !s.grid }));
 }
 // Alias for the old mode-watcher API name, so call sites don't need to change.
 export const toggleMode = toggleTheme;

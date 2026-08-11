@@ -16,7 +16,7 @@
 
 <style>
 	.badge {
-		min-height: calc(var(--base-line-height) * var(--font-size));
+		min-height: var(--line);
 		display: inline-block;
 		max-width: fit-content;
 		background-color: var(--border-default);

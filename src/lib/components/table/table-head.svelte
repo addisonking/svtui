@@ -23,6 +23,7 @@
 <style lang="postcss">
 	.table-head {
 		padding: 0 1ch;
+		line-height: var(--line);
 		font-weight: 500;
 		white-space: nowrap;
 	}
