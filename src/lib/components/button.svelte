@@ -53,7 +53,7 @@
 		border: none;
 		border-radius: 0;
 		margin: 0;
-		padding: 0 2ch;
+		padding: var(--line) 2ch;
 		text-align: center;
 		text-transform: uppercase;
 		text-decoration: none;

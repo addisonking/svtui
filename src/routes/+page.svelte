@@ -82,4 +82,79 @@
 			system. There is no javascript in it.
 		</p>
 	</section>
+
+	<section class="flex flex-col gap-2">
+		<h2 class="uppercase">The grid</h2>
+		<p>
+			Every svtui component sits on a character grid. Two tokens define it — a cell is 1ch wide and
+			one line tall (a real terminal cell is taller than it is wide):
+		</p>
+		<Card title="tokens">
+			<CodeBlock
+				code={`--cell: 1ch;                                   /* one character wide */
+--line: calc(var(--font-size) * var(--base-line-height)); /* one line tall */`}
+			/>
+		</Card>
+		<p>
+			Three rules keep composed UIs aligned. Flip the <strong>GRID</strong> toggle in the sidebar to see
+			them hold.
+		</p>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h2 class="uppercase">1 · Integer lines only</h2>
+		<p>
+			Vertical spacing and heights are whole lines. A half-line seam lands mid-row and breaks
+			alignment — step up to a full line instead.
+		</p>
+		<Card title="do">
+			<CodeBlock
+				code={`padding: var(--line) 2ch;
+height: calc(var(--line) * 3);`}
+			/>
+		</Card>
+		<Card title="don't">
+			<CodeBlock
+				code={`padding-top: calc(var(--line) * 0.5); /* half-line */
+margin-top: 12px;                              /* px */`}
+			/>
+		</Card>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h2 class="uppercase">2 · Strokes are box-shadows</h2>
+		<p>
+			A <code>border: 1px</code> shifts the content below it off the grid and cascades to every
+			child. Draw strokes with <code>box-shadow</code> — inset to paint inside, outset to paint
+			beside. <code>Card</code> and <code>Table</code> both do this.
+		</p>
+		<Card title="do">
+			<CodeBlock
+				code={`box-shadow: inset 0 0 0 1px var(--border-default); /* frame */
+box-shadow: 0 1px 0 0 var(--border-muted);        /* divider */`}
+			/>
+		</Card>
+		<Card title="don't">
+			<CodeBlock code="border-bottom: 1px solid var(--border-muted); /* shifts content 1px */" />
+		</Card>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h2 class="uppercase">3 · One text cell</h2>
+		<p>
+			Text is one cell: <code>font-size: var(--font-size)</code>,
+			<code>line-height: var(--line)</code>. A larger font-size has a taller line-box, putting that
+			element off the grid. Build hierarchy with uppercase, weight, and spacing — not size.
+		</p>
+	</section>
+
+	<section class="flex flex-col gap-2">
+		<h2 class="uppercase">Composing</h2>
+		<p>
+			Stack with a <code>var(--line)</code> gap (or a multiple); keep horizontal spacing in
+			<code>ch</code>. Reach for the structural primitives — <code>Row</code>,
+			<code>RowSpaceBetween</code>, <code>Block</code>, <code>Indent</code> — before writing new layout
+			CSS.
+		</p>
+	</section>
 </div>

@@ -167,7 +167,7 @@
 	.snake {
 		display: flex;
 		flex-direction: column;
-		gap: calc(var(--base-line-height) * 0.5rem);
+		gap: var(--line);
 		padding: 1ch;
 		outline: 0;
 	}
