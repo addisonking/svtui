@@ -31,7 +31,7 @@
 			<h1 class="text-lg uppercase">Antigravity CLI</h1>
 			<Badge>DEMO</Badge>
 		</div>
-		<p class="opacity-80 mt-1">
+		<p class="opacity-80">
 			An authentic, character-grid-aligned terminal interface modeled after Antigravity CLI (<code
 				>agy</code
 			>), composed entirely of standard <code>svtui</code> primitives (<code>Input</code>,

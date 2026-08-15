@@ -45,7 +45,6 @@
 		font-size: var(--font-size);
 		line-height: var(--line);
 		opacity: 0.5;
-		margin-bottom: calc(var(--line) * 0.25);
 		padding-left: 1ch;
 	}
 </style>
