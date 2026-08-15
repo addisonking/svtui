@@ -30,6 +30,12 @@
 			onclick={onNavigate}
 			class={page.url.pathname === '/demos/agy' ? 'active' : ''}>Antigravity CLI</ActionList
 		>
+		<ActionList
+			icon=">"
+			href="/demos/neovim"
+			onclick={onNavigate}
+			class={page.url.pathname === '/demos/neovim' ? 'active' : ''}>Neovim</ActionList
+		>
 	</div>
 
 	<ThemePicker />
