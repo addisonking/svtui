@@ -46,23 +46,21 @@
 		displayStr.length > selectionStart ? displayStr.slice(selectionStart + 1) : ''
 	);
 
+	const syncSelection = () => {
+		if (inputEl && inputEl.selectionStart !== null) {
+			selectionStart = inputEl.selectionStart;
+		}
+	};
+
 	const onInput = (e: Event) => {
 		const input = e.target as HTMLInputElement;
 		value = input.value;
 		selectionStart = input.selectionStart ?? input.value.length;
 	};
 
-	const onSelectionChange = () => {
-		if (inputEl && inputEl.selectionStart !== null) {
-			selectionStart = inputEl.selectionStart;
-		}
-	};
-
 	const onFocus = () => {
 		focused = true;
-		if (inputEl && inputEl.selectionStart !== null) {
-			selectionStart = inputEl.selectionStart;
-		}
+		syncSelection();
 	};
 
 	const onBlur = () => {
@@ -77,11 +75,19 @@
 	role="textbox"
 	tabindex="-1"
 >
-	{#if !value && !focused && placeholder}
-		<span class="placeholder">{placeholder}</span>
+	{#if !focused}
+		{#if !value && placeholder}
+			<span class="placeholder">{placeholder}</span>
+		{:else}
+			<span class="text-slice">{displayStr}</span>
+		{/if}
+	{:else if !value && placeholder}
+		{#if !disabled}<span class="caret blink">{caret || ' '}</span>{/if}<span class="placeholder"
+			>{placeholder}</span
+		>
 	{:else}
-		<span class="text-slice">{beforeCaret}</span>{#if !disabled}<span
-				class="caret {focused ? 'blink' : ''}">{caretChar}</span
+		<span class="text-slice">{beforeCaret}</span>{#if !disabled}<span class="caret blink"
+				>{caretChar}</span
 			>{/if}<span class="text-slice">{afterCaret}</span>
 	{/if}
 
@@ -94,7 +100,10 @@
 		oninput={onInput}
 		onfocus={onFocus}
 		onblur={onBlur}
-		onselectionchange={onSelectionChange}
+		onselect={syncSelection}
+		onselectionchange={syncSelection}
+		onkeyup={syncSelection}
+		onclick={syncSelection}
 		{onkeydown}
 		{disabled}
 		{...restProps}
@@ -141,21 +150,18 @@
 
 	.caret {
 		display: inline-block;
-		background: var(--text-primary);
-		color: var(--surface-base);
 		min-width: 1ch;
+		height: var(--line);
+		line-height: var(--line);
 		vertical-align: middle;
 		pointer-events: none;
 		user-select: none;
+		background: var(--focus-ring);
+		color: var(--surface-base);
 	}
 
 	.caret.blink {
 		animation: blink 1s step-start infinite;
-	}
-
-	.focused .caret {
-		background: var(--focus-ring);
-		color: var(--surface-base);
 	}
 
 	.native-input {
@@ -179,7 +185,8 @@
 
 	@keyframes blink {
 		50% {
-			opacity: 0;
+			background: transparent;
+			color: inherit;
 		}
 	}
 </style>
