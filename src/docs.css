@@ -121,7 +121,7 @@ textarea {
 :where(.space-y-1, .space-y-1\.5, .space-y-2) > :not([hidden]) ~ :not([hidden]) {
 	margin-top: var(--line);
 }
-:where(.space-y-6) > :not([hidden]) ~ :not([hidden]) {
+:where(.space-y-4, .space-y-6, .space-y-8) > :not([hidden]) ~ :not([hidden]) {
 	margin-top: calc(var(--line) * 2);
 }
 /* Stage padding: 1rem (16px) is not a whole number of cells, so content sat

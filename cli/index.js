@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, readFileSync, copyFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const VERSION = '0.1.3';
+const VERSION = '0.2.0';
 const here = dirname(fileURLToPath(import.meta.url));
 const registryDir = join(here, 'registry');
 const registryFile = join(registryDir, 'index.json');

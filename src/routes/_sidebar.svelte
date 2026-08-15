@@ -22,11 +22,35 @@
 		{/each}
 	</nav>
 
+	<div class="flex flex-col">
+		<span class="category-heading">DEMOS</span>
+		<ActionList
+			icon=">"
+			href="/demos/agy"
+			onclick={onNavigate}
+			class={page.url.pathname === '/demos/agy' ? 'active' : ''}>Antigravity CLI</ActionList
+		>
+		<ActionList
+			icon=">"
+			href="/demos/neovim"
+			onclick={onNavigate}
+			class={page.url.pathname === '/demos/neovim' ? 'active' : ''}>Neovim</ActionList
+		>
+	</div>
+
 	<ThemePicker />
 </div>
 
 <style>
 	:global(.active .text) {
 		background: var(--focus-ring);
+	}
+
+	.category-heading {
+		text-transform: uppercase;
+		font-size: var(--font-size);
+		line-height: var(--line);
+		opacity: 0.5;
+		padding-left: 1ch;
 	}
 </style>

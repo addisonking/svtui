@@ -65,7 +65,6 @@
 				</label>
 			</div>
 			<div class="right">
-				&nbsp;&nbsp;
 				{#if children}
 					{@render children(option)}
 				{:else}
@@ -78,14 +77,15 @@
 
 <style>
 	.radio-group {
-		display: block;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.radio {
 		display: flex;
 		align-items: flex-start;
-		justify-content: space-between;
 		position: relative;
+		height: var(--line);
 	}
 
 	.relative {
@@ -123,16 +123,9 @@
 
 	.right {
 		background: var(--surface-base);
-		min-width: 10%;
-		width: 100%;
-		align-self: flex-start;
-		box-shadow: inset 0 1px 0 0 var(--border-muted);
-		padding-bottom: var(--line);
-	}
-
-	.radio:last-child .right {
-		padding-bottom: 0;
-		box-shadow: none;
+		padding-left: 1ch;
+		line-height: var(--line);
+		flex: 1;
 	}
 
 	.input {
