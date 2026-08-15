@@ -21,7 +21,14 @@ import {
 	AvatarExample,
 	BarProgressExample,
 	BlockLoaderExample,
-	ASCIICanvasExample
+	ASCIICanvasExample,
+	KbdExample,
+	SpinnerExample,
+	TabsExample,
+	AsciiChartExample,
+	SwitchExample,
+	CommandPaletteExample,
+	SelectExample
 } from './(component-examples)';
 
 import buttonSource from '$lib/components/button.svelte?raw';
@@ -45,6 +52,13 @@ import avatarSource from '$lib/components/avatar.svelte?raw';
 import barProgressSource from '$lib/components/bar-progress.svelte?raw';
 import blockLoaderSource from '$lib/components/block-loader.svelte?raw';
 import asciiCanvasSource from '$lib/components/ascii-canvas.svelte?raw';
+import kbdSource from '$lib/components/kbd.svelte?raw';
+import spinnerSource from '$lib/components/spinner.svelte?raw';
+import tabsSource from '$lib/components/tabs.svelte?raw';
+import asciiChartSource from '$lib/components/ascii-chart.svelte?raw';
+import switchSource from '$lib/components/switch.svelte?raw';
+import commandPaletteSource from '$lib/components/command-palette.svelte?raw';
+import selectSource from '$lib/components/select.svelte?raw';
 
 import buttonExampleSource from './(component-examples)/button.svelte?raw';
 import actionButtonExampleSource from './(component-examples)/action-button.svelte?raw';
@@ -67,6 +81,13 @@ import avatarExampleSource from './(component-examples)/avatar.svelte?raw';
 import barProgressExampleSource from './(component-examples)/bar-progress.svelte?raw';
 import blockLoaderExampleSource from './(component-examples)/block-loader.svelte?raw';
 import asciiCanvasExampleSource from './(component-examples)/ascii-canvas.svelte?raw';
+import kbdExampleSource from './(component-examples)/kbd.svelte?raw';
+import spinnerExampleSource from './(component-examples)/spinner.svelte?raw';
+import tabsExampleSource from './(component-examples)/tabs.svelte?raw';
+import asciiChartExampleSource from './(component-examples)/ascii-chart.svelte?raw';
+import switchExampleSource from './(component-examples)/switch.svelte?raw';
+import commandPaletteExampleSource from './(component-examples)/command-palette.svelte?raw';
+import selectExampleSource from './(component-examples)/select.svelte?raw';
 
 export type Doc = {
 	name: string;
@@ -144,6 +165,42 @@ export const docs: Doc[] = [
 		sourceName: 'radio-button-group.svelte'
 	},
 	{
+		name: 'Select',
+		slug: 'select',
+		description: 'A dropdown select component with keyboard navigation and popover menu.',
+		componentExample: SelectExample,
+		exampleSource: selectExampleSource,
+		source: selectSource,
+		sourceName: 'select.svelte'
+	},
+	{
+		name: 'Switch',
+		slug: 'switch',
+		description: 'A binary toggle switch with text, box, and track variants.',
+		componentExample: SwitchExample,
+		exampleSource: switchExampleSource,
+		source: switchSource,
+		sourceName: 'switch.svelte'
+	},
+	{
+		name: 'Tabs',
+		slug: 'tabs',
+		description: 'A tab switcher and bufferline navigation with arrow key support.',
+		componentExample: TabsExample,
+		exampleSource: tabsExampleSource,
+		source: tabsSource,
+		sourceName: 'tabs.svelte'
+	},
+	{
+		name: 'Command Palette',
+		slug: 'command-palette',
+		description: 'A modal command palette / fuzzy finder with search filtering and shortcuts.',
+		componentExample: CommandPaletteExample,
+		exampleSource: commandPaletteExampleSource,
+		source: commandPaletteSource,
+		sourceName: 'command-palette.svelte'
+	},
+	{
 		name: 'Badge',
 		slug: 'badge',
 		description: 'Small, inline elements used to display status, counts, or labels.',
@@ -151,6 +208,15 @@ export const docs: Doc[] = [
 		exampleSource: badgeExampleSource,
 		source: badgeSource,
 		sourceName: 'badge.svelte'
+	},
+	{
+		name: 'Kbd',
+		slug: 'kbd',
+		description: 'A keycap badge for keyboard shortcuts and hotkey hints.',
+		componentExample: KbdExample,
+		exampleSource: kbdExampleSource,
+		source: kbdSource,
+		sourceName: 'kbd.svelte'
 	},
 	{
 		name: 'Alert Banner',
@@ -260,6 +326,24 @@ export const docs: Doc[] = [
 		exampleSource: blockLoaderExampleSource,
 		source: blockLoaderSource,
 		sourceName: 'block-loader.svelte'
+	},
+	{
+		name: 'Spinner',
+		slug: 'spinner',
+		description: 'A lightweight single-cell rotating ASCII / braille loader with preset patterns.',
+		componentExample: SpinnerExample,
+		exampleSource: spinnerExampleSource,
+		source: spinnerSource,
+		sourceName: 'spinner.svelte'
+	},
+	{
+		name: 'Ascii Chart',
+		slug: 'ascii-chart',
+		description: 'A multi-level ASCII / block chart for sparklines and time-series data.',
+		componentExample: AsciiChartExample,
+		exampleSource: asciiChartExampleSource,
+		source: asciiChartSource,
+		sourceName: 'ascii-chart.svelte'
 	},
 	{
 		name: 'ASCII Canvas',

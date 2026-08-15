@@ -18,6 +18,13 @@ export { default as Navigation } from './components/navigation.svelte';
 export { default as RadioButtonGroup } from './components/radio-button-group.svelte';
 export { default as TextArea } from './components/text-area.svelte';
 export { default as ASCIICanvas } from './components/ascii-canvas.svelte';
+export { default as Kbd } from './components/kbd.svelte';
+export { default as Spinner } from './components/spinner.svelte';
+export { default as Tabs } from './components/tabs.svelte';
+export { default as AsciiChart } from './components/ascii-chart.svelte';
+export { default as Switch } from './components/switch.svelte';
+export { default as CommandPalette } from './components/command-palette.svelte';
+export { default as Select } from './components/select.svelte';
 export * as Table from './components/table/index.js';
 export * as Dialog from './components/dialog/index.js';
 
@@ -45,6 +52,13 @@ export type {
 	ASCIICanvasRender,
 	ASCIICanvasCell
 } from './components/ascii-canvas.svelte';
+export type { KbdProps } from './components/kbd.svelte';
+export type { SpinnerProps, SpinnerVariant } from './components/spinner.svelte';
+export type { TabsProps, TabItem } from './components/tabs.svelte';
+export type { AsciiChartProps } from './components/ascii-chart.svelte';
+export type { SwitchProps, SwitchVariant } from './components/switch.svelte';
+export type { CommandPaletteProps, CommandItem } from './components/command-palette.svelte';
+export type { SelectProps, SelectItem } from './components/select.svelte';
 export type {
 	TableProps,
 	TableHeaderProps,

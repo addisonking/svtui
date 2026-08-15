@@ -170,6 +170,55 @@
 			"registryDependencies": []
 		},
 		{
+			"name": "kbd",
+			"type": "component",
+			"files": ["src/lib/components/kbd.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "spinner",
+			"type": "component",
+			"files": ["src/lib/components/spinner.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "tabs",
+			"type": "component",
+			"files": ["src/lib/components/tabs.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "ascii-chart",
+			"type": "component",
+			"files": ["src/lib/components/ascii-chart.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "switch",
+			"type": "component",
+			"files": ["src/lib/components/switch.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "command-palette",
+			"type": "component",
+			"files": ["src/lib/components/command-palette.svelte"],
+			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "select",
+			"type": "component",
+			"files": ["src/lib/components/select.svelte"],
+			"npmDependencies": ["bits-ui"],
+			"registryDependencies": []
+		},
+		{
 			"name": "tokens",
 			"type": "init",
 			"files": ["src/app.css", "static/fonts/GeistMono-Regular.woff2"],
