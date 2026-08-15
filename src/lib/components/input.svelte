@@ -5,6 +5,7 @@
 		ref?: HTMLInputElement | null;
 		caret?: string;
 		type?: 'text' | 'password';
+		bordered?: boolean;
 	};
 </script>
 
@@ -13,6 +14,7 @@
 		class: className,
 		ref = $bindable(null),
 		caret = '',
+		bordered = false,
 		value = $bindable(''),
 		type = $bindable('text'),
 		placeholder = $bindable(''),
@@ -68,7 +70,13 @@
 	};
 </script>
 
-<div class={`displayed ${className ?? ''}`} class:focused role="textbox" tabindex="-1">
+<div
+	class={`displayed ${className ?? ''}`}
+	class:focused
+	class:bordered
+	role="textbox"
+	tabindex="-1"
+>
 	{#if !value && !focused && placeholder}
 		<span class="placeholder">{placeholder}</span>
 	{:else}
@@ -95,7 +103,6 @@
 
 <style>
 	.displayed {
-		box-shadow: inset 0 0 0 1px var(--border-default);
 		background: var(--surface-base);
 		color: var(--text-primary);
 		cursor: text;
@@ -112,7 +119,11 @@
 		overflow: hidden;
 	}
 
-	.displayed.focused {
+	.displayed.bordered {
+		box-shadow: inset 0 0 0 1px var(--border-default);
+	}
+
+	.displayed.bordered.focused {
 		box-shadow: inset 0 0 0 2px var(--focus-ring);
 	}
 
