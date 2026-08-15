@@ -52,13 +52,6 @@
 			"registryDependencies": []
 		},
 		{
-			"name": "label",
-			"type": "component",
-			"files": ["src/lib/components/label.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
 			"name": "checkbox",
 			"type": "component",
 			"files": ["src/lib/components/checkbox.svelte"],
@@ -69,41 +62,6 @@
 			"name": "divider",
 			"type": "component",
 			"files": ["src/lib/components/divider.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "row",
-			"type": "component",
-			"files": ["src/lib/components/row.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "row-space-between",
-			"type": "component",
-			"files": ["src/lib/components/row-space-between.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "indent",
-			"type": "component",
-			"files": ["src/lib/components/indent.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "block",
-			"type": "component",
-			"files": ["src/lib/components/block.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "text",
-			"type": "component",
-			"files": ["src/lib/components/text.svelte"],
 			"npmDependencies": [],
 			"registryDependencies": []
 		},
@@ -132,13 +90,6 @@
 			"registryDependencies": []
 		},
 		{
-			"name": "tooltip",
-			"type": "component",
-			"files": ["src/lib/components/tooltip.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
 			"name": "alert-banner",
 			"type": "component",
 			"files": ["src/lib/components/alert-banner.svelte"],
@@ -149,13 +100,6 @@
 			"name": "breadcrumbs",
 			"type": "component",
 			"files": ["src/lib/components/breadcrumbs.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "bar-loader",
-			"type": "component",
-			"files": ["src/lib/components/bar-loader.svelte"],
 			"npmDependencies": [],
 			"registryDependencies": []
 		},
@@ -174,13 +118,6 @@
 			"registryDependencies": []
 		},
 		{
-			"name": "matrix-loader",
-			"type": "component",
-			"files": ["src/lib/components/matrix-loader.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
 			"name": "accordion",
 			"type": "component",
 			"files": ["src/lib/components/accordion.svelte"],
@@ -191,13 +128,6 @@
 			"name": "navigation",
 			"type": "component",
 			"files": ["src/lib/components/navigation.svelte"],
-			"npmDependencies": [],
-			"registryDependencies": []
-		},
-		{
-			"name": "radio-button",
-			"type": "component",
-			"files": ["src/lib/components/radio-button.svelte"],
 			"npmDependencies": [],
 			"registryDependencies": []
 		},
@@ -220,6 +150,23 @@
 			"type": "component",
 			"files": ["src/lib/components/ascii-canvas.svelte"],
 			"npmDependencies": [],
+			"registryDependencies": []
+		},
+		{
+			"name": "dialog",
+			"type": "component",
+			"files": [
+				"src/lib/components/dialog/index.ts",
+				"src/lib/components/dialog/dialog.svelte",
+				"src/lib/components/dialog/dialog-trigger.svelte",
+				"src/lib/components/dialog/dialog-portal.svelte",
+				"src/lib/components/dialog/dialog-overlay.svelte",
+				"src/lib/components/dialog/dialog-content.svelte",
+				"src/lib/components/dialog/dialog-title.svelte",
+				"src/lib/components/dialog/dialog-description.svelte",
+				"src/lib/components/dialog/dialog-close.svelte"
+			],
+			"npmDependencies": ["bits-ui"],
 			"registryDependencies": []
 		},
 		{

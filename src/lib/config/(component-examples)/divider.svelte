@@ -1,13 +1,12 @@
 <script lang="ts">
 	import Divider from '$lib/components/divider.svelte';
-	import Text from '$lib/components/text.svelte';
 </script>
 
 <div class="flex flex-col gap-2">
-	<Text>DEFAULT</Text>
+	<p>DEFAULT</p>
 	<Divider />
-	<Text>DOUBLE</Text>
+	<p>DOUBLE</p>
 	<Divider type="DOUBLE" />
-	<Text>GRADIENT</Text>
+	<p>GRADIENT</p>
 	<Divider type="GRADIENT" />
 </div>

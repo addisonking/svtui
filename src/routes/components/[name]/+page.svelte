@@ -6,15 +6,27 @@
 	const doc = $derived(data.doc);
 	const Example = $derived(doc.componentExample);
 
-	let copied = $state(false);
+	let copiedSource = $state(false);
+	let copiedProps = $state(false);
 
 	async function copySource() {
 		try {
 			await navigator.clipboard.writeText(doc.source);
-			copied = true;
-			setTimeout(() => (copied = false), 1500);
+			copiedSource = true;
+			setTimeout(() => (copiedSource = false), 1500);
 		} catch {
-			copied = false;
+			copiedSource = false;
+		}
+	}
+
+	async function copyProps() {
+		if (!doc.propsType) return;
+		try {
+			await navigator.clipboard.writeText(doc.propsType);
+			copiedProps = true;
+			setTimeout(() => (copiedProps = false), 1500);
+		} catch {
+			copiedProps = false;
 		}
 	}
 </script>
@@ -51,19 +63,20 @@
 
 	<!-- COMPONENT: the raw, copy-pasteable source plus its props type. -->
 	<section class="component">
-		<h2 class="section-title">Component</h2>
-
 		{#if doc.propsType}
-			<div class="flex flex-col gap-2">
-				<span class="sub-label">Props</span>
+			<div class="code-section">
+				<div class="flex items-center justify-between">
+					<span class="sub-label">Props</span>
+					<button class="copy" onclick={copyProps}>{copiedProps ? 'COPIED' : 'COPY'}</button>
+				</div>
 				<CodeBlock code={doc.propsType} />
 			</div>
 		{/if}
 
-		<div class="flex flex-col gap-2">
+		<div class="code-section" class:mt-line={doc.propsType}>
 			<div class="flex items-center justify-between">
 				<span class="sub-label">{doc.sourceName}</span>
-				<button class="copy" onclick={copySource}>{copied ? 'COPIED' : 'COPY'}</button>
+				<button class="copy" onclick={copySource}>{copiedSource ? 'COPIED' : 'COPY'}</button>
 			</div>
 			<CodeBlock code={doc.source} />
 		</div>
@@ -73,7 +86,8 @@
 <style>
 	.section-title {
 		text-transform: uppercase;
-		font-size: 0.75rem;
+		font-size: var(--font-size);
+		line-height: var(--line);
 		letter-spacing: 0.1em;
 		opacity: 0.7;
 		margin-bottom: var(--line);
@@ -81,7 +95,8 @@
 
 	.sub-label {
 		text-transform: uppercase;
-		font-size: 0.75rem;
+		font-size: var(--font-size);
+		line-height: var(--line);
 		opacity: 0.7;
 	}
 
@@ -95,6 +110,16 @@
 
 	.component {
 		box-shadow: inset 0 1px 0 0 var(--border-default);
+		padding-top: var(--line);
+	}
+
+	.code-section {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.mt-line {
+		margin-top: var(--line);
 	}
 
 	.copy {

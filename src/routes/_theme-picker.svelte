@@ -115,6 +115,8 @@
 		padding: 0 1ch 0 4ch;
 		text-transform: uppercase;
 		opacity: 0.5;
-		font-size: 0.75rem;
+		font-size: var(--font-size);
+		line-height: var(--line);
+		letter-spacing: 0.1em;
 	}
 </style>

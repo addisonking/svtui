@@ -1,21 +1,20 @@
 <script lang="ts">
-	import Label from '$lib/components/label.svelte';
 	import Input from '$lib/components/input.svelte';
 </script>
 
-<div class="flex flex-col">
-	<Label for="input-empty">EMPTY CASE</Label>
+<div class="flex flex-col gap-2">
+	<label for="input-empty">EMPTY CASE</label>
 	<Input id="input-empty" />
 
-	<Label for="input-placeholder">PLACEHOLDER</Label>
+	<label for="input-placeholder">PLACEHOLDER</label>
 	<Input id="input-placeholder" placeholder="Enter your text here..." />
 
-	<Label for="input-value">VALUE</Label>
+	<label for="input-value">VALUE</label>
 	<Input id="input-value" value="Sample Text" />
 
-	<Label for="input-password">PASSWORD</Label>
+	<label for="input-password">PASSWORD</label>
 	<Input id="input-password" type="password" />
 
-	<Label for="input-caret">CUSTOM CARET</Label>
+	<label for="input-caret">CUSTOM CARET</label>
 	<Input id="input-caret" caret="$" />
 </div>

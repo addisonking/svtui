@@ -3,63 +3,47 @@ import { type Component } from 'svelte';
 import {
 	ButtonExample,
 	ActionButtonExample,
-	LabelInputExample,
-	BadgeExample,
-	CodeBlockExample,
 	ActionListExample,
+	InputExample,
+	TextAreaExample,
+	CheckboxExample,
+	RadioButtonGroupExample,
+	BadgeExample,
+	AlertBannerExample,
 	CardExample,
 	TableExample,
-	CheckboxExample,
-	DividerExample,
-	RowExample,
-	RowSpaceBetweenExample,
-	IndentExample,
-	BlockExample,
-	TextExample,
-	AvatarExample,
-	TooltipExample,
-	AlertBannerExample,
+	DialogExample,
+	AccordionExample,
 	BreadCrumbsExample,
-	BarLoaderExample,
+	NavigationExample,
+	DividerExample,
+	CodeBlockExample,
+	AvatarExample,
 	BarProgressExample,
 	BlockLoaderExample,
-	MatrixLoaderExample,
-	AccordionExample,
-	NavigationExample,
-	RadioButtonExample,
-	RadioButtonGroupExample,
-	TextAreaExample,
 	ASCIICanvasExample
 } from './(component-examples)';
 
 import buttonSource from '$lib/components/button.svelte?raw';
 import actionButtonSource from '$lib/components/action-button.svelte?raw';
 import actionListSource from '$lib/components/action-list.svelte?raw';
-import badgeSource from '$lib/components/badge.svelte?raw';
-import cardSource from '$lib/components/card.svelte?raw';
-import codeBlockSource from '$lib/components/code-block.svelte?raw';
 import inputSource from '$lib/components/input.svelte?raw';
+import textAreaSource from '$lib/components/text-area.svelte?raw';
 import checkboxSource from '$lib/components/checkbox.svelte?raw';
-import tableSource from '$lib/components/table/table.svelte?raw';
-import dividerSource from '$lib/components/divider.svelte?raw';
-import rowSource from '$lib/components/row.svelte?raw';
-import rowSpaceBetweenSource from '$lib/components/row-space-between.svelte?raw';
-import indentSource from '$lib/components/indent.svelte?raw';
-import blockSource from '$lib/components/block.svelte?raw';
-import textSource from '$lib/components/text.svelte?raw';
-import avatarSource from '$lib/components/avatar.svelte?raw';
-import tooltipSource from '$lib/components/tooltip.svelte?raw';
+import radioButtonGroupSource from '$lib/components/radio-button-group.svelte?raw';
+import badgeSource from '$lib/components/badge.svelte?raw';
 import alertBannerSource from '$lib/components/alert-banner.svelte?raw';
+import cardSource from '$lib/components/card.svelte?raw';
+import tableSource from '$lib/components/table/table.svelte?raw';
+import dialogSource from '$lib/components/dialog/dialog.svelte?raw';
+import accordionSource from '$lib/components/accordion.svelte?raw';
 import breadcrumbsSource from '$lib/components/breadcrumbs.svelte?raw';
-import barLoaderSource from '$lib/components/bar-loader.svelte?raw';
+import navigationSource from '$lib/components/navigation.svelte?raw';
+import dividerSource from '$lib/components/divider.svelte?raw';
+import codeBlockSource from '$lib/components/code-block.svelte?raw';
+import avatarSource from '$lib/components/avatar.svelte?raw';
 import barProgressSource from '$lib/components/bar-progress.svelte?raw';
 import blockLoaderSource from '$lib/components/block-loader.svelte?raw';
-import matrixLoaderSource from '$lib/components/matrix-loader.svelte?raw';
-import accordionSource from '$lib/components/accordion.svelte?raw';
-import navigationSource from '$lib/components/navigation.svelte?raw';
-import radioButtonSource from '$lib/components/radio-button.svelte?raw';
-import radioButtonGroupSource from '$lib/components/radio-button-group.svelte?raw';
-import textAreaSource from '$lib/components/text-area.svelte?raw';
 import asciiCanvasSource from '$lib/components/ascii-canvas.svelte?raw';
 
 export type Doc = {
@@ -91,13 +75,44 @@ export const docs: Doc[] = [
 		sourceName: 'action-button.svelte'
 	},
 	{
-		name: 'Input/Label',
+		name: 'Action List',
+		slug: 'action-list',
+		description: 'Action lists present a list of actions or options to the user.',
+		componentExample: ActionListExample,
+		source: actionListSource,
+		sourceName: 'action-list.svelte'
+	},
+	{
+		name: 'Input',
 		slug: 'input',
-		description:
-			'Input fields for user text input, specifically. Labels describe the input fields.',
-		componentExample: LabelInputExample,
+		description: 'A styled monospace text input field with custom caret display.',
+		componentExample: InputExample,
 		source: inputSource,
 		sourceName: 'input.svelte'
+	},
+	{
+		name: 'Text Area',
+		slug: 'text-area',
+		description: 'A themed auto-growing textarea with a fake-caret display.',
+		componentExample: TextAreaExample,
+		source: textAreaSource,
+		sourceName: 'text-area.svelte'
+	},
+	{
+		name: 'Checkbox',
+		slug: 'checkbox',
+		description: 'Checkboxes allow users to select one or more options from a set.',
+		componentExample: CheckboxExample,
+		source: checkboxSource,
+		sourceName: 'checkbox.svelte'
+	},
+	{
+		name: 'Radio Button Group',
+		slug: 'radio-button-group',
+		description: 'A self-contained group of radio options with selection state.',
+		componentExample: RadioButtonGroupExample,
+		source: radioButtonGroupSource,
+		sourceName: 'radio-button-group.svelte'
 	},
 	{
 		name: 'Badge',
@@ -108,20 +123,12 @@ export const docs: Doc[] = [
 		sourceName: 'badge.svelte'
 	},
 	{
-		name: 'Code Block',
-		slug: 'code-block',
-		description: 'Code blocks are used to display code snippets in a formatted manner.',
-		componentExample: CodeBlockExample,
-		source: codeBlockSource,
-		sourceName: 'code-block.svelte'
-	},
-	{
-		name: 'Action List',
-		slug: 'action-list',
-		description: 'Action lists present a list of actions or options to the user.',
-		componentExample: ActionListExample,
-		source: actionListSource,
-		sourceName: 'action-list.svelte'
+		name: 'Alert Banner',
+		slug: 'alert-banner',
+		description: 'A flat banner with a drop-shadow corner for inline notices.',
+		componentExample: AlertBannerExample,
+		source: alertBannerSource,
+		sourceName: 'alert-banner.svelte'
 	},
 	{
 		name: 'Card',
@@ -141,84 +148,20 @@ export const docs: Doc[] = [
 		sourceName: 'table.svelte'
 	},
 	{
-		name: 'Checkbox',
-		slug: 'checkbox',
-		description: 'Checkboxes allow users to select one or more options from a set.',
-		componentExample: CheckboxExample,
-		source: checkboxSource,
-		sourceName: 'checkbox.svelte'
+		name: 'Dialog',
+		slug: 'dialog',
+		description: 'A modal dialog built on bits-ui with accessible focus management and backdrop.',
+		componentExample: DialogExample,
+		source: dialogSource,
+		sourceName: 'dialog.svelte'
 	},
 	{
-		name: 'Divider',
-		slug: 'divider',
-		description: 'Horizontal rules in DEFAULT, DOUBLE, and GRADIENT variants.',
-		componentExample: DividerExample,
-		source: dividerSource,
-		sourceName: 'divider.svelte'
-	},
-	{
-		name: 'Row',
-		slug: 'row',
-		description: 'A block-level row that highlights on focus.',
-		componentExample: RowExample,
-		source: rowSource,
-		sourceName: 'row.svelte'
-	},
-	{
-		name: 'Row Space Between',
-		slug: 'row-space-between',
-		description: 'A flex row that pushes its children to opposite edges.',
-		componentExample: RowSpaceBetweenExample,
-		source: rowSpaceBetweenSource,
-		sourceName: 'row-space-between.svelte'
-	},
-	{
-		name: 'Indent',
-		slug: 'indent',
-		description: 'A left-padded block (1ch) for visually nesting content.',
-		componentExample: IndentExample,
-		source: indentSource,
-		sourceName: 'indent.svelte'
-	},
-	{
-		name: 'Block',
-		slug: 'block',
-		description: 'A 1ch inline block, used as a textual spacer or marker.',
-		componentExample: BlockExample,
-		source: blockSource,
-		sourceName: 'block.svelte'
-	},
-	{
-		name: 'Text',
-		slug: 'text',
-		description: 'A paragraph that wraps long lines and preserves whitespace.',
-		componentExample: TextExample,
-		source: textSource,
-		sourceName: 'text.svelte'
-	},
-	{
-		name: 'Avatar',
-		slug: 'avatar',
-		description: 'A square avatar tile with an image or placeholder, optionally a link.',
-		componentExample: AvatarExample,
-		source: avatarSource,
-		sourceName: 'avatar.svelte'
-	},
-	{
-		name: 'Tooltip',
-		slug: 'tooltip',
-		description: 'A small styled callout block, sized for short notes.',
-		componentExample: TooltipExample,
-		source: tooltipSource,
-		sourceName: 'tooltip.svelte'
-	},
-	{
-		name: 'Alert Banner',
-		slug: 'alert-banner',
-		description: 'A flat banner with a drop-shadow corner for inline notices.',
-		componentExample: AlertBannerExample,
-		source: alertBannerSource,
-		sourceName: 'alert-banner.svelte'
+		name: 'Accordion',
+		slug: 'accordion',
+		description: 'A collapsible row that toggles an indented content section.',
+		componentExample: AccordionExample,
+		source: accordionSource,
+		sourceName: 'accordion.svelte'
 	},
 	{
 		name: 'Breadcrumbs',
@@ -229,12 +172,36 @@ export const docs: Doc[] = [
 		sourceName: 'breadcrumbs.svelte'
 	},
 	{
-		name: 'Bar Loader',
-		slug: 'bar-loader',
-		description: 'A gradient bar that fills, determinate or auto-advancing.',
-		componentExample: BarLoaderExample,
-		source: barLoaderSource,
-		sourceName: 'bar-loader.svelte'
+		name: 'Navigation',
+		slug: 'navigation',
+		description: 'A top nav bar with logo and left, center, right slots.',
+		componentExample: NavigationExample,
+		source: navigationSource,
+		sourceName: 'navigation.svelte'
+	},
+	{
+		name: 'Divider',
+		slug: 'divider',
+		description: 'Horizontal rules in DEFAULT, DOUBLE, and GRADIENT variants.',
+		componentExample: DividerExample,
+		source: dividerSource,
+		sourceName: 'divider.svelte'
+	},
+	{
+		name: 'Code Block',
+		slug: 'code-block',
+		description: 'Code blocks are used to display code snippets in a formatted manner.',
+		componentExample: CodeBlockExample,
+		source: codeBlockSource,
+		sourceName: 'code-block.svelte'
+	},
+	{
+		name: 'Avatar',
+		slug: 'avatar',
+		description: 'A square avatar tile with an image or placeholder, optionally a link.',
+		componentExample: AvatarExample,
+		source: avatarSource,
+		sourceName: 'avatar.svelte'
 	},
 	{
 		name: 'Bar Progress',
@@ -251,54 +218,6 @@ export const docs: Doc[] = [
 		componentExample: BlockLoaderExample,
 		source: blockLoaderSource,
 		sourceName: 'block-loader.svelte'
-	},
-	{
-		name: 'Matrix Loader',
-		slug: 'matrix-loader',
-		description: 'A matrix-rain loader streaming fading random glyphs.',
-		componentExample: MatrixLoaderExample,
-		source: matrixLoaderSource,
-		sourceName: 'matrix-loader.svelte'
-	},
-	{
-		name: 'Accordion',
-		slug: 'accordion',
-		description: 'A collapsible row that toggles an indented content section.',
-		componentExample: AccordionExample,
-		source: accordionSource,
-		sourceName: 'accordion.svelte'
-	},
-	{
-		name: 'Navigation',
-		slug: 'navigation',
-		description: 'A top nav bar with logo and left, center, right slots.',
-		componentExample: NavigationExample,
-		source: navigationSource,
-		sourceName: 'navigation.svelte'
-	},
-	{
-		name: 'Radio Button',
-		slug: 'radio-button',
-		description: 'A single terminal-style radio option for use in a group.',
-		componentExample: RadioButtonExample,
-		source: radioButtonSource,
-		sourceName: 'radio-button.svelte'
-	},
-	{
-		name: 'Radio Button Group',
-		slug: 'radio-button-group',
-		description: 'A self-contained group of radio options with selection state.',
-		componentExample: RadioButtonGroupExample,
-		source: radioButtonGroupSource,
-		sourceName: 'radio-button-group.svelte'
-	},
-	{
-		name: 'Text Area',
-		slug: 'text-area',
-		description: 'A themed auto-growing textarea with a fake-caret display.',
-		componentExample: TextAreaExample,
-		source: textAreaSource,
-		sourceName: 'text-area.svelte'
 	},
 	{
 		name: 'ASCII Canvas',
