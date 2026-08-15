@@ -1,7 +1,6 @@
 <script lang="ts" module>
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
-	// `type` is narrowed: the caret overlay only renders sensibly for text-like input.
 	export type InputProps = Omit<HTMLInputAttributes, 'type'> & {
 		ref?: HTMLInputElement | null;
 		caret?: string;
@@ -18,6 +17,7 @@
 		type = $bindable('text'),
 		placeholder = $bindable(''),
 		disabled = $bindable(false),
+		onkeydown,
 		...restProps
 	}: InputProps = $props();
 
@@ -27,66 +27,54 @@
 	const fallbackId = `input-${Math.random().toString(36).substring(2, 15)}`;
 	const inputId = $derived(restProps.id ?? fallbackId);
 
-	let beforeCaret = $state('');
-	let afterCaret = $state('');
-
 	let inputEl: HTMLInputElement;
 
-	const updateCaret = () => {
-		const displayValue = type === 'password' ? '•'.repeat(value?.length ?? 0) : (value ?? '');
-		beforeCaret = displayValue.slice(0, selectionStart);
-		afterCaret = displayValue.slice(selectionStart);
-	};
+	$effect(() => {
+		ref = inputEl;
+	});
+
+	const displayStr = $derived.by(() => {
+		const str = String(value ?? '');
+		return type === 'password' ? '•'.repeat(str.length) : str;
+	});
+
+	const beforeCaret = $derived(displayStr.slice(0, selectionStart));
+	const caretChar = $derived(caret || (displayStr[selectionStart] ?? ' '));
+	const afterCaret = $derived(
+		displayStr.length > selectionStart ? displayStr.slice(selectionStart + 1) : ''
+	);
 
 	const onInput = (e: Event) => {
 		const input = e.target as HTMLInputElement;
 		value = input.value;
-		selectionStart = input.selectionStart ?? 0;
-		updateCaret();
+		selectionStart = input.selectionStart ?? input.value.length;
 	};
 
 	const onSelectionChange = () => {
-		if (inputEl.selectionStart === inputEl.selectionEnd) {
-			selectionStart = inputEl.selectionStart ?? 0;
-			updateCaret();
+		if (inputEl && inputEl.selectionStart !== null) {
+			selectionStart = inputEl.selectionStart;
 		}
 	};
 
 	const onFocus = () => {
 		focused = true;
-		inputEl?.focus();
+		if (inputEl && inputEl.selectionStart !== null) {
+			selectionStart = inputEl.selectionStart;
+		}
 	};
 
 	const onBlur = () => {
 		focused = false;
 	};
-
-	// Repaint the caret overlay whenever the value or selection moves.
-	$effect(updateCaret);
 </script>
 
-<div
-	class={`displayed ${className ?? ''}`}
-	onfocus={onFocus}
-	onblur={onBlur}
-	onclick={() => inputEl?.focus()}
-	onkeydown={(e) => e.key === 'Enter' && inputEl?.focus()}
-	role="textbox"
-	tabindex="0"
->
+<div class={`displayed ${className ?? ''}`} class:focused role="textbox" tabindex="-1">
 	{#if !value && !focused && placeholder}
 		<span class="placeholder">{placeholder}</span>
 	{:else}
-		{beforeCaret}
-		{#if !disabled}
-			<span
-				class="caret {focused ? 'blink' : ''}"
-				style="background-color: {focused
-					? 'color-mix(in srgb, var(--text-primary) 90%, var(--surface-base) 10%)'
-					: 'var(--text-primary)'}">{caret || ' '}</span
-			>
-		{/if}
-		{afterCaret}
+		<span class="text-slice">{beforeCaret}</span>{#if !disabled}<span
+				class="caret {focused ? 'blink' : ''}">{caretChar}</span
+			>{/if}<span class="text-slice">{afterCaret}</span>
 	{/if}
 
 	<input
@@ -94,30 +82,38 @@
 		bind:this={inputEl}
 		{type}
 		bind:value
-		style="position: absolute; opacity: 0; height: 0; width: 0"
+		class="native-input"
 		oninput={onInput}
 		onfocus={onFocus}
 		onblur={onBlur}
 		onselectionchange={onSelectionChange}
+		{onkeydown}
 		{disabled}
 		{...restProps}
 	/>
 </div>
 
 <style>
-	.label {
-		background: var(--border-default);
-		display: block;
-	}
-
 	.displayed {
-		box-shadow: inset 0 0 0 2px var(--border-default);
-		background: var(--border-muted);
+		box-shadow: inset 0 0 0 1px var(--border-default);
+		background: var(--surface-base);
 		color: var(--text-primary);
 		cursor: text;
 		white-space: pre;
 		position: relative;
-		display: block;
+		display: flex;
+		align-items: center;
+		padding: 0 1ch;
+		height: var(--line);
+		font-family: var(--font-family-mono);
+		font-size: var(--font-size);
+		line-height: var(--line);
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+
+	.displayed.focused {
+		box-shadow: inset 0 0 0 2px var(--focus-ring);
 	}
 
 	.placeholder {
@@ -127,18 +123,47 @@
 		user-select: none;
 	}
 
+	.text-slice {
+		pointer-events: none;
+		user-select: none;
+	}
+
 	.caret {
 		display: inline-block;
 		background: var(--text-primary);
 		color: var(--surface-base);
 		min-width: 1ch;
-		margin-left: -1ch;
-		margin-right: -1ch;
-		vertical-align: bottom;
+		vertical-align: middle;
+		pointer-events: none;
+		user-select: none;
 	}
 
 	.caret.blink {
 		animation: blink 1s step-start infinite;
+	}
+
+	.focused .caret {
+		background: var(--focus-ring);
+		color: var(--surface-base);
+	}
+
+	.native-input {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: text;
+		margin: 0;
+		padding: 0 1ch;
+		border: 0;
+		outline: 0;
+		background: transparent;
+		color: transparent;
+		caret-color: transparent;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
 	}
 
 	@keyframes blink {
