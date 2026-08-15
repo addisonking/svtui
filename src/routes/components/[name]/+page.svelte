@@ -7,7 +7,7 @@
 	const Example = $derived(doc.componentExample);
 
 	let copiedSource = $state(false);
-	let copiedProps = $state(false);
+	let copiedExample = $state(false);
 
 	async function copySource() {
 		try {
@@ -19,14 +19,14 @@
 		}
 	}
 
-	async function copyProps() {
-		if (!doc.propsType) return;
+	async function copyExample() {
+		if (!doc.exampleSource) return;
 		try {
-			await navigator.clipboard.writeText(doc.propsType);
-			copiedProps = true;
-			setTimeout(() => (copiedProps = false), 1500);
+			await navigator.clipboard.writeText(doc.exampleSource);
+			copiedExample = true;
+			setTimeout(() => (copiedExample = false), 1500);
 		} catch {
-			copiedProps = false;
+			copiedExample = false;
 		}
 	}
 </script>
@@ -61,19 +61,19 @@
 		</svelte:boundary>
 	</section>
 
-	<!-- COMPONENT: the raw, copy-pasteable source plus its props type. -->
+	<!-- COMPONENT: the usage example plus raw, copy-pasteable component source. -->
 	<section class="component">
-		{#if doc.propsType}
+		{#if doc.exampleSource}
 			<div class="code-section">
 				<div class="flex items-center justify-between">
-					<span class="sub-label">Props</span>
-					<button class="copy" onclick={copyProps}>{copiedProps ? 'COPIED' : 'COPY'}</button>
+					<span class="sub-label">Usage</span>
+					<button class="copy" onclick={copyExample}>{copiedExample ? 'COPIED' : 'COPY'}</button>
 				</div>
-				<CodeBlock code={doc.propsType} />
+				<CodeBlock code={doc.exampleSource} />
 			</div>
 		{/if}
 
-		<div class="code-section" class:mt-line={doc.propsType}>
+		<div class="code-section" class:mt-line={doc.exampleSource}>
 			<div class="flex items-center justify-between">
 				<span class="sub-label">{doc.sourceName}</span>
 				<button class="copy" onclick={copySource}>{copiedSource ? 'COPIED' : 'COPY'}</button>

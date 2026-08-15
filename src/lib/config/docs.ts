@@ -46,14 +46,36 @@ import barProgressSource from '$lib/components/bar-progress.svelte?raw';
 import blockLoaderSource from '$lib/components/block-loader.svelte?raw';
 import asciiCanvasSource from '$lib/components/ascii-canvas.svelte?raw';
 
+import buttonExampleSource from './(component-examples)/button.svelte?raw';
+import actionButtonExampleSource from './(component-examples)/action-button.svelte?raw';
+import actionListExampleSource from './(component-examples)/action-list.svelte?raw';
+import inputExampleSource from './(component-examples)/input.svelte?raw';
+import textAreaExampleSource from './(component-examples)/text-area.svelte?raw';
+import checkboxExampleSource from './(component-examples)/checkbox.svelte?raw';
+import radioButtonGroupExampleSource from './(component-examples)/radio-button-group.svelte?raw';
+import badgeExampleSource from './(component-examples)/badge.svelte?raw';
+import alertBannerExampleSource from './(component-examples)/alert-banner.svelte?raw';
+import cardExampleSource from './(component-examples)/card.svelte?raw';
+import tableExampleSource from './(component-examples)/table.svelte?raw';
+import dialogExampleSource from './(component-examples)/dialog.svelte?raw';
+import accordionExampleSource from './(component-examples)/accordion.svelte?raw';
+import breadcrumbsExampleSource from './(component-examples)/breadcrumbs.svelte?raw';
+import navigationExampleSource from './(component-examples)/navigation.svelte?raw';
+import dividerExampleSource from './(component-examples)/divider.svelte?raw';
+import codeBlockExampleSource from './(component-examples)/code-block.svelte?raw';
+import avatarExampleSource from './(component-examples)/avatar.svelte?raw';
+import barProgressExampleSource from './(component-examples)/bar-progress.svelte?raw';
+import blockLoaderExampleSource from './(component-examples)/block-loader.svelte?raw';
+import asciiCanvasExampleSource from './(component-examples)/ascii-canvas.svelte?raw';
+
 export type Doc = {
 	name: string;
 	slug: string;
 	description: string;
 	componentExample: Component;
+	exampleSource: string;
 	source: string;
 	sourceName: string;
-	propsType?: string;
 };
 
 export const docs: Doc[] = [
@@ -62,6 +84,7 @@ export const docs: Doc[] = [
 		slug: 'button',
 		description: 'Buttons that should be used primarily for actions that require attention.',
 		componentExample: ButtonExample,
+		exampleSource: buttonExampleSource,
 		source: buttonSource,
 		sourceName: 'button.svelte'
 	},
@@ -71,6 +94,7 @@ export const docs: Doc[] = [
 		description:
 			'Buttons that represent actions, typically used for navigation or important tasks.',
 		componentExample: ActionButtonExample,
+		exampleSource: actionButtonExampleSource,
 		source: actionButtonSource,
 		sourceName: 'action-button.svelte'
 	},
@@ -79,6 +103,7 @@ export const docs: Doc[] = [
 		slug: 'action-list',
 		description: 'Action lists present a list of actions or options to the user.',
 		componentExample: ActionListExample,
+		exampleSource: actionListExampleSource,
 		source: actionListSource,
 		sourceName: 'action-list.svelte'
 	},
@@ -87,6 +112,7 @@ export const docs: Doc[] = [
 		slug: 'input',
 		description: 'A styled monospace text input field with custom caret display.',
 		componentExample: InputExample,
+		exampleSource: inputExampleSource,
 		source: inputSource,
 		sourceName: 'input.svelte'
 	},
@@ -95,6 +121,7 @@ export const docs: Doc[] = [
 		slug: 'text-area',
 		description: 'A themed auto-growing textarea with a fake-caret display.',
 		componentExample: TextAreaExample,
+		exampleSource: textAreaExampleSource,
 		source: textAreaSource,
 		sourceName: 'text-area.svelte'
 	},
@@ -103,6 +130,7 @@ export const docs: Doc[] = [
 		slug: 'checkbox',
 		description: 'Checkboxes allow users to select one or more options from a set.',
 		componentExample: CheckboxExample,
+		exampleSource: checkboxExampleSource,
 		source: checkboxSource,
 		sourceName: 'checkbox.svelte'
 	},
@@ -111,6 +139,7 @@ export const docs: Doc[] = [
 		slug: 'radio-button-group',
 		description: 'A self-contained group of radio options with selection state.',
 		componentExample: RadioButtonGroupExample,
+		exampleSource: radioButtonGroupExampleSource,
 		source: radioButtonGroupSource,
 		sourceName: 'radio-button-group.svelte'
 	},
@@ -119,6 +148,7 @@ export const docs: Doc[] = [
 		slug: 'badge',
 		description: 'Small, inline elements used to display status, counts, or labels.',
 		componentExample: BadgeExample,
+		exampleSource: badgeExampleSource,
 		source: badgeSource,
 		sourceName: 'badge.svelte'
 	},
@@ -127,6 +157,7 @@ export const docs: Doc[] = [
 		slug: 'alert-banner',
 		description: 'A flat banner with a drop-shadow corner for inline notices.',
 		componentExample: AlertBannerExample,
+		exampleSource: alertBannerExampleSource,
 		source: alertBannerSource,
 		sourceName: 'alert-banner.svelte'
 	},
@@ -135,6 +166,7 @@ export const docs: Doc[] = [
 		slug: 'card',
 		description: 'Container components used to group related content with optional titles.',
 		componentExample: CardExample,
+		exampleSource: cardExampleSource,
 		source: cardSource,
 		sourceName: 'card.svelte'
 	},
@@ -144,6 +176,7 @@ export const docs: Doc[] = [
 		description:
 			'Tables display data in rows and columns with optional reactive cell highlighting.',
 		componentExample: TableExample,
+		exampleSource: tableExampleSource,
 		source: tableSource,
 		sourceName: 'table.svelte'
 	},
@@ -152,6 +185,7 @@ export const docs: Doc[] = [
 		slug: 'dialog',
 		description: 'A modal dialog built on bits-ui with accessible focus management and backdrop.',
 		componentExample: DialogExample,
+		exampleSource: dialogExampleSource,
 		source: dialogSource,
 		sourceName: 'dialog.svelte'
 	},
@@ -160,6 +194,7 @@ export const docs: Doc[] = [
 		slug: 'accordion',
 		description: 'A collapsible row that toggles an indented content section.',
 		componentExample: AccordionExample,
+		exampleSource: accordionExampleSource,
 		source: accordionSource,
 		sourceName: 'accordion.svelte'
 	},
@@ -168,6 +203,7 @@ export const docs: Doc[] = [
 		slug: 'breadcrumbs',
 		description: 'A breadcrumb trail of named links separated by a chevron.',
 		componentExample: BreadCrumbsExample,
+		exampleSource: breadcrumbsExampleSource,
 		source: breadcrumbsSource,
 		sourceName: 'breadcrumbs.svelte'
 	},
@@ -176,6 +212,7 @@ export const docs: Doc[] = [
 		slug: 'navigation',
 		description: 'A top nav bar with logo and left, center, right slots.',
 		componentExample: NavigationExample,
+		exampleSource: navigationExampleSource,
 		source: navigationSource,
 		sourceName: 'navigation.svelte'
 	},
@@ -184,6 +221,7 @@ export const docs: Doc[] = [
 		slug: 'divider',
 		description: 'Horizontal rules in DEFAULT, DOUBLE, and GRADIENT variants.',
 		componentExample: DividerExample,
+		exampleSource: dividerExampleSource,
 		source: dividerSource,
 		sourceName: 'divider.svelte'
 	},
@@ -192,6 +230,7 @@ export const docs: Doc[] = [
 		slug: 'code-block',
 		description: 'Code blocks are used to display code snippets in a formatted manner.',
 		componentExample: CodeBlockExample,
+		exampleSource: codeBlockExampleSource,
 		source: codeBlockSource,
 		sourceName: 'code-block.svelte'
 	},
@@ -200,6 +239,7 @@ export const docs: Doc[] = [
 		slug: 'avatar',
 		description: 'A square avatar tile with an image or placeholder, optionally a link.',
 		componentExample: AvatarExample,
+		exampleSource: avatarExampleSource,
 		source: avatarSource,
 		sourceName: 'avatar.svelte'
 	},
@@ -208,6 +248,7 @@ export const docs: Doc[] = [
 		slug: 'bar-progress',
 		description: 'A character-based progress bar that fills with a glyph.',
 		componentExample: BarProgressExample,
+		exampleSource: barProgressExampleSource,
 		source: barProgressSource,
 		sourceName: 'bar-progress.svelte'
 	},
@@ -216,6 +257,7 @@ export const docs: Doc[] = [
 		slug: 'block-loader',
 		description: 'A spinning braille or block glyph loader.',
 		componentExample: BlockLoaderExample,
+		exampleSource: blockLoaderExampleSource,
 		source: blockLoaderSource,
 		sourceName: 'block-loader.svelte'
 	},
@@ -224,20 +266,10 @@ export const docs: Doc[] = [
 		slug: 'ascii-canvas',
 		description: 'A per-cell ASCII canvas that runs a rAF painter and diffs cells.',
 		componentExample: ASCIICanvasExample,
+		exampleSource: asciiCanvasExampleSource,
 		source: asciiCanvasSource,
 		sourceName: 'ascii-canvas.svelte'
 	}
 ];
-
-// Extract the `export type *Props = …` block from a component's raw source.
-// Keeps the props spec in sync with the source — no second hand-maintained copy.
-// Terminates at the closing `</script>` so it handles both object-shape props
-// (ending `};`) and discriminated-union props (ending `});`).
-function extractPropsType(source: string): string {
-	const m = source.match(/export type \w+Props\s*=\s*[\s\S]*?\n<\/script>/);
-	return m ? m[0].replace(/\n<\/script>$/, '') : '';
-}
-
-for (const d of docs) d.propsType = extractPropsType(d.source);
 
 export const docsBySlug = Object.fromEntries(docs.map((d) => [d.slug, d]));

@@ -86,7 +86,5 @@ All generated from `docs.ts` / `registry.json` — never hand-maintain a second 
 - `/llms.txt` — short markdown index (what exists + where to read it).
 - `/llms-full.txt` — all component sources concatenated into one fetchable file.
 - `/registry.json` — the manifest as JSON (same shape the CLI ships).
-- Each `/components/<slug>` page shows the live example, the extracted `*Props` type block (regex-pulled from raw source in `docs.ts` `extractPropsType`), and the full source with a copy button.
+- Each `/components/<slug>` page shows the live demo, the usage example code block, and the full component source with copy buttons.
 - `AGENTS.md` (this file) — the working manual for any agent dropped into the repo.
-
-`extractPropsType` in `docs.ts` pulls `export type *Props = …};` from the raw source. If a future component uses a props shape the regex misses, tighten the regex — don't hand-add the props block.
