@@ -22,8 +22,8 @@ Run `svtui init` first — components read CSS variables it defines.
 --force       overwrite existing files
 ```
 
-When a component needs an npm dependency (e.g. `action-button`, `input` use
-`runed`), `add` prints the install command for your detected package manager.
+When a component needs an npm dependency (e.g. `dialog`, `select` use
+`bits-ui`), `add` prints the install command for your detected package manager.
 
 ## Philosophy
 

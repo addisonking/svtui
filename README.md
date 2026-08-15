@@ -21,8 +21,7 @@ npx svtui add table       # multi-file components land in their own subfolder
 Run `init` first. The components read the CSS variables it defines.
 
 If a component ever needs an npm dependency, `add` prints the install command
-for whichever package manager it finds in your project. None of the current
-components do.
+for whichever package manager it finds in your project (e.g. `dialog` and `select` use `bits-ui`).
 
 ### Flags
 

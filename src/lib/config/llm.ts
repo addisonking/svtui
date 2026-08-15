@@ -20,15 +20,20 @@ export function llmsTxt(): string {
 	];
 	for (const d of docs) {
 		lines.push(`- ${d.name} (\`svtui add ${d.slug}\`): ${d.description}`);
-		lines.push(`  source: https://svtui.dev/components/${d.slug}`);
+		lines.push(`  source: https://svtui.addisonking.com/components/${d.slug}`);
 	}
 	lines.push(
 		``,
 		`## Full source`,
 		``,
-		`All component sources concatenated: https://svtui.dev/llms-full.txt`
+		`All component sources concatenated: https://svtui.addisonking.com/llms-full.txt`
 	);
-	lines.push(``, `## Manifest`, ``, `Machine-readable: https://svtui.dev/registry.json`);
+	lines.push(
+		``,
+		`## Manifest`,
+		``,
+		`Machine-readable: https://svtui.addisonking.com/registry.json`
+	);
 	return lines.join('\n') + '\n';
 }
 
