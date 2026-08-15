@@ -15,6 +15,7 @@
 		ref = $bindable(null),
 		caret = '',
 		bordered = false,
+		autofocus = false,
 		value = $bindable(''),
 		type = $bindable('text'),
 		placeholder = $bindable(''),
@@ -33,6 +34,10 @@
 
 	$effect(() => {
 		ref = inputEl;
+		if (autofocus && inputEl) {
+			inputEl.focus();
+			focused = true;
+		}
 	});
 
 	const displayStr = $derived.by(() => {
@@ -156,7 +161,7 @@
 		vertical-align: middle;
 		pointer-events: none;
 		user-select: none;
-		background: var(--focus-ring);
+		background: var(--text-primary);
 		color: var(--surface-base);
 	}
 
