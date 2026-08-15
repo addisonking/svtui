@@ -146,7 +146,7 @@
 		box-shadow:
 			inset 0 0 0 1px var(--border-default),
 			0.5ch 0.5ch 0 0 var(--border-muted);
-		padding: calc(var(--line) * 0.25) 0;
+		padding: 0;
 		min-width: 18ch;
 		z-index: 1000;
 		outline: 0;

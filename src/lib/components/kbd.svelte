@@ -39,9 +39,7 @@
 
 	.kbd.default {
 		background: color-mix(in srgb, var(--surface-base) 80%, var(--border-default) 20%);
-		box-shadow:
-			inset 0 0 0 1px var(--border-default),
-			0 1px 0 0 var(--border-muted);
+		box-shadow: inset 0 0 0 1px var(--border-default);
 	}
 
 	.kbd.bracket {
